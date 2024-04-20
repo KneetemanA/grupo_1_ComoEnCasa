@@ -1,101 +1,113 @@
+.main-list{
+    background-color: #efefef;
+    margin-top: 20px ;
+
+}
+
+.section-category{
+    margin-bottom: 20px;
+}
+
+
 .tituloSeccion {
-    color: var(--Naranja);
-    font-weight: 700;
-    margin-bottom: 0;
-    border: 1px solid antiquewhite;
-    background-color: antiquewhite;
-    padding-left: 20px;
-    font-size: 30px;
-}
+    color:#ffdca5 ; 
+    font-size: 30px; 
+    font-weight: bold; 
+    background-image: linear-gradient(#FF6600,#ff7f0a) ;
+    padding-left: 10px;
+   
+    
+    width: 30vw;
+    border-bottom-right-radius: 20px;
+    
+  }
 
-.seccionPizza {
-    height: 145vh;
-    background-image: url('/images/img3.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.container-article-list{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    border-bottom: 1px lightgray solid;
+}
+  
+  
+.article-product {
+    width: 250px; 
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .container-img-product {
+    width: 100%;
+    overflow: hidden; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .container-img-product img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: all 1000ms;
+    
+  }
+
+  .container-img-product img:hover{
+    scale: 1.2;
+  }
+  
+  .article-product h4 {
+    margin: 10px 0;
+    text-align: center;
+    
+  }
+  
+  .precio-product {
     display: flex;
     flex-direction: column;
-}
-
-
-.seccionHamburguesa {
-    background-image: url('/images/img5.jpg');
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    justify-content: space-around;
+     padding: 10px;
+     
+  }
+  .precio-product a{
     display: flex;
     flex-direction: column;
-}
+  }
+  
+  .precio-product span {
+    font-weight: bold;
 
-.seccionPapas {
-    background-image: url('/images/img14.png');
-    height: 60vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-}
-
-.variedades {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    margin-top: 1rem;
-    justify-items: center;
-    width: 76vw;
-    margin-left: 4rem;
-}
-
-.variedades article{
-text-align: center;
-}
-
-.variedades img {
-    width: 39vw;
-    height: 24vh;
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, .2);
-}
-
-.variedades img:hover {
-    transform: scale(1.2);
-}
-
-.variedades h4 {
+    
+    
+  }
+.precio-product a span:first-child{
+  text-align: center;
     font-size: 20px;
-    font-weight: bolder;
-    background: antiquewhite;
-    margin:  0;
+    margin-bottom: 20px;
 }
-.price-discount{
-    font-size: 20px;
-    font-weight: bolder;
-    background: antiquewhite;
-    margin-bottom: 8px;
+.precio-product span:nth-child(3){
+    color: green;
 }
-
-
-.variedades button {
-    background-color: var(--Gris);
-    padding: 5px;
-    border-radius: 20%;
-    border-color: var(--Gris)
-}
-
-.variedades button:hover {
-    transform: scale(1.2);
-}
-
-/*TABLET*/
-@media(min-width: 400px) {}
-
-/*DESKTOP*/
-
-@media(min-width:769px) {}
+ 
+  
+.container-article-list button {
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+   margin-top: 10px;
+  }
+  
+  .container-article-list button:hover {
+    background-color: #ff8533;
+  }
+  

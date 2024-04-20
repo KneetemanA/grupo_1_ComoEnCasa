@@ -7,103 +7,112 @@
     <!-- header -->
     <%- include ("./partials/header") %>
 
-      <h2 class="tituloSeccion">Pizzas</h2>
-      <section class="seccionPizza" id="pizza" category="Pizzas">
+      <div class="main-list">
 
-        <div class="variedades">
-          <% productos.filter(p => p.category.toLowerCase() === 'pizzas').forEach(p=> {%>
-            <article>
-              <figure>
-                <img src="<%= p.image %>" alt="">
-              </figure>
+        <section class="section-category">
+          <h2 class="tituloSeccion">PIZZAS</h2>
+          <div class="container-article-list">
+            <% productos.filter(p=> p.category.toLowerCase() === 'pizzas').forEach(p=> {%>
+              <article class="article-product">
+                <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
+                  <img src="<%= p.image %>" alt="">
+                </figure>
+               
+                <div class="precio-product">
+                  <span>
+                    <%= p.name %>
+                  </span>
+                  <span>$<%= p.price %></span>
+                  <span>
+                    <%= p.discount ? p.discount + '% OFF' : ' ' %>
+                      <% if (!p.discount) { %>
+                        <br>
+                        <% } %>
+                  </span>
 
-              <h4>
-                <%= p.name %>
-              </h4>
+                   </a>
+                  <button>Agregar al carrito</button>
+                </div>
+              </article>
+              <% }) %>
 
-              <div class="price-discount">
-                <span>$<%= p.price %></span>
-                <span>
-                  <%= p.discount ? p.discount + '% OFF' : '' %>
-                </span>
-              </div>
-
-              <div class="botones">
-                <button><a href="./productos/detalle/<%= p.id %>">Detalle</button></a>
-                <button><a href="./carrito">Agregar</button></a>
-              </div>
-            </article>
-
-            <% }) %>
-        </div>
-
-      </section>
+          </div>
+        </section>
 
 
-      <h2 class="tituloSeccion">HAMBURGUESAS</h2>
-      <section class="seccionHamburguesa" id="hamburguesa" category="hamburguesas">
-        <div class="variedades">
 
-          <% productos.filter(p => p.category.toLowerCase() === 'hamburguesas').forEach(p=> {%>
-          
-            <article>
-              <figure>
-                <img src="<%= p.image %>" alt="">
-              </figure>
+        <section class="section-category">
+          <h2 class="tituloSeccion">HAMBURGUESAS</h2>
+          <div class="container-article-list">
+            <% productos.filter(p=> p.category.toLowerCase() === 'hamburguesas').forEach(p=> {%>
+              <article class="article-product">
+                <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
+                  <img src="<%= p.image %>" alt="">
+                </figure>
+               
+                <div class="precio-product">
+                  <span>
+                    <%= p.name %>
+                  </span>
+                  <span>$<%= p.price %></span>
+                  <span>
+                    <%= p.discount ? p.discount + '% OFF' : ' ' %>
+                      <% if (!p.discount) { %>
+                        <br>
+                        <% } %>
+                  </span>
 
-              <h4>
-                <%= p.name %>
-              </h4>
+                   </a>
+                  <button>Agregar al carrito</button>
+                </div>
+              </article>
+              <% }) %>
 
-              <div class="price-discount">
-                <span>$<%= p.price %></span>
-                <span>
-                  <%= p.discount ? p.discount + '% OFF' : '' %>
-                </span>
-              </div>
+          </div>
+        </section>
+        <section class="section-category">
+          <h2 class="tituloSeccion">PAPAS FRITAS</h2>
+          <div class="container-article-list">
+            <% productos.filter(p=> p.category.toLowerCase() === 'papas fritas').forEach(p=> {%>
+              <article class="article-product">
+                <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
+                  <img src="<%= p.image %>" alt="">
+                </figure>
+               
+                <div class="precio-product">
+                  <span>
+                    <%= p.name %>
+                  </span>
+                  <span>$<%= p.price %></span>
+                  <span>
+                    <%= p.discount ? p.discount + '% OFF' : ' ' %>
+                      <% if (!p.discount) { %>
+                        <br>
+                        <% } %>
+                  </span>
 
-              <div class="botones">
-                <button><a href="./productos/detalle/<%= p.id %>">Detalle</button></a>
-                <button><a href="./carrito">Agregar</button></a>
-              </div>
-            </article>
+                   </a>
+                  <button>Agregar al carrito</button>
+                </div>
+              </article>
+              <% }) %>
 
-            <% }) %>
-        </div>
+          </div>
+        </section>
 
-      </section>
 
-      <h2 class="tituloSeccion">PAPAS FRITAS</h2>
-      <section class="seccionPapas" id="papas" category="Papas Fritas">
 
-        <div class="variedades">
-          <% productos.filter(p => p.category.toLowerCase() === 'papas fritas').forEach(p=> {%>
-            <article>
-              <figure>
-                <img src="<%= p.image %>" alt="">
-              </figure>
 
-              <h4>
-                <%= p.name %>
-              </h4>
 
-              <div class="price-discount">
-                <span>$<%= p.price %></span>
-                <span>
-                  <%= p.discount ? p.discount + '% OFF' : '' %>
-                </span>
-              </div>
+      </div>
 
-              <div class="botones">
-                <button><a href="./productos/detalle/<%= p.id %>">Detalle</button></a>
-                <button><a href="./carrito">Agregar</button></a>
-              </div>
-            </article>
 
-            <% }) %>
-        </div>
 
-      </section>
+
+
+
+
+      
 
       <%- include ("./partials/footer") %>
 

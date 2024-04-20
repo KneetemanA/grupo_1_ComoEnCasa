@@ -49,5 +49,19 @@
       "city": "",
       "street": "",
       "num": ""
+   },
+   {
+      "id": 5,
+      "name": "agustin",
+      "user": "agustin2",
+      "email": "agustin2@gmail.com",
+      "password": "$2b$10$Ph1uLTDNU5vmFKAW7drvVeX5RVdfuj1mFHdXBiBJ8ePFnx0U3S00m",
+      "tic": true,
+      "image": "img-1713478954312.jpg",
+      "phone": "",
+      "province": "",
+      "city": "",
+      "street": "",
+      "num": ""
    }
 ]
