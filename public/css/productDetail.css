@@ -15,6 +15,7 @@
     font-weight: bold; 
     background-image: linear-gradient(#FF6600,#ff7f0a) ;
     padding-left: 10px;
+    border: 2px solid lightgray;
    
     
     width: 30vw;
@@ -87,7 +88,7 @@
     
   }
 .precio-product a span:first-child{
-  text-align: center;
+  
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -111,3 +112,15 @@
     background-color: #ff8533;
   }
   
+
+  @media (min-width: 400px) {
+    .tituloSeccion {
+      width: 100vw;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .tituloSeccion {
+      width: 40vw;
+    }
+  }

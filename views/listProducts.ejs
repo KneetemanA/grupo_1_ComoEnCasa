@@ -9,7 +9,7 @@
 
       <div class="main-list">
 
-        <section class="section-category">
+        <section id="pizza" class="section-category">
           <h2 class="tituloSeccion">PIZZAS</h2>
           <div class="container-article-list">
             <% productos.filter(p=> p.category.toLowerCase() === 'pizzas').forEach(p=> {%>
@@ -41,7 +41,7 @@
 
 
 
-        <section class="section-category">
+        <section id="hamburguesa" class="section-category">
           <h2 class="tituloSeccion">HAMBURGUESAS</h2>
           <div class="container-article-list">
             <% productos.filter(p=> p.category.toLowerCase() === 'hamburguesas').forEach(p=> {%>
@@ -70,7 +70,7 @@
 
           </div>
         </section>
-        <section class="section-category">
+        <section id="papas" class="section-category">
           <h2 class="tituloSeccion">PAPAS FRITAS</h2>
           <div class="container-article-list">
             <% productos.filter(p=> p.category.toLowerCase() === 'papas fritas').forEach(p=> {%>
