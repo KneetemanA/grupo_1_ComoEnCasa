@@ -54,3 +54,8 @@ A inicios de este sprint nos anuncio Nath que se agregaba un nuevo integrante al
 Durante este sprint, nuestro equipo de desarrollo enfrentó desafíos significativos, pero gracias a nuestra dedicación y colaboración, logramos superarlos con éxito.
 De un equipo de cinco desarrolladores, cuatro de nosotros cumplimos con nuestras metas establecidas para el sprint. A pesar de este sólido avance, enfrentamos un obstáculo inesperado cuando la parte asignada al nuevo desarrollador quedó pendiente.
 En lugar de lamentarnos, el equipo demostró disposición y de manera conjunta, asumimos la responsabilidad de abordar la parte faltante. La comunicación fluida y la disposición para ayudarnos mutuamente fueron clave para garantizar que el trabajo quedara completo.
+
+Retrospectiva sprint 4
+
+El equipo pudo revolver rapidamente todas sus tareas  del sprint por estar al dia con lo visto en clases,
+se sigue trabajando al respecto con la nivelacion e integracion del nuevo integrantre del equipo.el cual no pudo asimilar todo lo creado por el equipo en ese tiempo y presentar lo pedido en el sprint, con lo cual el equipo se dispuso a repartir su tarea y concluirla.

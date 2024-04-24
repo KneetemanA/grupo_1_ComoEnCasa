@@ -6,12 +6,13 @@
       "email": "admin@gmail.com",
       "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
       "tic": "acepto los terminos",
-      "image": "img-1711677117409.jpg",
+      "image": "img-1711999933097.png",
       "phone": "",
       "province": "",
       "city": "",
       "street": "",
-      "num": ""
+      "num": "",
+      "role": "admin"
    },
    {
       "id": 2,
@@ -44,6 +45,20 @@
       "password": "$2b$10$2KW5j8YXew8zZsLGAVmFxuO08YAoh9GcKj74T2nxWjx2wAXRoxAha",
       "tic": true,
       "image": "img-1711927640430.jpeg",
+      "phone": "",
+      "province": "",
+      "city": "",
+      "street": "",
+      "num": ""
+   },
+   {
+      "id": 5,
+      "name": "agustin",
+      "user": "agustin2",
+      "email": "agustin2@gmail.com",
+      "password": "$2b$10$Ph1uLTDNU5vmFKAW7drvVeX5RVdfuj1mFHdXBiBJ8ePFnx0U3S00m",
+      "tic": true,
+      "image": "img-1713478954312.jpg",
       "phone": "",
       "province": "",
       "city": "",
