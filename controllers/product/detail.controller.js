@@ -1,10 +1,11 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const {loadData} = require('../../database')
+const db = require("../../database/models")
 module.exports= (req,res) => {
-    const {id} = req.params
-    const products = loadData("productos")
-    const productFind = products.find(p => p.id === +id)
     const userlogueado = req.session.user
+   db.Product.findByPk(req.params.id)
+   .then(productos =>{
+    res.render('detail',{p:productos,toThousand, userlogueado})
+   })
+    
 
-    res.render('detail',{p:productFind,toThousand, userlogueado})
 }

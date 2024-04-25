@@ -1,19 +1,15 @@
+const DB = require("../../database/models");
+const { Op } = DB.Sequelize;
+
 module.exports = function(req, res) {
-    const userlogueado = req.session.user
-    const { loadData } = require("../../database");
-    const productos = loadData('productos')
-    let busqueda = req.query.productoBuscado.toLowerCase(); // Convertir a minúsculas
+    const userlogueado = req.session.user;
 
-    let resultadosBusqueda = [];
-
-    for (let i = 0; i < productos.length; i++) {
-        let nombreProducto = productos[i].name.toLowerCase();
-        let categoriaProducto = productos[i].category.toLowerCase();
-
-        if (nombreProducto.includes(busqueda) || categoriaProducto.includes(busqueda)) {
-            resultadosBusqueda.push(productos[i]);
+    DB.Product.findAll({
+        include: [{ association: "categorias" }],
+        where: { 
+            name: { [Op.like]: "%" + req.query.productoBuscado + "%" }
         }
-    }
-
-    res.render("search",{resultadosBusqueda, userlogueado});
-};
+    })
+    .then(resultadosBusqueda => {
+        res.render("search", { resultadosBusqueda, userlogueado });
+    })}

@@ -59,3 +59,7 @@ Retrospectiva sprint 4
 
 El equipo pudo revolver rapidamente todas sus tareas  del sprint por estar al dia con lo visto en clases,
 se sigue trabajando al respecto con la nivelacion e integracion del nuevo integrantre del equipo.el cual no pudo asimilar todo lo creado por el equipo en ese tiempo y presentar lo pedido en el sprint, con lo cual el equipo se dispuso a repartir su tarea y concluirla.
+
+Retrospectiva sprint 5
+
+El equipo pudo realizar todas sus tareas antes de tiempo, de manera que se pudieron realizar algunas correcciones y/o modificaciones en diferentes fracciones del proyecto. Nuevamente, con la participación conjunta de solo 4 desarrolladores, administrando los tiempos de la mejor manera y mejorando la comunicación con reuniones diarias.

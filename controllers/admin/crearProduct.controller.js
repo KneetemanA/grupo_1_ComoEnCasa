@@ -1,7 +1,10 @@
-const {loadData} = require('../../database')
+//const {loadData} = require('../../database')
+const db = require('../../database/models')
 module.exports = (req, res) => {
   
-  const productos= loadData("productos")
+  //const productos= loadData("productos")
+db.Product.findAll({include:[{association:"categorias"}]})
+.then((productos=>{
   const userlogin = req.session.user;
     /*Aqui solo renderizamos el contenido de la vista*/
       res.render("admin/crearProduct", {productos}, (err, content) =>{
@@ -14,5 +17,6 @@ module.exports = (req, res) => {
           userlogin
         })
       })
+}))
 
   };
