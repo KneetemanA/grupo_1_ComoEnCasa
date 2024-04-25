@@ -1,7 +1,13 @@
-module.exports= (req,res) => {
+const db = require("../../database/models");
 
-    const productos= require("../../database/productos.json")
-    const userlogueado = req.session.user
-    
-    res.render('listProducts',{productos, userlogueado})
-}
+module.exports = (req, res) => {
+  const userlogueado = req.session.user;
+
+ 
+  db.Product.findAll({
+    include: [{ association: "categorias" }],
+  }).then((productos) => {
+    res.render("listProducts", { productos, userlogueado });
+   
+  });
+};
