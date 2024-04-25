@@ -12,7 +12,7 @@
         <section id="pizza" class="section-category">
           <h2 class="tituloSeccion">PIZZAS</h2>
           <div class="container-article-list">
-            <% productos.filter(p=> p.category.toLowerCase() === 'pizzas').forEach(p=> {%>
+            <% productos.filter(p=> p.categorias.name.toLowerCase() === 'pizza').forEach(p=> {%>
               <article class="article-product">
                 <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
                   <img src="<%= p.image %>" alt="">
@@ -44,7 +44,7 @@
         <section id="hamburguesa" class="section-category">
           <h2 class="tituloSeccion">HAMBURGUESAS</h2>
           <div class="container-article-list">
-            <% productos.filter(p=> p.category.toLowerCase() === 'hamburguesas').forEach(p=> {%>
+            <% productos.filter(p=> p.categorias.name.toLowerCase() === 'hamburguesa').forEach(p=> {%>
               <article class="article-product">
                 <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
                   <img src="<%= p.image %>" alt="">
@@ -73,7 +73,7 @@
         <section id="papas" class="section-category">
           <h2 class="tituloSeccion">PAPAS FRITAS</h2>
           <div class="container-article-list">
-            <% productos.filter(p=> p.category.toLowerCase() === 'papas fritas').forEach(p=> {%>
+            <% productos.filter(p=>p.categorias.name.toLowerCase() === 'papas frita').forEach(p=> {%>
               <article class="article-product">
                 <a href="./productos/detalle/<%= p.id %>" ><figure class="container-img-product">
                   <img src="<%= p.image %>" alt="">
