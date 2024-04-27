@@ -1,11 +1,13 @@
+ const db =require("../database/models")
 function recordarmeCookie(req, res, next) {
     if (req.cookies.recordarme && !req.session.user) {
-        const usersDatos = require("../database/users.json");
-        const usuarioCorrecto = usersDatos.find(user => user.user === req.cookies.recordarme);
-        
-        if (usuarioCorrecto) {
-            req.session.user = usuarioCorrecto;
+      db.User.findOne({where :{user: req.cookies.recordarme}})
+      .then(user => {
+        if(user){
+            req.session.user=user
         }
+      }) 
+        
     }
 
     next(); 

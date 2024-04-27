@@ -1,28 +1,39 @@
 const bcrypt = require("bcrypt");
-const { loadData } = require("../../database");
 const { validationResult } = require("express-validator");
+const db = require("../../database/models");
 
 module.exports = function(req, res) {
     const errors = validationResult(req);
-    const users = loadData("users");
-    const datoEntrantes = req.body;
 
     if (errors.isEmpty()) {
-        const userCorrecto = users.find(user => 
-            user.user === datoEntrantes.user && bcrypt.compareSync(datoEntrantes.password, user.password));
-
-        if (userCorrecto === undefined) {
-            // Usuario o contraseña incorrecta
-            return res.render("login", { error: "Datos invalidos" });
-        } else {
-            req.session.user = userCorrecto;
-            if (req.body.recordarme !== undefined) {
-                res.cookie("recordarme", userCorrecto.user, { maxAge: 30000 });
+        db.User.findOne({
+            where: {
+                user: req.body.user
             }
-            return res.redirect("/");
-        }
+        })
+        .then(user => {
+            if (!user) {
+                return res.render("login", { error: "Datos inválidos" });
+            }
+            
+            const userCorrecto = bcrypt.compareSync(req.body.password, user.password);
+
+            if (!userCorrecto) {
+                return res.render("login", { error: "Datos inválidos" });
+            } else {
+                req.session.user = user; 
+                console.log("Datos de sesión del usuario:", req.session.user);
+                if (req.body.recordarme !== undefined) {
+                    res.cookie("recordarme", user.user, { maxAge: 300000 });
+                }
+                return res.redirect("/");
+            }
+        })
+        .catch(error => {
+            console.error("Error al buscar usuario:", error);
+            return res.status(500).send("Error interno del servidor");
+        });
     } else {
-        // Renderizar la página de inicio de sesión con mensajes de error
         return res.render("login", { errors: errors.array() });
     }
-}
+};

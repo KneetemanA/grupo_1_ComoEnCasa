@@ -1,23 +1,12 @@
 [
    {
       "id": 1,
-      
       "name": "Ruculas",
       "price": 8000,
       "discount": 5,
       "freeShipping": false,
       "image": "/images/Pizza-img6.jpg",
       "detail": "Una exquisita combinación de muzzarella fundida, tomate cherrys gratinados y rucula"
-   },
-   {
-      "id": 2,
-      "category": "Pizzas",
-      "name": "Fugazzeta",
-      "price": 5000,
-      "discount": 15,
-      "freeShipping": false,
-      "image": "/images/Pizza-img7.jpg",
-      "detail": "Una exquisita combinación de muzzarella fundida, con cebolla caramelizada"
    },
    {
       "id": 3,
