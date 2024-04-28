@@ -7,9 +7,13 @@ module.exports = function(req, res) {
     DB.Product.findAll({
         include: [{ association: "categorias" }],
         where: { 
-            name: { [Op.like]: "%" + req.query.productoBuscado + "%" }
+            [Op.or]: [
+                { name: { [Op.like]: "%" + req.query.productoBuscado + "%" } },
+                { '$categorias.name$': { [Op.like]: "%" + req.query.productoBuscado + "%" } }
+            ]
         }
     })
     .then(resultadosBusqueda => {
         res.render("search", { resultadosBusqueda, userlogueado });
-    })}
+    })
+}

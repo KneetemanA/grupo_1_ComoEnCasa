@@ -1,38 +1,26 @@
-const db = require("../../database/models")
+const db = require("../../database/models");
 
 module.exports = (req, res) => {
-  const user = req.session.user
-  db.User.findOne({
-    WHERE: {name:user.user}
-  })
-  .then(userlogin => {
-    db.Product.findAll()
+  const userlogin = req.session.user;
+
+  db.Product.findAll()
     .then(productos => {
-      // const users = loadData("users")
-      // const user = req.session.user
-      // const userlogin = users.find((u => u.user === user.user))
-      
-          res.render("admin/listProducts", {productos}, (err, content) =>{
-            err && res.send(err.message)
-    
-            
-        // Aqui renderizamos el partials de dashboeard 
-        // QUE YA VA A TENER LA VISTA INCLUIDA QUE RENDERIZAMOS ANTERIORMENTE    
-            res.render("partials/dashboard", {
-              userlogin,
-              views: content
-              
-            })
-          })
+      res.render("admin/listProducts", { productos }, (err, content) => {
+        if (err) {
+          res.send(err.message);
+          return;
+        }
+
+        // Aquí renderizamos el partials de dashboard
+        // que ya va a tener la vista incluida que renderizamos anteriormente
+        res.render("partials/dashboard", {
+          userlogin,
+          views: content
+        });
+      });
     })
-  })
-
-  
- 
-  }
-
-
-
-
-
-  
+    .catch(error => {
+      console.error("Error al obtener productos:", error);
+      res.status(500).send("Error interno del servidor");
+    });
+};
