@@ -74,7 +74,7 @@
                                                 <label for="phone">
                                                     <h4>Teléfono</h4>
                                                 </label>
-                                                <input type="tel" class="form-control" name="phone" id="phone" value="<%= locals.old?.phone? locals.old.phone : userlogueado.phone? userlogueado.phone : "" %>"
+                                                <input type="tel" class="form-control" name="phone" id="phone" value="<%= locals.old?.phone? locals.old.phone : infouser.phone? infouser.phone : " " %>"
                                                     placeholder="teléfono">
                                                     <% if (locals.errors) { %>
                                                         <% locals.errors.forEach(error => { %>
@@ -108,7 +108,7 @@
                                                 <label for="province">
                                                     <h4>Provincia</h4>
                                                 </label>
-                                                <input type="text" class="form-control" name="province" id="province" value="<%= locals.old?.province? locals.old.province : userlogueado.province? userlogueado.province : "" %>"
+                                                <input type="text" class="form-control" name="province" id="province" value="<%= locals.old?.province? locals.old.province : infouser.province? infouser.province : " " %>"
                                                     placeholder="provincia">
                                                     <% if (locals.errors) { %>
                                                         <% locals.errors.forEach(error => { %>
@@ -124,7 +124,7 @@
                                                 <label for="city">
                                                     <h4>Ciudad</h4>
                                                 </label>
-                                                <input type="text" class="form-control" name="city" id="city" placeholder="ciudad" value="<%= locals.old?.city? locals.old.city : userlogueado.city? userlogueado.city : "" %>">
+                                                <input type="text" class="form-control" name="city" id="city" placeholder="ciudad" value="<%= locals.old?.city? locals.old.city : infouser.city? infouser.city : " " %>">
                                                 <% if (locals.errors) { %>
                                                     <% locals.errors.forEach(error => { %>
                                                         <% if (error.path === 'city') { %>
@@ -141,7 +141,7 @@
                                                 <label for="street">
                                                     <h4>Calle</h4>
                                                 </label>
-                                                <input type="text" class="form-control" name="street" id="street" value="<%= locals.old?.street? locals.old.street : userlogueado.street? userlogueado.street : "" %>"
+                                                <input type="text" class="form-control" name="street" id="street" value="<%= locals.old?.street? locals.old.street : infouser.street? infouser.street : " " %>"
                                                     placeholder="calle">
                                                     <% if (locals.errors) { %>
                                                         <% locals.errors.forEach(error => { %>
@@ -157,7 +157,7 @@
                                                 <label for="num">
                                                     <h4>Número</h4>
                                                 </label>
-                                                <input type="number" class="form-control" name="num" id="num" value="<%= locals.old?.num? locals.old.num : userlogueado.num? userlogueado.num : "" %>"
+                                                <input type="number" class="form-control" name="num" id="num" value="<%= locals.old?.num? locals.old.num : infouser.num? infouser.num : " " %>"
                                                     placeholder="número de casa o depto">
                                                     <% if (locals.errors) { %>
                                                         <% locals.errors.forEach(error => { %>
