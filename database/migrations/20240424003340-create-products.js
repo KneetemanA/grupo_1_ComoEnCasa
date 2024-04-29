@@ -18,7 +18,7 @@ module.exports = {
       discount: {
         type: Sequelize.INTEGER
       },
-      freeShipping: {
+      free_shipping: {
         type: Sequelize.BOOLEAN
       },
       image: {
@@ -32,11 +32,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       }
     });
   },

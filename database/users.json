@@ -1,68 +1,31 @@
 [
    {
       "id": 1,
+      "name": "agustin",
+      "user": "agustin",
+      "email": "agustin@gmail.com",
+      "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
+      "tic": true,
+      "role": "admin",
+      "image": "img-1711498665866.png"
+   },
+   {
+      "id": 2,
+      "name": "Luka Ezequiel Erba",
+      "user": "_erbaLuka7",
+      "email": "luka@gmail.com",
+      "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
+      "tic": true,
+      "role": "admin",
+      "image": "img-1714100632759.jpg"
+   },
+   {
+      "id": 3,
       "name": "admin",
       "user": "admin",
       "email": "admin@gmail.com",
       "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
-      "tic": "acepto los terminos",
-      "image": "img-1711999933097.png",
-      "phone": "",
-      "province": "",
-      "city": "",
-      "street": "",
-      "num": "",
+      "tic": true,
       "role": "admin"
-   },
-   {
-      "id": 2,
-      "name": "agustin",
-      "user": "agustin",
-      "email": "agustin@gmail.com",
-      "password": "$2b$10$xV49sa6LWUeYxSPAMU3WNOgiSVpKKm4DAFWIiEWtD4T1882EItLAK",
-      "tic": true,
-      "image": "img-1711498665866.png"
-   },
-   {
-      "id": 3,
-      "name": "Luka Ezequiel Erba",
-      "user": "_erbaLuka7",
-      "email": "luka@gmail.com",
-      "password": "$2b$10$gda79WLYCeYwV7V1/6ZdPOYThkD0g4A8eOAeDOpW1LaOOmnRGB7DG",
-      "tic": true,
-      "image": "img-1711811545190.jpg",
-      "phone": 2245474185,
-      "province": "Buenos Aires",
-      "city": "Castelli",
-      "street": "Juan Roman Riquelme",
-      "num": 12345
-   },
-   {
-      "id": 4,
-      "name": "Ariana",
-      "user": "arian",
-      "email": "ariana@gmail.com",
-      "password": "$2b$10$2KW5j8YXew8zZsLGAVmFxuO08YAoh9GcKj74T2nxWjx2wAXRoxAha",
-      "tic": true,
-      "image": "img-1711927640430.jpeg",
-      "phone": "",
-      "province": "",
-      "city": "",
-      "street": "",
-      "num": ""
-   },
-   {
-      "id": 5,
-      "name": "agustin",
-      "user": "agustin2",
-      "email": "agustin2@gmail.com",
-      "password": "$2b$10$Ph1uLTDNU5vmFKAW7drvVeX5RVdfuj1mFHdXBiBJ8ePFnx0U3S00m",
-      "tic": true,
-      "image": "img-1713478954312.jpg",
-      "phone": "",
-      "province": "",
-      "city": "",
-      "street": "",
-      "num": ""
    }
 ]
