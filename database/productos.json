@@ -1,6 +1,7 @@
 [
    {
       "id": 1,
+      "category": "pizza",
       "name": "Ruculas",
       "price": 8000,
       "discount": 5,
@@ -10,7 +11,7 @@
    },
    {
       "id": 3,
-      "category": "Pizzas",
+      "category": "pizza",
       "name": "Napolitana",
       "price": 5000,
       "discount": null,
@@ -20,7 +21,7 @@
    },
    {
       "id": 4,
-      "category": "Pizzas",
+      "category": "pizza",
       "name": "Muzzarela y Jamón",
       "price": 4500,
       "discount": null,
@@ -30,7 +31,7 @@
    },
    {
       "id": 5,
-      "category": "Pizzas",
+      "category": "pizza",
       "name": "Calabresa",
       "price": 4500,
       "discount": null,
@@ -40,7 +41,7 @@
    },
    {
       "id": 6,
-      "category": "Pizzas",
+      "category": "pizza",
       "name": "Muzzarella",
       "price": 3800,
       "discount": null,
@@ -50,7 +51,7 @@
    },
    {
       "id": 7,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Clasica",
       "price": 3800,
       "discount": 0,
@@ -60,7 +61,7 @@
    },
    {
       "id": 8,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Clasica cheddar",
       "price": 4200,
       "discount": 10,
@@ -70,7 +71,7 @@
    },
    {
       "id": 9,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Clasica completa",
       "price": 5000,
       "discount": 5,
@@ -80,7 +81,7 @@
    },
    {
       "id": 10,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Extra Completa",
       "price": 5800,
       "discount": 5,
@@ -90,7 +91,7 @@
    },
    {
       "id": 11,
-      "category": "Papas Fritas",
+      "category": "papas frita",
       "name": "Clasicas",
       "price": 3000,
       "discount": null,
@@ -100,7 +101,7 @@
    },
    {
       "id": 12,
-      "category": "Papas Fritas",
+      "category": "papas frita",
       "name": "Clasicas baccon",
       "price": 3500,
       "discount": null,
@@ -110,7 +111,7 @@
    },
    {
       "id": 13,
-      "category": "Papas Fritas",
+      "category": "papas frita",
       "name": "Clasicas Cebolla",
       "price": 4000,
       "discount": 0,
@@ -120,7 +121,7 @@
    },
    {
       "id": 14,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Hamburguesa Vegana",
       "price": 5000,
       "discount": 0,
@@ -130,7 +131,7 @@
    },
    {
       "id": 15,
-      "category": "Hamburguesas",
+      "category": "hamburguesa",
       "name": "Hamburguesa Picante",
       "price": 6000,
       "discount": 15,
