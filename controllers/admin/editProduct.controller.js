@@ -1,13 +1,18 @@
-const {loadData} = require("../../database")
+const userlogin = require('../../middleware/userLogeado')
+const db = require('../../database/models')
+
 module.exports = (req,res) => {
-    const {id} = req.params;
-    const productEdit = loadData("productos")
-    const findProductEdit = productEdit.find(p => p.id === +id)
-    const userlogin = req.session.user;
-    res.render("admin/editProduct", {"productEdit" : findProductEdit},(err, content) =>{
+
+    const id = req.params.id;
+
+   db.Product.findByPk(id)
+    .then((product) => {
+
+       res.render("admin/editProduct", {'productEdit': product},(err, content) =>{
         err && res.send(err.message)
         res.render("partials/dashboard", {
-          views: content,userlogin
+        views: content,userlogin
         });
-})
+      })
+    })
 }

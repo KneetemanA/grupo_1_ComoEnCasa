@@ -1,17 +1,32 @@
-const fs = require('fs')
-const path = require('path')
 
-const { saveData, loadData } = require("../../database");
-
-module.exports = (req, res)=> {
-  let productos = loadData('productos')
-  const {id} = req.params;
+ const db = require('../../database/models')
+ 
+module.exports = (req, res) => {
+ 
+  const { id } = req.params;
+  const { category, name, price, discount, freeShipping, detail } = req.body;
   const image = req.file;
+  
+  db.Product.update({
+    category_id: +category,
+    name: name ? name.trim() : name ,
+    price: +price,
+    discount: +discount ,
+    freeShipping: freeShipping === "true",
+    detail: detail ? detail.trim(): detail,
+    image: image ? `/images/${image.filename}` : p.image  // req.files.image[0]?.filename
+  },{
+    where: {id}
+  }).then(( isUpdate)=>{
+    if(isUpdate){
+      res.send("Actualización correcta")
+    }
+    res.redirect('/admin');
+  })
 
-  const { category, name, price, discount, freeShipping, detail } =
-    req.body;
+};
 
-  const productsMap = productos.map((p) => {
+  /*const productsMap = productos.map((p) => {
     if (p.id === +id) {
         const productEdit = {
             ...p,
@@ -39,7 +54,7 @@ module.exports = (req, res)=> {
     return p;
   });
 
-  saveData(productsMap,"productos");
+  saveData(productsMap,"productos");*/
 
-  res.redirect('/admin');
-};
+ 
+
