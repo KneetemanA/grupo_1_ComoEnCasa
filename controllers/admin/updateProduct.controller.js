@@ -1,11 +1,13 @@
 
  const db = require('../../database/models')
+ const p = require('../../controllers/admin/editProduct.controller')
  
 module.exports = (req, res) => {
  
   const { id } = req.params;
   const { category, name, price, discount, freeShipping, detail } = req.body;
   const image = req.file;
+  
   
   db.Product.update({
     category_id: +category,
@@ -19,9 +21,10 @@ module.exports = (req, res) => {
     where: {id}
   }).then(( isUpdate)=>{
     if(isUpdate){
-      res.send("Actualización correcta")
+      res.redirect('/admin')
+
     }
-    res.redirect('/admin');
+    ;
   })
 
 };
