@@ -2,7 +2,7 @@
     <a href="/admin" class="btn btn-primary mb-3 boton-regresar">Ver lista</a>
 
     <form action="/admin/editar/<%= productEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="row mx-auto text-center p-4 form-border">
-        <h3>Modificación de producto</h3>
+        <h3>Modificación de Producto</h3>
         <h6 class="text-body-tertiary" >Ingrese la información</h6>
         
         <div class="col-sm-12 col-md-6 mb-2">
@@ -23,32 +23,32 @@
             <label class="mb-1 text-success">Envíos Gratis</label>
             <br>
             <div class="form-check form-check-inline">
-                <input <%= productEdit.freeShipping === true ? "checked" : null %>class="form-check-input" type="radio" id="enviosSi" name="freeShipping" value="true">
+                <input <%= productEdit.free_shipping === true ? "checked" : null %>class="form-check-input" type="radio" id="enviosSi" name="freeShipping" value="true">
                 <label for="enviosSi" class="form-check-label">Sí</label>
             </div>
             <div class="form-check form-check-inline">
-                <input <%= productEdit.freeShipping === false ? "checked" : null %> class="form-check-input" type="radio" id="enviosNo" name="freeShipping" value="false">
+                <input <%= productEdit.free_shipping === false ? "checked" : null %> class="form-check-input" type="radio" id="enviosNo" name="freeShipping" value="false">
                 <label for="enviosNo" class="form-check-label">No</label>
             </div>
         </div>
         <div class="mb-2 fs-5">
-            <label for="fotoproductEdito" class="form-label">Foto del producto</label>
-            <input class="form-control" type="file" id="fotoproductEdito" name="image">
+            <label for="fotoproducto" class="form-label">Foto del producto</label>
+            <input class="form-control" type="file" id="fotoproducto" name="image">
         </div>
 
         <div class="col-12 mb-2">
             <label class="mb-2 fs-5">Categoria</label>
             <br>
             <div class="form-check form-check-inline">
-                <input <%= productEdit.category_id === 2 %> class="form-check-input" type="radio" id="pizza" name="category" value="2">
+                <input <%= productEdit.category_id === 2 ? "checked" : null %> class="form-check-input" type="radio" id="pizza" name="category" value="2">
                 <label for="pizza" class="form-check-label">Pizza</label>
             </div>
             <div class="form-check form-check-inline">
-                <input  <%=  productEdit.category_id === 3 %> class="form-check-input" type="radio" id="hamburguesa" name="category" value="3">
+                <input  <%= productEdit.category_id === 3 ? "checked" : null %> class="form-check-input" type="radio" id="hamburguesa" name="category" value="3">
                 <label for="hamburguesa" class="form-check-label">Hamburguesa</label>
             </div>
             <div class="form-check form-check-inline">
-                <input <%= productEdit.category_id === 1 %> class="form-check-input" type="radio" id="papas" name="category" value="1">
+                <input <%= productEdit.category_id === 1 ? "checked" : null %> class="form-check-input" type="radio" id="papas" name="category" value="1">
                 <label for="papas" class="form-check-label">Papas</label>
             </div>
         </div>

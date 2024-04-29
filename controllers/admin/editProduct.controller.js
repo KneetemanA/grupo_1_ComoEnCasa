@@ -2,7 +2,7 @@ const userlogin = require('../../middleware/userLogeado')
 const db = require('../../database/models')
 
 module.exports = (req,res) => {
-
+  const userlogin = req.session.user;
     const id = req.params.id;
 
    db.Product.findByPk(id)
