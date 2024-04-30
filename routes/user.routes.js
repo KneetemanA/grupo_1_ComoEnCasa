@@ -16,7 +16,7 @@ router.get('/register',userNoLogueado, register)
 router.post('/register',[upload.single('imageProfile'),validaciones], newUser)
 
 
-router.get("/perfil/:user", userLogeado, profile)
-router.put("/perfil/:user", [userLogeado,upload.single('imageProfile'),editProfileValidation], PUTprofile)
+router.get("/perfil/:id", userLogeado, profile)
+router.put("/perfil/:id", [userLogeado,upload.single('imageProfile'),editProfileValidation], PUTprofile)
 
 module.exports = router

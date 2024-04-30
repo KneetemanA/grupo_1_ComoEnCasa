@@ -1,16 +1,25 @@
-const db = require("../../database/models")
+const db = require("../../database/models");
 
 module.exports = (req, res) => {
-  const userlogueado = req.session.user;
-  db.infoUser
-    .findOne({
-      where: { user_id: userlogueado.id },
+    const userlogueado = req.session.user;
+
+   
+    db.User.findOne({
+        where: { id: userlogueado.id }
     })
-    .then((infouser) => {
-      res.render("profileUser", { userlogueado, infouser });
-      console.log(infouser)
+    .then((updatedUser) => {
+        
+        db.infoUser.findOne({
+            where: { user_id: updatedUser.id }
+        })
+        .then((infouser) => {
+            res.render("profileUser", { userlogueado: updatedUser, infouser });
+        })
+        .catch((err) => {
+            res.send(err.message);
+        });
     })
     .catch((err) => {
-      res.send(err.message);
+        res.send(err.message);
     });
 };

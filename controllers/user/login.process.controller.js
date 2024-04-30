@@ -22,7 +22,7 @@ module.exports = function(req, res) {
                 return res.render("login", { error: "Datos inválidos" });
             } else {
                 req.session.user = user; 
-                console.log("Datos de sesión del usuario:", req.session.user);
+                
                 if (req.body.recordarme !== undefined) {
                     res.cookie("recordarme", user.user, { maxAge: 300000 });
                 }
