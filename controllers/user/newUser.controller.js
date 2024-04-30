@@ -1,17 +1,14 @@
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 const fs = require('fs');
-const db =require("../../database/models")
+const db = require("../../database/models");
 
-module.exports= function(req,res){
+module.exports = function(req, res) {
     const errors = validationResult(req);
-    
-    
-    if(errors.isEmpty()){
-       const{name,user,email,password,tic,}= req.body
-      
-      
-      
+
+    if (errors.isEmpty()) {
+        const { name, user, email, password, tic } = req.body;
+
         db.User.create({
             name: name ? name.trim() : "",
             user: user ? user.trim() : "",
@@ -21,13 +18,20 @@ module.exports= function(req,res){
             tic: tic !== undefined,
             role: "admin"
         })
-       res.redirect("/user/login")
-    
-    
-    
-    
-    
-    }else{
+        .then(newUser => {
+            db.infoUser.create({
+                phone: null,
+                province: null,
+                city: null,
+                street: null,
+                num: null,
+                user_id: newUser.id 
+            })
+            .then(() => {
+                res.redirect("/user/login");
+            });
+        });
+    } else {
         if (req.file && req.file.path) {
             fs.unlink(req.file.path, (err) => {
                 if (err) {
@@ -42,5 +46,4 @@ module.exports= function(req,res){
             old: req.body
         });
     }
-
-}
+};

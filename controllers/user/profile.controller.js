@@ -8,6 +8,7 @@ module.exports = (req, res) => {
     })
     .then((infouser) => {
       res.render("profileUser", { userlogueado, infouser });
+      console.log(infouser)
     })
     .catch((err) => {
       res.send(err.message);
