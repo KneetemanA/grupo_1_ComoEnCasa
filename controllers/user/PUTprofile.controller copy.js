@@ -1,52 +1,16 @@
-//const { loadData, saveData } = require('../../database');
+const { loadData, saveData } = require('../../database');
 const { validationResult } = require("express-validator");
-const db = require("../../database/models")
 const path = require('path');
 const fs = require('fs');
 
 module.exports = (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-        //const users = loadData("users");
+        const users = loadData("users");
         const image = req.file;
         const { name, user, street, phone, email, province, city, num } = req.body;
-        const userEdit = req.params.id;
-        
-        db.User.findByPk(userEdit)
-        .then((uuu=>{
-            if (image?.filename) {
-                const pathBefore = path.join(__dirname, `../../public/images/${uuu.imageProfile}`);
-                const existsFile = fs.existsSync(pathBefore);
-    
-                if (existsFile) {
-                    fs.unlinkSync(pathBefore);
-                }
-            }
-        db.User.update({
-            name: name,
-            user: user,
-            email: email,
-            imageProfile: image ? image.filename : uuu.imageProfile
-        }, { where: { id: userEdit } })
-        }))
-        .then(() => {
-            return db.infoUser.update({
-                phone: phone,
-                province: province,
-                city: city,
-                street: street,
-                num: num
-            }, { where: { user_id: userEdit } });
-        })
-            .then((a)=>{
-                res.redirect("/");
-            })
-        .catch(error => {
-            console.error("Error al actualizar usuario:", error);
-            res.status(500).send("Error interno del servidor");
-        });
-        }
-        /*const usersMap = users.map((u) => {
+        const userEdit = req.params.user;
+        const usersMap = users.map((u) => {
             if (u.user === userEdit) {
                 const userEdited = {
                     ...u,
@@ -73,8 +37,8 @@ module.exports = (req, res) => {
             return u;
         });
         saveData(usersMap, "users");
-        res.redirect("/user/perfil/" + user);*/
-     else {
+        res.redirect("/user/perfil/" + user);
+    } else {
         // Si hay errores de validación
         const fileError = req.fileValidationError;
         // Eliminar la imagen subida por Multer si existe
@@ -88,17 +52,14 @@ module.exports = (req, res) => {
             });
         }
         
-        //const users = loadData("users");
-        const userr = req.params.id;
-        db.findByPk(userr)
-        //const userlogueado = users.find((u => u.user === userr));
-        .then((userlogueado=>{
-            res.render("profileUser", {
-                errors: errors.array(),
-                old: req.body,
-                userlogueado,
-                fileError: fileError ? fileError.message : null
-            });
-        }))
+        const users = loadData("users");
+        const userr = req.params.user;
+        const userlogueado = users.find((u => u.user === userr));
+        res.render("profileUser", {
+            errors: errors.array(),
+            old: req.body,
+            userlogueado,
+            fileError: fileError ? fileError.message : null
+        });
     }
 };
