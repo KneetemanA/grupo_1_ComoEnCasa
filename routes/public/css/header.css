@@ -1,0 +1,208 @@
+header{
+    background-color: var(--Naranja);
+    padding: 15px;
+}
+.partSup{
+    display: flex;
+    justify-content: space-between;
+    color: var(--Blanco);
+    margin-bottom: 10px;
+}
+.logueoHeader nav ul{
+    display: flex;
+}
+.logueoHeader nav ul li a{
+    color: var(--Blanco);
+}
+.logoHeader{
+    display: none;
+}
+.coraHeader{
+    display: none;
+}
+.ruedaHeader{
+    display: none;
+}
+.navHeader2{
+    display: none;
+}
+.miCuentaHeader{
+    display: none;
+}
+.divBusquedaHeader {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  } 
+
+  .divBusquedaHeader input {
+    padding-left: 30px;
+    border: none;
+    background-color: var(--Blanco);
+    height: 25px;
+    width: 100%;
+    border-radius: 20px;
+  } 
+
+.divBusquedaHeader button{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    padding-left: 10px;
+    border: none;
+    background-color: var(--Blanco);
+    color: var(--Naranja);
+    border-radius: 20px;
+  }
+  .hamb1{
+    align-self: center;
+  }
+  .primerAheader{
+    display: none;
+  }
+
+/*TABLET*/
+@media(min-width: 400px){
+    .primerAheader{
+        display: flex;
+    }
+    header{
+        padding: 0;
+    }
+    .hamb1{
+        display: none;
+    }
+    .partSup{
+        background-color: var(--Blanco);
+    }
+    .logoHeader{
+        display: inline-block;
+        width: 80px;
+        height: 50px;
+        margin-left: 35px;
+    }
+    .logueoHeader{
+        width: 190px;
+    }
+    .logueoHeader nav ul li a{
+        background-color: var(--Naranja);
+        padding: 5px;
+        border-radius: 70px;
+        transition: all 0.5s;
+    }
+    .logueoHeader nav ul li a:hover{
+        background-color: var(--Blanco);
+        color: var(--Naranja);
+    }
+    .logueoHeader nav ul{
+        display: flex;
+        margin-top: 10px;
+        max-width: 90%;
+        padding: 0;
+    }
+    .userHeader{
+        padding: 0 3px 0 3px;
+    }
+    .coraHeader{
+        display: inline-block;
+        padding: 0 3px 0 3px;
+    }
+    .ruedaHeader{
+        display: inline-block;
+        padding: 0 3px 0 3px;
+    }
+    .carritoHeader{
+        padding: 0 1px 0 1px;
+    }
+    .partInf{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        align-items: center;
+    }
+    .navHeader2{
+        display: inline-block;
+    }
+    .navHeader2 ul li {
+        display: inline-block;
+    }
+    .navHeader2 ul li a{
+        display: none;
+    } 
+    .navHeader2 ul li a img{
+        vertical-align: middle;
+    }
+    .miCuentaHeader{
+        display: inline-block;
+        color: var(--Negro);
+        margin-left: 106px;
+        font-size: 12px;
+        margin-bottom: 5px;
+        vertical-align: middle;
+    }
+    .ulInf{
+        display: flex;
+        padding-left: 6px;
+    }
+    .verMenu{
+        border:none;
+        background-color: var(--Naranja);
+        color: var(--Blanco);
+        font-size: 16px;
+        padding: 4px 12px;
+        transition: all 0.5s;
+    }
+    .verMenu:hover{
+        color: var(--Negro);
+    }
+    .divBusquedaHeader{
+        max-width: 65%;
+        padding-right: 1em;
+    }
+    .divBusquedaHeader input{
+        height: 35px;
+        padding-left: 10px;
+    }
+    .divBusquedaHeader form{
+        position: relative;
+    }
+    .divBusquedaHeader button{
+        padding: 2px 5px 0 6px;
+        background-color: var(--Naranja);
+        color: var(--Blanco);
+       transition: all 0.5s;
+       position: absolute;
+        left: 92%;
+         width: 34px;
+    }
+    .divBusquedaHeader button:hover{
+        color: var(--Negro);
+        background-color: var(--Blanco);
+        border: solid 1px var(--Negro);
+    }
+    .ulInf{
+        padding-top: 3px;
+    }
+}
+@media(min-width:769px){
+    .primerAheader{
+        display: inline-block;
+      }
+    .navHeader2 ul li a{
+        display: inline-block;
+        color: var(--Blanco);
+        padding: 2px 16px 2px 10px;
+        border-right: solid 1px var(--Blanco);
+        font-size: 16px;
+        transition: all 0.5s;
+    }
+    .navHeader2 ul li a:hover{
+        color: var(--Negro);
+    }
+    .verMenu{
+        border-right: 1px solid var(--Blanco);
+    }
+    .divBusquedaHeader{
+        max-width: 35%;
+    }
+}

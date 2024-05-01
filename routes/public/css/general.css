@@ -1,0 +1,36 @@
+/*VARIABLES*/
+:root{
+    /*PALETA DE COLORES*/
+    --Naranja: #FF6600;
+    --Blanco: #FFFFFF;
+    --Negro: #000000;
+    --Gris: #E8E8E8;
+    --Amarillo: #FFFF00;
+    --Marron: rgba(129, 51, 20);
+}
+/*VALORES PREDETERMINADOS*/
+*{
+    font-family: 'Work Sans', sans-serif;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(245, 245, 245);
+    
+
+  }
+ 
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--Negro);
+  }

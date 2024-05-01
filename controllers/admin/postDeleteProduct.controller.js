@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
         }
 
         // Eliminar la imagen si existe
-        if (productDeleted.image) {
+        if (productDeleted.image != "/images/default.jpg") {
             const filePath = path.join(__dirname, `../../public${productDeleted.image}`);
             const existFile = fs.existsSync(filePath);
             if (existFile) {
