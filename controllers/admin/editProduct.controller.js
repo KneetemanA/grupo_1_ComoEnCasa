@@ -1,3 +1,4 @@
+const path = require('path')
 const userlogin = require('../../middleware/userLogeado')
 const db = require('../../database/models')
 
@@ -6,6 +7,7 @@ module.exports = (req,res) => {
     const id = req.params.id;
 
    db.Product.findByPk(id)
+   
     .then((product) => {
 
        res.render("admin/editProduct", {'productEdit': product},(err, content) =>{

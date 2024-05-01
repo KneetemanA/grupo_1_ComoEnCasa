@@ -128,15 +128,5 @@
       "freeShipping": true,
       "image": "/images/img-1710476722534.jpg",
       "detail": "Exquisita hamburguesa vegana de soja y lenteja con lechuga, tomate y pan de papa"
-   },
-   {
-      "id": 15,
-      "category": "hamburguesa",
-      "name": "Hamburguesa Picante",
-      "price": 6000,
-      "discount": 15,
-      "freeShipping": true,
-      "image": "/images/img-1710477377234.png",
-      "detail": "Hamburguesa picante con salsa tabasco, cheddar, lechuga y cebolla crispy."
    }
 ]
