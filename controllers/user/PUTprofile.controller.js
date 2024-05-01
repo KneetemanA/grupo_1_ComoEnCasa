@@ -38,8 +38,8 @@ module.exports = (req, res) => {
                 num: num
             }, { where: { user_id: userEdit } });
         })
-            .then((a)=>{
-                res.redirect("/");
+            .then(()=>{
+                res.redirect("/user/perfil/" + userEdit);
             })
         .catch(error => {
             console.error("Error al actualizar usuario:", error);
@@ -90,7 +90,7 @@ module.exports = (req, res) => {
         
         //const users = loadData("users");
         const userr = req.params.id;
-        db.findByPk(userr)
+        db.User.findByPk(userr)
         //const userlogueado = users.find((u => u.user === userr));
         .then((userlogueado=>{
             res.render("profileUser", {

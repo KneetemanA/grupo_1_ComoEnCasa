@@ -1,7 +1,7 @@
 const db = require("../../database/models");
 
 module.exports = (req, res) => {
-  const userlogin = req.session.user;
+  const userlogeado = req.session.user;
 
   db.Product.findAll()
     .then(productos => {
@@ -13,10 +13,17 @@ module.exports = (req, res) => {
 
         // Aquí renderizamos el partials de dashboard
         // que ya va a tener la vista incluida que renderizamos anteriormente
-        res.render("partials/dashboard", {
-          userlogin,
-          views: content
-        });
+        db.User.findOne({ where: { id: userlogeado.id } }) // Cambiado
+          .then(userlogin => {
+            res.render("partials/dashboard", {
+              userlogin,
+              views: content
+            });
+          })
+          .catch(error => {
+            console.error("Error al obtener usuario:", error);
+            res.status(500).send("Error interno del servidor");
+          });
       });
     })
     .catch(error => {

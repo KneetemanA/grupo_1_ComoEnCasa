@@ -1,0 +1,126 @@
+.main-list{
+    background-color: #efefef;
+    margin-top: 20px ;
+
+}
+
+.section-category{
+    margin-bottom: 20px;
+}
+
+
+.tituloSeccion {
+    color:#ffdca5 ; 
+    font-size: 30px; 
+    font-weight: bold; 
+    background-image: linear-gradient(#FF6600,#ff7f0a) ;
+    padding-left: 10px;
+    border: 2px solid lightgray;
+   
+    
+    width: 30vw;
+    border-bottom-right-radius: 20px;
+    
+  }
+
+.container-article-list{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    border-bottom: 1px lightgray solid;
+}
+  
+  
+.article-product {
+    width: 250px; 
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .container-img-product {
+    width: 100%;
+    overflow: hidden; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .container-img-product img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: all 1000ms;
+    
+  }
+
+  .container-img-product img:hover{
+    scale: 1.2;
+  }
+  
+  .article-product h4 {
+    margin: 10px 0;
+    text-align: center;
+    
+  }
+  
+  .precio-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+     padding: 10px;
+     
+  }
+  .precio-product a{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .precio-product span {
+    font-weight: bold;
+
+    
+    
+  }
+.precio-product a span:first-child{
+  
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.precio-product span:nth-child(3){
+    color: green;
+}
+ 
+  
+.container-article-list button {
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+   margin-top: 10px;
+  }
+  
+  .container-article-list button:hover {
+    background-color: #ff8533;
+  }
+  
+
+  @media (min-width: 400px) {
+    .tituloSeccion {
+      width: 100vw;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .tituloSeccion {
+      width: 40vw;
+    }
+  }

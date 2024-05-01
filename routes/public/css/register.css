@@ -1,0 +1,176 @@
+*{
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.bodyRegister{
+    margin: 0;
+    background-color: var(--Blanco);
+}
+.mainRegister{
+    padding: 15px;
+}
+.fotosRegister{
+    display: flex;
+    justify-content: center;
+}
+.fa-angle-left{
+    border: 2px solid var(--Gris);
+    color: var(--Negro);
+    transition: all 0.5s;
+}
+.volverRegister{
+    border-radius: 50%;
+    padding: 6px 10px;
+}
+.pizzaRegister{
+    display: none;
+}
+.logoRegister{
+    width: 160px;
+    border: 4px solid var(--Naranja);
+    border-radius: 50%;
+    padding: 40px 20px;
+}
+.tituloInputRegister{
+    display: block;
+    font-weight: bold;
+    color: var(--grisOscuro);
+    margin: 15px 0 2px;
+    font-size: 13px;
+}
+.divFormRegister{
+    padding: 0 20px;
+}
+.barraInputRegister{
+    height: 40px;
+    width: 1000px;
+    border: 1px solid var(--Gris);
+    border-radius: 5px;
+    padding: 10px;
+}
+.divInputsRegister span{
+    display: block;
+    color: red;
+    font-size: 13px;
+}
+.divAceptoRegiter{
+    display: flex;
+    margin: 15px 0;
+}
+.checkboxRegister{
+    margin-right: 10px;
+    width: 30px;
+}
+.pTerminosRegister{
+    font-size: 10px;
+}
+.pTerminosRegister .aRegister{
+    text-decoration: underline;
+}
+.aComoRegister{
+    color: var(--Naranja);
+    font-weight: 700;
+}
+.enviarRegister{
+    width: 100%;
+    height: 38px;
+    border: none;
+    background-color: var(--Negro);
+    color: var(--Blanco);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.5s;
+    /* margin-bottom: 15px; */
+}
+.enviarRegister:hover{
+    background-color: var(--Gris);
+    color: var(--Negro);
+}
+.loguearRegister{
+    font-size: 13px;
+    text-align: center;
+    margin: 15px 0 40px;
+}
+.loguearRegister a{
+    color: var(--Naranja);
+    text-decoration: underline;
+}
+.reCAPTCHAregister{
+    
+font-size: 10px;
+}
+.reCAPTCHAregister a{
+    color: var(--Naranja);
+}
+.aCAPTCHA:hover{
+    background-color: rgba(255, 102, 0, 0.2);
+}
+.aComoRegister:hover{
+    background-color: rgba(255, 102, 0, 0.2);
+}
+.iniciarSesionRegister:hover{
+    background-color: rgba(255, 102, 0, 0.2);
+}
+.fa-angle-left:hover{
+    color: var(--Blanco);
+    border: 2px solid var(--Blanco);
+    background-color: var(--Negro);
+}
+/*TABLET*/
+@media(min-width: 400px){
+    .mainRegister{
+        padding: 25px;
+    }
+    .divFormRegister{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 35px 20px 0;
+    }
+    .divNombreRegister, .divUsuarioRegister{
+        width: 100%;
+    }
+    .divEmailRegister, .divContrasenaRegister{
+        width: 100%;
+    }
+    .barraInputRegister{
+        border: 1px solid var(--Gris);
+    }
+    .tituloInputRegister{
+        font-size: 14px;
+    }
+    .pTerminosRegister{
+        font-size: 11px;
+    }
+    .divBotonRegister{
+        width: 100%;
+    }
+    .reCAPTCHAregister{
+        padding: 0 20px;
+    }
+}
+/*DESKTOP*/
+@media(min-width:769px){
+    .pizzaRegister{
+        display: inline-block;
+        width: 52vh;
+    }
+    .bodyRegister{
+        display: flex;
+        /*max-height: 880px;*/
+        /*height: 100%;*/
+    }
+    .mainRegister{
+        padding: 25px 25px 25px 180px;
+    }
+    .divFormRegister{
+    padding: 10px 25% 0;
+    max-width: 590px;
+    }
+    .reCAPTCHAregister{     
+    padding: 0 25%;
+    }
+    .tituloInputRegister{
+        margin: 20px 0 2px;
+    }
+}

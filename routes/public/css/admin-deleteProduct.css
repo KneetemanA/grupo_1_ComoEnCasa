@@ -1,0 +1,44 @@
+.deleteProductDivPrinc{
+    display:flex;
+    justify-content: center;
+}
+.deleteProductDiv1{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Marron);
+    align-items: center;
+    width: 30%;
+    padding: 10px 60px;
+    margin-top: 90px ;
+}
+.deleteProductDiv1 h1{
+    font-size: 14px;
+    color: var(--Blanco);
+}
+.deleteProductDiv1 figure{
+    width: 140px;
+    height: 110px;
+}
+.deleteProductDiv1 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    margin-top: 10px;
+    border: 2px solid var(--Negro);
+}
+.buttonsDeleteProduct button{
+    background-color: red;
+    color: var(--Blanco);
+    border-radius: 10px ;
+    border: none;
+    padding: 5px;
+}
+.buttonsDeleteProduct a{
+    background-color: var(--Blanco);
+    padding: 7px;
+    border-radius: 10px ;
+
+}
+.buttonsDeleteProduct{
+    margin-top: 10px;
+}
