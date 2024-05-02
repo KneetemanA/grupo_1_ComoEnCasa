@@ -27,16 +27,10 @@ module.exports = (req, res) => {
     where: {id}
   })
   .then((isUpdate)=>{
-    if(isUpdate.image?.filename){
-            const pathBefore = path.join(__dirname, `../../public${images}`);
-            const existsFile = fs.existsSync(pathBefore);
+    if(isUpdate){
       
-            if(existsFile){
-              fs.unlinkSync(pathBefore)
-             }
-          }
-    
-    res.redirect('/admin')
+        res.redirect('/admin')
+    }
 
   })
 }
