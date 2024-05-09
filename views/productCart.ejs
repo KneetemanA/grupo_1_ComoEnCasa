@@ -1,70 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- head -->
 <%- include ("./partials/head",{title: "Carrito de compras",bootstrapActive: true})%>
-
 <body>
-    <!-- header -->
-  <%- include ("./partials/header") %>
- <main class="main-carrito">
-    <div class="carroDeCompras">
-        <div class="parteSuperiorCarrito">
-            <button type="button" class="cerrarCarrito1"><a href="/"><i
-                    class="fa-solid fa-chevron-left carritoCerrar1"></i></a></button>
-            <div class="datosUsuarioCarrito">
-                <i class="fa-solid fa-circle-user userCarritoCompras" style="color: #000000;"></i>
-                <h4>Usuario anónimo</h4>
-                <p>unusuario@gmail.com</p>
-            </div>
-            <button type="button" class="cerrarCarrito2"><i class="fa-regular fa-circle-xmark"></i></button>
+    <%- include ("./partials/header") %>
+    <main>
+        <div class="titulo-pagina">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h2>Carrito de compras</h2>
         </div>
-        <div class="parteMedioCarrito">
-            <div class="divProductoCarrito">
-                <img class="imgProductoCarrito" src="/images/pizzaCarrito.png" alt="">
-                <div class="divProductoAgregado">
-                    <div class="productoCarritoCompras">
-                        <h5>PIZZA CANTINPALO</h5>
-                        <h5 class="precioCarritoCompras">$6750</h5>
-                        <h6>10% OFF</h6>
-                    </div>
-                    <div class="masmenosCarrito">
-                        <button type="button"><img class="menosCarrito" src="/images/menosCarrito.png" alt=""></button>
-                        <p>1</p>
-                        <button type="button"><img class="masCarrito" src="/images/masCarrito.png" alt=""></button>
+        <div class="mainCarrito">
+            <section class="section-product">
+                <div class="container-table">
+                    <table class="table cart-items">
+                        <thead>
+                            <tr>
+                                <th>Productos</th>
+                                <th class="descripcion"></th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="container-detail">
+                                <td class="td-img"><img src="/images/default.jpg" alt="imagen-producto"></td>
+                                <td class="td-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus.</td>
+                                <td class="td-price">2000</td>
+                                <td class="td-cantidad">1</td>
+                                <td class="td-total">2000</td>
+                                <td class="td-borrar"><i class="fa-solid fa-trash boton-borrar"></i></td>
+                            </tr>
+                            <tr class="container-detail">
+                                <td class="td-img"><img src="/images/default.jpg" alt="imagen-producto"></td>
+                                <td class="td-name">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                <td class="td-price">2000</td>
+                                <td class="td-cantidad">1</td>
+                                <td class="td-total">2000</td>
+                                <td class="td-borrar"><i class="fa-solid fa-trash boton-borrar"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end">
+                        <span class="btn btn-danger boton-vaciar">
+                            <a href="#">Vaciar Carrito</a>
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div class="divProductoCarrito">
-                <img class="imgProductoCarrito" src="/images/hamburguesaCarrito.png" alt="">
-                <div class="divProductoAgregado">
-                    <div class="productoCarritoCompras">
-                        <h5>HAMBURGUESA DOBLE</h5>
-                        <h5 class="precioCarritoCompras">$4000</h5>
-                        <h6>10% OFF</h6>
+            </section>
+            <section class="section-total">
+                <div class="container-table-total">
+                    <h3 class="total">Resumen de la compra</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>$2000</td>
+                            </tr>
+                            <tr>
+                                <td>Descuento</td>
+                                <td>$0</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>$2000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <span class="btn btn-primary boton">
+                            <a href="#">Ir a pagar</a>
+                        </span>
                     </div>
-                    <div class="masmenosCarrito">
-                        <button type="button"><img class="menosCarrito" src="/images/menosCarrito.png" alt=""></button>
-                        <p>2</p>
-                        <button type="button"><img class="masCarrito" src="/images/masCarrito.png" alt=""></button>
-                    </div>
                 </div>
-            </div>
-       
-            <div class="agregarProductosCarrito">
-                <button type="button" class="agregarPorductosCarrito"><a href="/productDetail"><i class="fa-solid fa-plus"></i></a></button>
-            </div>
-            <div class="parteInferiorCarrito">
-                <div class="totalCarritoCompras">
-                    <i class="fas fa-cart-plus iconCarritoCarrito"></i>
-                    <h2>Total: $14750</h2>
-                </div>
-                <div class="divBotonCarritoCompras">
-                    <button class="confirmarCompraCarrito">Confirmar</button>
-                </div>
-            </div>
-    </div>
-</main> 
-<!-- footer -->
-<%- include ("./partials/footer") %>
+            </section>
+        </div>
+    </main>
+    <%- include ("./partials/footer") %>
 </body>
 </html>
