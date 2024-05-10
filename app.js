@@ -20,7 +20,16 @@ const productCartRoutes = require('./routes/productCart.routes');
 const productRoutes = require('./routes/product.routes');
 const adminRoutes = require("./routes/admin.routes");
 const errorPagina = require("./routes/error.routes");
-const search= require("./routes/search.routes")
+const search= require("./routes/search.routes");
+const apiUser = require("./routes/api/user.api");
+const apiAdmin = require("./routes/api/admin.api");
+const apiProduct = require("./routes/api/product.api")
+
+
+
+
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,6 +46,11 @@ app.use('/productos', productRoutes);
 app.use('/detalle', productRoutes)
 app.use('/admin', adminRoutes);
 app.use("/",search)
+
+
+app.use("/api/user",apiUser);
+app.use("/api/admin",apiAdmin);
+app.use("/api/product",apiProduct)
 
 
 app.use("*", errorPagina)
