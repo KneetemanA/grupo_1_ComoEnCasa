@@ -1,0 +1,9 @@
+const db=require("../../../database/models")
+module.exports=function(req,res){
+
+    db.Product.findByPk(req.params.id,{
+        include: [{ association: "categorias" }]})
+    .then(productos =>{
+        res.json(productos)
+    })
+}
