@@ -11,7 +11,15 @@ module.exports= function(req,res){
     include: [{ association: "categorias" }],	
    })
    .then( ({ docs:productos, pages, total }) =>{
-    res.json(productos, pages, total)
+    res.status(200).json({
+      data:productos, 
+      paginas:pages, 
+      total
+    })
+   })
+   .catch(error => {
+    console.error("Error al obtener productos:", error);
+    res.status(500).send("Error interno del servidor");
    })
 
 }

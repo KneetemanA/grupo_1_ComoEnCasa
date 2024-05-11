@@ -4,6 +4,9 @@ module.exports=function(req,res){
     db.Product.findByPk(req.params.id,{
         include: [{ association: "categorias" }]})
     .then(productos =>{
-        res.json(productos)
+        res.status(200).json({
+            data:productos
+        })
     })
+    
 }

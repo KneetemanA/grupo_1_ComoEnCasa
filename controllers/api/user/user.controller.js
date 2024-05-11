@@ -14,6 +14,14 @@ db.User.paginate({
     
 })
 .then(( { docs: users, pages , total } ) =>{
-    res.json(users, pages, total)
+    res.status(200).json({
+        data:users, 
+        paginas:pages, 
+        total
+    })
+    
+}).catch(error => {
+    console.error("Error al obtener usuarios:", error);
+    res.status(500).send("Error interno del servidor");
 })
 }
