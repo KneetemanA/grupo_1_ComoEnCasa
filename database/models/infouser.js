@@ -1,3 +1,5 @@
+const sequelizePaginate = require('sequelize-paginate')
+
 'use strict';
 const {
   Model
@@ -29,5 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'infousers',
     timestamps:false
   });
+
+  sequelizePaginate.paginate(infoUser);
   return infoUser;
 };

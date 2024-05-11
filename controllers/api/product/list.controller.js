@@ -1,10 +1,17 @@
 const db = require("../../../database/models")
 module.exports= function(req,res){
-   db.Product.findAll({
+   const { page } = req.query
+
+   db.Product.paginate({
+      attributes: ['id', 'name'],
+      page: +page,
+      paginate: 5,
+      order: [['id', 'ASC']],
+
     include: [{ association: "categorias" }],	
    })
-   .then(productos =>{
-    res.json(productos)
+   .then( ({ docs:productos, pages, total }) =>{
+    res.json(productos, pages, total)
    })
 
 }
