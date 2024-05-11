@@ -3,7 +3,7 @@ module.exports= function(req,res){
    const { page } = req.query
 
    db.Product.paginate({
-      attributes: ['id', 'name'],
+      
       page: +page,
       paginate: 5,
       order: [['id', 'ASC']],

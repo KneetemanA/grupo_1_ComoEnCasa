@@ -8,5 +8,6 @@ module.exports = (req, res) => {
     include: [{ association: "categorias" }],
   }).then((productos) => {
     res.render("listProducts", { productos, userlogueado });
+    console.log(productos)
   });
 };

@@ -4,14 +4,14 @@ module.exports=function(req,res){
 
 db.User.paginate({
 
-    attributes: ["id", "name"],
+    attributes: { exclude: ["user",'email', 'password'] },
     page: +page,
     paginate: 1,
     order: [['id', 'ASC']],
     },
     
     {
-    attributes: { exclude: ["user",'email', 'password'] }
+    
 })
 .then(( { docs: users, pages , total } ) =>{
     res.json(users, pages, total)
