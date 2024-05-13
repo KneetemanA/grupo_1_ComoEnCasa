@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "subtotal": 10000,
+        "total": 10000,
+        "state": "pending",
+        "products": [
+            {
+                "id": 1,
+                "quantity": 2
+            }
+        ]
+    }
+]

@@ -3,191 +3,237 @@
 <!-- head -->
 <%- include ("./partials/head",{title: "Perfil Usuario" ,bootstrapActive: true})%>
 
-<body>
-    <!-- header -->
-    <%- include ("./partials/header") %>
-    <main class="mainProfileUser">
-        <div class="containerProfile">
-            <div class="row profileUserDiv1">
-                <div class="col-sm-12" style="margin-top: 50px;">
-                    <ul class="nav nav-tabs">
-                        <li class="active "><a class="perfilProfileUser" data-toggle="tab" href="#home">Perfil</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <hr>
-                            <form class="form row" action="/user/perfil/<%=userlogueado.id%>?_method=PUT" method="post" enctype="multipart/form-data" id="registrationForm">
-                                <div class="col-sm-4">
-                                    <div class="text-center">
-                                        <figure style="width: 250px; margin: auto;"><img style="width: 100%;" src="/images/<%=userlogueado.imageProfile%>"  class="avatar img-circle img-thumbnail"
-                                            alt="avatar"></figure>
-                                        <h6>Selecciona una nueva foto</h6>
-                                        <input type="file" name="imageProfile" id="imageProfile" class="text-center center-block file-upload">
-                                        <% if (locals.errors) { %>
-                                            <% locals.errors.forEach(error => { %>
-                                                <% if (error.path === 'imageProfile') { %>
-                                                    <span class="feedback" style="color: red; background-color: white;"><%= error.msg %></span>   
-                                                <% } %>
-                                            <% }) %>    
-                                        <% } %> 
-                                    </div>
-                                    </hr><br>
-                                </div>
-                                <div class="form-group col-sm-8">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="nombreRegister">
-                                                    <h4>Nombre</h4>
-                                                </label>
-                                                <input type="text" class="form-control" name="name" id="nombreRegister" value="<%= locals.old?.name? locals.old.name : userlogueado.name%>"
-                                                    placeholder="nombre">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'name') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="usuarioRegister">
-                                                    <h4>Usuario</h4>
-                                                </label>
-                                                <input type="text" class="form-control" name="user" id="usuarioRegister" value="<%= locals.old?.user? locals.old.user : userlogueado.user%>"
-                                                    placeholder="usuario">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'user') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="phone">
-                                                    <h4>Teléfono</h4>
-                                                </label>
-                                                <input type="tel" class="form-control" name="phone" id="phone" value="<%= locals.old?.phone? locals.old.phone : infouser.phone? infouser.phone : "" %>"
-                                                    placeholder="teléfono">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'phone') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="emailRegister">
-                                                    <h4>Email</h4>
-                                                </label>
-                                                <input type="email" class="form-control" name="email" id="emailRegister" value="<%= locals.old?.email? locals.old.email : userlogueado.email%>"
-                                                    placeholder="email">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'email') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="province">
-                                                    <h4>Provincia</h4>
-                                                </label>
-                                                <input type="text" class="form-control" name="province" id="province" value="<%= locals.old?.province? locals.old.province : infouser.province? infouser.province : "" %>"
-                                                    placeholder="provincia">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'province') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="city">
-                                                    <h4>Ciudad</h4>
-                                                </label>
-                                                <input type="text" class="form-control" name="city" id="city" placeholder="ciudad" value="<%= locals.old?.city? locals.old.city : infouser.city? infouser.city : "" %>">
+    <body>
+        <!-- header -->
+        <%- include ("./partials/header") %>
+            <main class="mainProfileUser">
+                <div class="containerProfile">
+                    <div class="row profileUserDiv1">
+                        <div class="col-sm-12" style="margin-top: 50px;">
+                            <ul class="nav nav-tabs">
+                                <li class="active "><a class="perfilProfileUser" data-toggle="tab"
+                                        href="#home">Perfil</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <hr>
+                                    <form class="form row" action="/user/perfil/<%=userlogueado.id%>?_method=PUT"
+                                        method="post" enctype="multipart/form-data" id="registrationForm">
+                                        <div class="col-sm-4">
+                                            <div class="text-center">
+                                                <figure style="width: 250px; margin: auto;"><img style="width: 100%;"
+                                                        src="/images/<%=userlogueado.imageProfile%>"
+                                                        class="avatar img-circle img-thumbnail" alt="avatar"></figure>
+                                                <h6>Selecciona una nueva foto</h6>
+                                                <input type="file" name="imageProfile" id="imageProfile"
+                                                    class="text-center center-block file-upload">
                                                 <% if (locals.errors) { %>
-                                                    <% locals.errors.forEach(error => { %>
-                                                        <% if (error.path === 'city') { %>
-                                                            <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                        <% } %>
-                                                    <% }) %>    
-                                                <% } %> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="street">
-                                                    <h4>Calle</h4>
-                                                </label>
-                                                <input type="text" class="form-control" name="street" id="street" value="<%= locals.old?.street? locals.old.street : infouser.street? infouser.street : "" %>"
-                                                    placeholder="calle">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'street') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
+                                                    <% locals.errors.forEach(error=> { %>
+                                                        <% if (error.path==='imageProfile' ) { %>
+                                                            <span class="feedback"
+                                                                style="color: red; background-color: white;">
+                                                                <%= error.msg %>
+                                                            </span>
                                                             <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
+                                                                <% }) %>
+                                                                    <% } %>
+                                            </div>
+                                            </hr><br>
+                                        </div>
+                                        <div class="form-group col-sm-8">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="nombreRegister">
+                                                            <h4>Nombre</h4>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="name"
+                                                            id="nombreRegister"
+                                                            value="<%= locals.old?.name? locals.old.name : userlogueado.name%>"
+                                                            placeholder="nombre">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='name' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="usuarioRegister">
+                                                            <h4>Usuario</h4>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="user"
+                                                            id="usuarioRegister"
+                                                            value="<%= locals.old?.user? locals.old.user : userlogueado.user%>"
+                                                            placeholder="usuario">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='user' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="phone">
+                                                            <h4>Teléfono</h4>
+                                                        </label>
+                                                        <input type="tel" class="form-control" name="phone" id="phone"
+                                                            value="<%= locals.old?.phone? locals.old.phone : infouser.phone? infouser.phone : "" %>"
+                                                            placeholder="teléfono">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='phone' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="emailRegister">
+                                                            <h4>Email</h4>
+                                                        </label>
+                                                        <input type="email" class="form-control" name="email"
+                                                            id="emailRegister"
+                                                            value="<%= locals.old?.email? locals.old.email : userlogueado.email%>"
+                                                            placeholder="email">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='email' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="province">
+                                                            <h4>Provincia</h4>
+                                                        </label>
+                                                        <select type="text" class="form-select" name="province"
+                                                            id="province">
+                                                            <% provincias.forEach(provincia=> { %>
+                                                                <option value="<%= provincia.nombre %>" <% if
+                                                                    (locals.old &&
+                                                                    locals.old.province===provincia.nombre) { %>
+                                                                    selected <% } else if (infouser &&
+                                                                        infouser.province===provincia.nombre) { %>
+                                                                        selected <% } %>><%= provincia.nombre %>
+                                                                </option>
+                                                                <% }) %>
+                                                        </select>
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='province' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="city">
+                                                            <h4>Ciudad</h4>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="city" id="city"
+                                                            placeholder="ciudad"
+                                                            value="<%= locals.old?.city? locals.old.city : infouser.city? infouser.city : "" %>">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='city' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="street">
+                                                            <h4>Calle</h4>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="street"
+                                                            id="street"
+                                                            value="<%= locals.old?.street? locals.old.street : infouser.street? infouser.street : "" %>"
+                                                            placeholder="calle">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='street' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="num">
+                                                            <h4>Número</h4>
+                                                        </label>
+                                                        <input type="number" class="form-control" name="num" id="num"
+                                                            value="<%= locals.old?.num? locals.old.num : infouser.num? infouser.num : "" %>"
+                                                            placeholder="número de casa o depto">
+                                                        <% if (locals.errors) { %>
+                                                            <% locals.errors.forEach(error=> { %>
+                                                                <% if (error.path==='num' ) { %>
+                                                                    <span class="feedback" style="color: red">
+                                                                        <%= error.msg %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <br>
+                                                <button class="btn btn-success" type="submit"><i
+                                                        class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
+                                                <button class="btn btn-danger" type="reset"><i
+                                                        class="glyphicon glyphicon-repeat"></i> Limpiar</button>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="num">
-                                                    <h4>Número</h4>
-                                                </label>
-                                                <input type="number" class="form-control" name="num" id="num" value="<%= locals.old?.num? locals.old.num : infouser.num? infouser.num : "" %>"
-                                                    placeholder="número de casa o depto">
-                                                    <% if (locals.errors) { %>
-                                                        <% locals.errors.forEach(error => { %>
-                                                            <% if (error.path === 'num') { %>
-                                                                <span class="feedback" style="color: red"><%= error.msg %></span>   
-                                                            <% } %>
-                                                        <% }) %>    
-                                                    <% } %> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <br>
-                                        <button class="btn btn-success" type="submit"><i
-                                                class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
-                                        <button class="btn btn-danger" type="reset"><i
-                                                class="glyphicon glyphicon-repeat"></i> Limpiar</button>
-                                    </div>
+                                    </form>
+                                    <hr>
                                 </div>
-                            </form>
-                            <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
-    <%- include ("./partials/footer") %>
-    <!-- Bootstrap script-->
-    <%- include ("./partials/scripts") %>
-</body>
+            </main>
+            <%- include ("./partials/footer") %>
+                <!-- Bootstrap script-->
+                <%- include ("./partials/scripts") %>
+    </body>
 
 </html>
