@@ -63,3 +63,9 @@ se sigue trabajando al respecto con la nivelacion e integracion del nuevo integr
 Retrospectiva sprint 5
 
 El equipo pudo realizar todas sus tareas antes de tiempo, de manera que se pudieron realizar algunas correcciones y/o modificaciones en diferentes fracciones del proyecto. Nuevamente, con la participación conjunta de solo 4 desarrolladores, administrando los tiempos de la mejor manera y mejorando la comunicación con reuniones diarias.
+
+Retrospectiva sprint 6
+
+Al inicio del sprint repartimos la tarea entre los 5 participantes y pusimos un orden de desarrollo de las mismas ya que las incidencias iban en conjunto, todas las inicidencias se debian desarrollar con la misma base de datos para no tener inconvenientes.
+Pasaron los días y el compañero que se debia ocupar de desarrollar la primer actividad no se comunicaba con el equipo y si el equipo hacia alguna pregunta o pactaba una reunión él no contestaba o no podia. Por lo que decidimos entre los 4 restantes ponernos entre todos a realizar esa actividad y poder terminar nuestras inicencias correctamente. 
+Gracias a la comunicación y compañerismo que tenemos el equipo pudo realizar el sprint a tiempo y entregarlo.
