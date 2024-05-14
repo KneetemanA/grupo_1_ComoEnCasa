@@ -1,0 +1,76 @@
+<div class="dashboard-conten p-5">
+    <h1>Lista Pedidos</h1>
+
+    <div class="tabla">
+        <table class="table listaProducts mb-5 ">
+            <thead>
+                <tr>
+                    <th class="id-product-pedido" scope="col">ID</th>
+                    <th class="name-product-pedido" scope="col">Productos</th>
+                    <th class="price-product-pedido" scope="col">Total</th>
+                    <th class="user-product-pedido" scope="col">Usuario</th>
+                    <th class="state-product-pedido" scope="col">Estado</th>
+                    <th class="date-product-pedido" scope="col">Fecha</th>
+                    <th class="action-product-pedido" scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= order.id %>
+                        </th>
+                        <td class="fs-5">
+
+                            <% order.products.forEach(product => { %>
+                                <%= product.name %> 
+                                <% order.orderProducts.forEach(orderProduct => { %>
+                                    <% if (orderProduct.product_id === product.id) { %>
+                                        (<%= orderProduct.quantity %>)
+                                    <% } %>
+                                <% }); %>
+                                <br>
+                            <% }); %>
+                            
+                                   
+                        </td>
+                        <td>$<%= order.total %>
+                        </td>
+                        <td>
+                            <%= order.user.name %>
+                        </td>
+                        <% if (order.state === "completed") { %>
+                            <td class="text-success fs-5">
+                                <%= order.state %>
+                            </td>
+                        <% } else if (order.state === "pending") { %>
+                            <td class="text-warning fs-5">
+                                <%= order.state %>
+                            </td>
+                        <% } else { %>
+                            <td class="text-danger fs-5">
+                                <%= order.state %>
+                            </td>
+                        <% } %>
+                        
+
+                                        <td>
+                                            <%= new Date(order.createdAt).toLocaleString() %>
+                                        </td>
+
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="#"
+                                                    class="btn btn-warning">Detalles</a>
+                                                <a href="#"
+                                                    class="btn btn-danger">Eliminar</a>
+                                            </div>
+                                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

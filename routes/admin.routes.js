@@ -21,6 +21,9 @@ router.put("/editar/:id", upload.single('image'), adminController.updateProduct)
 router.get("/eliminar-producto",userLogeado,adminController.deleteProduct)
 router.delete("/eliminar-producto/:id",adminController.postDeleteProduct)
 
+//pedidos
+router.get("/pedidos",userLogeado,adminController.pedidos)
+
 router.get("/logout",adminController.logout)
 
 module.exports = router;

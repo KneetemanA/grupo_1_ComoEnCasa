@@ -9,6 +9,44 @@
             {
                 "id": 1,
                 "quantity": 2
+            },
+            {
+                "id": 2,
+                "quantity": 2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user_id": 2,
+        "subtotal": 15000,
+        "total": 15000,
+        "state": "cancelled",
+        "products": [
+            {
+                "id": 3,
+                "quantity": 1
+            },
+            {
+                "id": 4,
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "user_id": 1,
+        "subtotal": 7500,
+        "total": 8000,
+        "state": "completed",
+        "products": [
+            {
+                "id": 2,
+                "quantity": 1
+            },
+            {
+                "id": 3,
+                "quantity": 2
             }
         ]
     }

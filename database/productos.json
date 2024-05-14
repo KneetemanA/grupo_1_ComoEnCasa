@@ -10,7 +10,7 @@
       "detail": "Una exquisita combinación de muzzarella fundida, tomate cherrys gratinados y rucula"
    },
    {
-      "id": 3,
+      "id": 2,
       "category": "pizza",
       "name": "Napolitana",
       "price": 5000,
@@ -20,7 +20,7 @@
       "detail": "Una exquisita combinación de muzzarella fundida, tomates maserados en aceite y ajo más oregano"
    },
    {
-      "id": 4,
+      "id": 3,
       "category": "pizza",
       "name": "Muzzarela y Jamón",
       "price": 4500,
@@ -30,7 +30,7 @@
       "detail": "Una exquisita combinación de muzzarella fundida con el plus del mejor jamón"
    },
    {
-      "id": 5,
+      "id": 4,
       "category": "pizza",
       "name": "Calabresa",
       "price": 4500,
@@ -40,7 +40,7 @@
       "detail": "Una exquisita combinación de muzzarella fundida con el mejor milan "
    },
    {
-      "id": 6,
+      "id": 5,
       "category": "pizza",
       "name": "Muzzarella",
       "price": 3800,
@@ -50,7 +50,7 @@
       "detail": "Una exquisita combinación de muzzarella fundida, oregano y aceitunas"
    },
    {
-      "id": 7,
+      "id": 6,
       "category": "hamburguesa",
       "name": "Clasica",
       "price": 3800,
@@ -60,7 +60,7 @@
       "detail": "El más delicioso medallon de carne vacuna con los sabores del queso fundido, lechuga y tomate frescos"
    },
    {
-      "id": 8,
+      "id": 7,
       "category": "hamburguesa",
       "name": "Clasica cheddar",
       "price": 4200,
@@ -70,7 +70,7 @@
       "detail": "El más delicioso medallon de carne vacuna con los sabores del queso cheddar fundido, lechuga y tomate frescos"
    },
    {
-      "id": 9,
+      "id": 8,
       "category": "hamburguesa",
       "name": "Clasica completa",
       "price": 5000,
@@ -80,7 +80,7 @@
       "detail": "El más delicioso medallon de carne vacuna con los sabores del queso fundido, beccon, jamón y lechuga y tomate frescos"
    },
    {
-      "id": 10,
+      "id": 9,
       "category": "hamburguesa",
       "name": "Extra Completa",
       "price": 5800,
@@ -90,7 +90,7 @@
       "detail": "Doble medallon de carne vacuna de los más deliciosos con los sabores del queso cheddar fundido, lechuga y tomate y cebolla frescos"
    },
    {
-      "id": 11,
+      "id": 10,
       "category": "papas frita",
       "name": "Clasicas",
       "price": 3000,
@@ -100,7 +100,7 @@
       "detail": "Crujientes y sabrozas papas fritas combinadas con queso cheddar"
    },
    {
-      "id": 12,
+      "id": 11,
       "category": "papas frita",
       "name": "Clasicas baccon",
       "price": 3500,
@@ -110,7 +110,7 @@
       "detail": "Crujientes y sabrozas papas fritas combinadas con queso cheddar y baccon"
    },
    {
-      "id": 13,
+      "id": 12,
       "category": "papas frita",
       "name": "Clasicas Cebolla",
       "price": 4000,
@@ -118,6 +118,16 @@
       "freeShipping": false,
       "image": "/images/img-1710477660719.jpg",
       "detail": "Crujientes y sabrozas papas fritas combinadas con salsa blanca, rucula y cebolla"
+   },
+   {
+      "id": 13,
+      "category": "hamburguesa",
+      "name": "Hamburguesa Vegana",
+      "price": 5000,
+      "discount": 0,
+      "freeShipping": true,
+      "image": "/images/img-1710476722534.jpg",
+      "detail": "Exquisita hamburguesa vegana de soja y lenteja con lechuga, tomate y pan de papa"
    },
    {
       "id": 14,
