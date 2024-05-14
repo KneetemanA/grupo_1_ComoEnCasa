@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <!-- Incluir encabezado -->
-    <%- include ("./partials/head", {title: "Loguearse",bootstrapActive: true})%>
-</head>
-<body class="bodyLogin">
-    <img class="pizzaLogin" src="/images/pizzaRegister.png" alt="">
-    <main class="mainLogin">
+    <!-- head -->
+    <%- include ("./partials/head", {title: "Registrarse",bootstrapActive: true})%>
+<body class="bodyRegister">
+    <img class="pizzaRegister" src="/images/pizzaRegister.png" alt="">
+    <main class="mainRegister">
         <a href="/"><i class="fa-solid fa-angle-left volverRegister"></i></a>
         <div class="fotosRegister">
             <img class="logoRegister" src="/images/logo.png" alt="">
         </div>
         <form class="formRegister row" action="/user/login" method="post" enctype="application/x-www-form-urlencoded">
             <div class="divFormRegister">
-                <div class="divUsuarioRegister divInputsRegister col-12">
+                <div class="divUsuarioRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="usuarioRegister">Usuario</label>
-                    <input class="barraInputRegister" type="text" name="user" value="" id="usuarioRegister" style="width: 100%;">
+                    <input class="barraInputRegister form-control" type="text" name="user" value="" id="usuarioRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'user') { %>
@@ -25,9 +23,9 @@
                     <% } %> 
                     <span class="text-danger m-0"><%= typeof locals.error !== "undefined" ? locals.error : "" %></span>
                 </div>
-                <div class="divContrasenaRegister divInputsRegister col-12">
+                <div class="divContrasenaRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="contrasenaRegister">Contraseña</label>
-                    <input class="barraInputRegister" type="password" name="password" value="" id="contrasenaRegister" style="width: 100%;">
+                    <input class="barraInputRegister form-control" type="password" name="password" value="" id="contrasenaRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'password') { %>
@@ -42,10 +40,11 @@
                     <label for="recordarme" class="form-label">Recordarme</label>
                 </div>
                 <div class="divBotonRegister mt-2">
-                    <button class="enviarRegister" type="submit">Login</button>
+                    <button class="enviarRegister btn btn-primary" type="submit">Login</button>
                 </div>
             </div>
         </form>
+        
         <p class="loguearRegister">No tienes cuenta? Creala <a class="iniciarSesionRegister" href="/user/register">Registrar</a></p>
         <p class="reCAPTCHAregister">
             Este sitio está protegido por reCAPTCHA y se aplican la <a class="aCAPTCHA" href="https://policies.google.com/privacy">política de privacidad</a>  y los <a class="aCAPTCHA" href="https://policies.google.com/terms">Términos de servicio de Google</a>.

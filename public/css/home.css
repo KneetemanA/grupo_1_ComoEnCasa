@@ -75,7 +75,7 @@
 
 .container-carousel {
   background-color: white;
-  padding: 25px;
+  /* padding: 25px; */
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   margin: 0px 5px;
 }
