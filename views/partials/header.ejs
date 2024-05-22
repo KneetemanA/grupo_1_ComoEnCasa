@@ -7,12 +7,12 @@
             
             <ul>
               <% if (!locals.userlogueado) { %>
-                <li><a href="/carrito"><i class="fas fa-cart-plus carritoHeader"></i></a></li>
+                <li><a href="#" id="modal-carrito"><i class="fas fa-cart-plus carritoHeader"></i></a></li>
                 <li><a href="/user/login"><i class="fa-regular fa-heart coraHeader"></i></a></li>
                 <li><a href="/user/register"><i class="fa-regular fa-user userHeader"></i></a></li>
                 
               <% } else { %>
-                <li><a href="/carrito"><i class="fas fa-cart-plus carritoHeader"></i></a></li>
+                <li><a href="#" id="modal-carrito"><i class="fas fa-cart-plus carritoHeader"></i></a></li>
                 <li><a href="/admin"><i class="fa-solid fa-gear ruedaHeader"></i></a></li>
                 <li><a href="/user/perfil/<%=locals.userlogueado.id%>">PERFIL</a></li>
               <%}%></ul>
@@ -37,4 +37,16 @@
         </form>
       </div>
     </div>
+    <div class="modalc" id="modalCarrito">
+      <div class="modal-contenido">
+        <span class="closeModal"><i class="fa-solid fa-circle-xmark fs-1"></i></span>
+        <div class="modalc-header">
+          <span> <i class="fa-solid fa-cart-shopping fs-2"></i></span>
+          <h2>Carrito de compras</h2>
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/modal-carrito.js"></script>
   </header>

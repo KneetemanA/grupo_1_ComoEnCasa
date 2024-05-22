@@ -10,7 +10,8 @@
  color: var(--Blanco);
 }
 .profileUserDiv1{
-    color: var(--Blanco)
+    color: var(--Blanco);
+    padding-left: 30px;
 }
 .perfilProfileUser{
     color: var(--Blanco);

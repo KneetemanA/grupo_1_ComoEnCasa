@@ -61,6 +61,69 @@ header{
     display: none;
   }
 
+.modalc {
+   
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+
+.modal-contenido {
+    background-color: #fefefe;
+    padding: 20px;
+    border-left: 1px solid #888;
+    width: 85%;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px 0px 0px 8px;
+    position: relative; /* Necesario para posicionar el botón de cierre relativo a este contenedor */
+}
+
+
+.closeModal {
+    color: orange;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; 
+    top: 10px; 
+    left: -50px;
+    cursor: pointer; 
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalc-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #888;
+
+}
+
+
 /*TABLET*/
 @media(min-width: 400px){
     .primerAheader{
@@ -183,6 +246,9 @@ header{
     .ulInf{
         padding-top: 3px;
     }
+    .modal-contenido{
+        width: 60vw;
+    }
 }
 @media(min-width:769px){
     .primerAheader{
@@ -204,5 +270,8 @@ header{
     }
     .divBusquedaHeader{
         max-width: 35%;
+    }
+    .modal-contenido{
+        width: 35vw;
     }
 }
