@@ -9,11 +9,11 @@
         <div class="fotosRegister">
             <img class="logoRegister" src="/images/logo.png" alt="">
         </div>
-        <form class="formRegister row" action="/user/login" method="post" enctype="application/x-www-form-urlencoded">
+        <form class="formRegister row formLogin" action="/user/login" method="post" enctype="application/x-www-form-urlencoded">
             <div class="divFormRegister">
                 <div class="divUsuarioRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="usuarioRegister">Usuario</label>
-                    <input class="barraInputRegister form-control" type="text" name="user" value="" id="usuarioRegister">
+                    <input class="barraInputRegister form-control inputLogin" type="text" name="user" value="" id="usuarioRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'user') { %>
@@ -22,10 +22,11 @@
                         <% }) %>    
                     <% } %> 
                     <span class="text-danger m-0"><%= typeof locals.error !== "undefined" ? locals.error : "" %></span>
+                    <span class="text-danger d-none spanFormLogin">error</span>
                 </div>
                 <div class="divContrasenaRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="contrasenaRegister">Contraseña</label>
-                    <input class="barraInputRegister form-control" type="password" name="password" value="" id="contrasenaRegister">
+                    <input class="barraInputRegister form-control inputContrasena" type="password" name="password" value="" id="contrasenaRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'password') { %>
@@ -34,6 +35,8 @@
                         <% }) %>    
                     <% } %> 
                     <span class="text-danger m-0"><%= typeof locals.error !== "undefined" ? locals.error : "" %></span>
+                    <span class="text-danger d-none spanContrasenaLogin">error</span>
+                    <span class="text-danger d-none spanContrasenaLogin2">error</span>
                 </div>
                 <div class="mt-3">
                     <input type="checkbox" id="recordarme" name="recordarme">
@@ -44,11 +47,15 @@
                 </div>
             </div>
         </form>
+        <span class="text-danger d-none spanFormLogin">error</span>
         
         <p class="loguearRegister">No tienes cuenta? Creala <a class="iniciarSesionRegister" href="/user/register">Registrar</a></p>
         <p class="reCAPTCHAregister">
             Este sitio está protegido por reCAPTCHA y se aplican la <a class="aCAPTCHA" href="https://policies.google.com/privacy">política de privacidad</a>  y los <a class="aCAPTCHA" href="https://policies.google.com/terms">Términos de servicio de Google</a>.
         </p>
     </main>
+
+    <script src="/js/login/login-frontValidation.js"></script>
+    <script src="/js/funcionesValidaciones/validaciones-front.js"></script>
 </body>
 </html>
