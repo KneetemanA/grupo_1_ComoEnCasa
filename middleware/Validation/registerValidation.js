@@ -3,7 +3,7 @@ const path = require('path');
 
 const validaciones = [
     check('name')
-        .isLength({ min: 3, max: 16 }).withMessage('El nombre debe tener entre 3 y 16 caracteres')
+        .isLength({ min: 3, max: 16 }).withMessage('El nombre debe tener entre 5 y 16 caracteres')
         .notEmpty().withMessage('El nombre es requerido').bail(),
     
     check('user')
