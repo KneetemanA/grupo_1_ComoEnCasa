@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const {createValidation} = require("../middleware/Validation/createProductValidation")
+
 const adminController = require("../controllers/admin");
 const { upload } = require("../middleware/uploadfile");
 const userLogeado = require("../middleware/userLogeado");
@@ -11,7 +13,7 @@ router.get("/listProducts",userLogeado, adminController.admin);
 
 
 router.get("/crearProduct",userLogeado,adminController.crear)
-router.post("/crearProduct",upload.single('image'),adminController.newProduct);
+router.post("/crearProduct",upload.single('image'),createValidation, adminController.newProduct);
 
 // "/admin"
 router.get("/editar/:id",userLogeado, adminController.editProduct);

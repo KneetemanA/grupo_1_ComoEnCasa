@@ -7,4 +7,4 @@ loginValidation= [
 
 ]
 
-module.exports =loginValidation
+module.exports = loginValidation

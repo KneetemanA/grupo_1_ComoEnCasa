@@ -9,11 +9,12 @@
         <div class="fotosRegister">
             <img class="logoRegister" src="/images/logo.png" alt="">
         </div>
+
         <form class="formRegister row" action="/user/login" method="post" enctype="application/x-www-form-urlencoded">
             <div class="divFormRegister">
                 <div class="divUsuarioRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="usuarioRegister">Usuario</label>
-                    <input class="barraInputRegister form-control" type="text" name="user" value="" id="usuarioRegister">
+                    <input class="barraInputRegister form-control" type="text" name="user" value="<%= locals.old?.user %>" id="usuarioRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'user') { %>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="divContrasenaRegister divInputsRegister col-12 form-group">
                     <label class="tituloInputRegister" for="contrasenaRegister">Contraseña</label>
-                    <input class="barraInputRegister form-control" type="password" name="password" value="" id="contrasenaRegister">
+                    <input class="barraInputRegister form-control" type="password" name="password" value="<%= locals.old?.password %>" id="contrasenaRegister">
                     <% if (locals.errors) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.path === 'password') { %>
@@ -50,5 +51,8 @@
             Este sitio está protegido por reCAPTCHA y se aplican la <a class="aCAPTCHA" href="https://policies.google.com/privacy">política de privacidad</a>  y los <a class="aCAPTCHA" href="https://policies.google.com/terms">Términos de servicio de Google</a>.
         </p>
     </main>
+
+    <script src="/public/js/loginFront.js"></script>
+
 </body>
 </html>
