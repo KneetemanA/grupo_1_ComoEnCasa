@@ -15,9 +15,10 @@ module.exports = function(req, res) {
         } = req.body;
         
         const imgInfo = req.file;
-    
+        
+   
         db.Product.create({
-            title: title.trim(),
+            name: title.trim(),
             price: +price,
             discount: +discount,
             free_shipping: freeShipping === 'on',

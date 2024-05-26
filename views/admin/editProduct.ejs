@@ -6,14 +6,14 @@
         <h6 class="text-body-tertiary" >Ingrese la información</h6>
         
         <div class="col-sm-12 col-md-6 mb-2">
-          <label class="form-label" for="titulo"></label>
+          <label class="form-label" for="titulo">Titulo <span class="field-required text-danger text-end "></span></label>
             <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Ingrese un título" value="<%= productEdit.name %>" >
             <p class="text-danger error-titulo">
             <%= locals.errors?.titulo?.msg %>
           </p>
         </div>
         <div class="col-sm-12 col-md-6 mb-2">
-            <label class="form-label" for="precio"></label>
+            <label class="form-label" for="precio">Precio <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="number" name="price" id="precio" placeholder="Ingrese el precio" value="<%= productEdit.price %>">
             <p class="text-danger error-precio">
             <%= locals.errors?.price?.msg %>
@@ -21,15 +21,15 @@
         </div>
 
         <div class="col-sm-12 col-md-6 mb-2">
-            <label class="form-label" for="descuento"></label>
+            <label class="form-label" for="descuento">Descuento <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="number" name="discount" id="descuento" placeholder="Descuento del" value="<%= productEdit.discount %>">
-            <p class="text-danger error-titulo">
+            <p class="text-danger error-descuento">
             <%= locals.errors?.discount?.msg %>
           </p>
         </div>
 
         <div class="col-sm-12 col-md-6 mb-2">
-            <label class="mb-1 text-success">Envíos Gratis</label>
+            <label class="mb-1 text-success">Envíos Gratis <span class="field-required text-danger text-end"></span></label>
             <br>
             <div class="form-check form-check-inline">
                 <input <%= productEdit.free_shipping === true ? "checked" : null %>class="form-check-input" type="radio" id="enviosSi" name="freeShipping" value="true">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="mb-2 fs-5">
-            <label for="fotoproducto" class="form-label">Foto del producto</label>
+            <label for="fotoproducto" class="form-label">Foto del producto <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="file" id="fotoproducto" name="image">
             <p class="text-danger error-file">
                 <%= locals.errors?.file?.msg %>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="col-12 mb-2">
-            <label class="mb-2 fs-5">Categoria</label>
+            <label class="mb-2 fs-5">Categoria <span class="field-required text-danger text-end"></span></label>
             <br>
             <div class="form-check form-check-inline">
                 <input <%= productEdit.category_id === 2 ? "checked" : null %> class="form-check-input" type="radio" id="pizza" name="category" value="2">
@@ -66,10 +66,12 @@
         </div>
 
         <div class="mb-5">
+            
             <textarea class="form-control" placeholder="Escribe la descripción" id="exampleTextarea" name="detail" style="height: 100px"><%= productEdit.detail %></textarea>
             <p class="text-danger error-detail">
                 <%= locals.errors?.titulo?.msg %>
               </p>
+              
         </div>
         <br>
 

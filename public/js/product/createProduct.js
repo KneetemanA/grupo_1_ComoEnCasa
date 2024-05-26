@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorDescuento = document.querySelector(".error-descuento");
     const errorDetail = document.querySelector(".error-detail");
     const errorImg = document.querySelector(".error-file");
-    const formCreate = document.querySelector("#crearProfuct");
+    const formCreate = document.querySelector("#crearProduct");
     const errFormGeneral = document.querySelector(".err-form-general");
     const fieldsRequired = document.querySelectorAll(".field-required");
 

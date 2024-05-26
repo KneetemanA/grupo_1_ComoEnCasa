@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
    if (contrasenaLogin) {
        contrasenaLogin.addEventListener("input", function () {
            validaciones.validarVacio(contrasenaLogin, document.querySelector(".spanContrasenaLogin"), "La contraseña es requerida");
-           validaciones.contrasenaCorta(contrasenaLogin, document.querySelector(".spanContrasenaLogin2"), "");
+        //    validaciones.contrasenaCorta(contrasenaLogin, document.querySelector(".spanContrasenaLogin2"), "");
 
            hayErrores = contrasenaLogin.classList.contains("is-invalid");
        });
