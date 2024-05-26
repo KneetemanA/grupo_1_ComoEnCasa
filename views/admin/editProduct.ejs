@@ -1,22 +1,31 @@
 <div class="container-form mx-auto mb-5">
     <a href="/admin" class="btn btn-primary mb-3 boton-regresar">Ver lista</a>
 
-    <form action="/admin/editar/<%= productEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="row mx-auto text-center p-4 form-border">
+    <form action="/admin/editar/<%= productEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="row mx-auto text-center p-4 form-border" id="fromEditar">
         <h3>Modificación de Producto</h3>
         <h6 class="text-body-tertiary" >Ingrese la información</h6>
         
         <div class="col-sm-12 col-md-6 mb-2">
           <label class="form-label" for="titulo"></label>
-            <input class="form-control" type="text" name="name" id="titulo" placeholder="Ingrese un título" value="<%= productEdit.name %>" >
+            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Ingrese un título" value="<%= productEdit.name %>" >
+            <p class="text-danger error-titulo">
+            <%= locals.errors?.titulo?.msg %>
+          </p>
         </div>
         <div class="col-sm-12 col-md-6 mb-2">
             <label class="form-label" for="precio"></label>
             <input class="form-control" type="number" name="price" id="precio" placeholder="Ingrese el precio" value="<%= productEdit.price %>">
+            <p class="text-danger error-precio">
+            <%= locals.errors?.price?.msg %>
+          </p>
         </div>
 
         <div class="col-sm-12 col-md-6 mb-2">
             <label class="form-label" for="descuento"></label>
             <input class="form-control" type="number" name="discount" id="descuento" placeholder="Descuento del" value="<%= productEdit.discount %>">
+            <p class="text-danger error-titulo">
+            <%= locals.errors?.discount?.msg %>
+          </p>
         </div>
 
         <div class="col-sm-12 col-md-6 mb-2">
@@ -34,6 +43,9 @@
         <div class="mb-2 fs-5">
             <label for="fotoproducto" class="form-label">Foto del producto</label>
             <input class="form-control" type="file" id="fotoproducto" name="image">
+            <p class="text-danger error-file">
+                <%= locals.errors?.file?.msg %>
+              </p>
         </div>
 
         <div class="col-12 mb-2">
@@ -55,12 +67,19 @@
 
         <div class="mb-5">
             <textarea class="form-control" placeholder="Escribe la descripción" id="exampleTextarea" name="detail" style="height: 100px"><%= productEdit.detail %></textarea>
+            <p class="text-danger error-detail">
+                <%= locals.errors?.titulo?.msg %>
+              </p>
         </div>
         <br>
 
         <div class="col mb-1 d-flex justify-content-end gap-2">
             <button type="submit" class="btn btn-secondary">Mofidicar</button>
-         
         </div>
+
+        <p class="text-danger col-12 text-center err-form-general"></p>
+    
+    
+        <script src="/js/product/updateProduct.js"></script>
     </form>
 </div>

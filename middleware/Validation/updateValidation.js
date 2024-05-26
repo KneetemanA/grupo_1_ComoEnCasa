@@ -1,7 +1,7 @@
 const { check, body } = require("express-validator");
 const path = require("path");
 
-const createValidation = [
+const upDateValidation = [
   check("title")
     .notEmpty().withMessage("El campo debe rellenarse")
     .bail()
@@ -45,4 +45,4 @@ const createValidation = [
     })
 ];
 
-module.exports = { createValidation };
+module.exports = { upDateValidation };

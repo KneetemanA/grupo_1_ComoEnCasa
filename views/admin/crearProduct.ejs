@@ -1,7 +1,7 @@
 <div class="container-form mx-auto mb-5">
     <a href="/admin" class="btn btn-primary mb-3 boton-regresar">Ver lista</a>
   
-    <form action="/admin/crearProduct" method="post" enctype="multipart/form-data" class="row mx-auto text-center p-4 form-border">
+    <form action="/admin/crearProduct" method="post" enctype="multipart/form-data" class="row mx-auto text-center p-4 form-border" id="crearProduct">
         <h3>Creación de Nuevo Producto</h3>
         <h6 class="text-body-tertiary" id="form-create">Ingrese la información</h6>
         
@@ -83,9 +83,12 @@
             <button type="submit" class="btn btn-success">Crear</button>
             <button type="reset" class="btn btn-danger">Limpiar</button>
         </div>
+       
         <p class="text-danger col-12 text-center err-form-general"></p>
+    
+    
+    <script src="/js/product/createProduct.js"></script>
     </form>
 
    
 </div> 
-<script src="/public/js/createProductFront.js"></script>

@@ -1,9 +1,20 @@
 const path = require('path');
 const fs = require('fs');
 const db = require('../../database/models');
+const { validationResult } = require('express-validator'); 
 
 module.exports = async (req, res) => {
   const { id } = req.params;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.render("admin/editarProduct", {
+      errors: errors.array(),
+      old: req.body,
+      product: await db.Product.findByPk(id)
+    });
+  }
+
   const { category, name, price, discount, free_shipping, detail } = req.body;
   const image = req.file;
 
@@ -19,7 +30,7 @@ module.exports = async (req, res) => {
         discount: +discount,
         free_shipping: free_shipping === "true",
         detail: detail ? detail.trim() : detail,
-        image: image ? `/images/${image.filename}` : "/images/default.jpg",
+        image: image ? `/images/${image.filename}` : imagenPrevia,
       },
       {
         where: { id },
@@ -38,48 +49,9 @@ module.exports = async (req, res) => {
     res.redirect('/admin');
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send("Server Error");
   }
 };
-// .then(image =>{
-//     if(image?.filename){
-//       const pathBefore = path.join(__dirname, `../../public${image}`);
-//       const existsFile = fs.existsSync(pathBefore);
-
-//       if(existsFile){
-//         fs.unlinkSync(pathBefore)
-//       }
-//     }
-// });
-  /*const productsMap = productos.map((p) => {
-    if (p.id === +id) {
-        const productEdit = {
-            ...p,
-            category: category ? category.trim() : category,
-            name: name ? name.trim() : name ,
-            price: +price,
-            discount: +discount ,
-            freeShipping: freeShipping === "true",
-            detail: detail ? detail.trim(): detail,
-            image: image ? `/images/${image.filename}` : p.image
-          };
-        
-        if(image?.filename){
-          const pathBefore = path.join(__dirname, `../../public${p.image}`);
-          const existsFile = fs.existsSync(pathBefore);
-
-          if(existsFile){
-            fs.unlinkSync(pathBefore)
-          }
-        }
-    
-      return productEdit;
-    }
-
-    return p;
-  });
-
-  saveData(productsMap,"productos");*/
 
  
 
