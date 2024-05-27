@@ -7,16 +7,29 @@
         
         <div class="col-sm-12 col-md-6 mb-2">
           <label class="form-label" for="titulo">Titulo <span class="field-required text-danger text-end "></span></label>
-            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Ingrese un título" value="<%= productEdit.name %>" >
+            <input class="form-control" type="text" name="title" id="titulo" placeholder="Ingrese un título" value="<%= productEdit.name %>" >
             <p class="text-danger error-titulo">
-            <%= locals.errors?.titulo?.msg %>
+            <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'title') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
           </p>
         </div>
         <div class="col-sm-12 col-md-6 mb-2">
             <label class="form-label" for="precio">Precio <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="number" name="price" id="precio" placeholder="Ingrese el precio" value="<%= productEdit.price %>">
             <p class="text-danger error-precio">
-            <%= locals.errors?.price?.msg %>
+            
+                <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'price') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
           </p>
         </div>
 
@@ -24,7 +37,13 @@
             <label class="form-label" for="descuento">Descuento <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="number" name="discount" id="descuento" placeholder="Descuento del" value="<%= productEdit.discount %>">
             <p class="text-danger error-descuento">
-            <%= locals.errors?.discount?.msg %>
+                <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'discount') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
           </p>
         </div>
 
@@ -44,7 +63,13 @@
             <label for="fotoproducto" class="form-label">Foto del producto <span class="field-required text-danger text-end"></span></label>
             <input class="form-control" type="file" id="fotoproducto" name="image">
             <p class="text-danger error-file">
-                <%= locals.errors?.file?.msg %>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'image') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
         </div>
 
@@ -69,7 +94,13 @@
             
             <textarea class="form-control" placeholder="Escribe la descripción" id="exampleTextarea" name="detail" style="height: 100px"><%= productEdit.detail %></textarea>
             <p class="text-danger error-detail">
-                <%= locals.errors?.titulo?.msg %>
+                <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'detail') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
               
         </div>

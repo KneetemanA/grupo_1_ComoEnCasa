@@ -28,6 +28,15 @@ const createValidation = [
     .bail()
     .isLength({ min: 10, max: 300 }).withMessage("El detalle del producto debe tener un mínimo de 10 y un máximo de 300 caracteres"),
 
+  check("category")
+    .notEmpty().withMessage("La categoría es requerida")
+    .bail(),
+
+  check("freeShipping")
+    .notEmpty().withMessage("El campo de envío gratis es requerido")
+    .bail()
+    .isBoolean().withMessage("El campo de envío gratuito debe ser booleano"),
+
   body('image')
     .custom((value, { req }) => {
       const reqFile = req.file;
@@ -45,4 +54,4 @@ const createValidation = [
     })
 ];
 
-module.exports = { createValidation };
+module.exports = createValidation;

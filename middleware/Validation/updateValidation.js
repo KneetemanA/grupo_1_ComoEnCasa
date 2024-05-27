@@ -45,4 +45,4 @@ const upDateValidation = [
     })
 ];
 
-module.exports = { upDateValidation };
+module.exports = upDateValidation ;

@@ -9,14 +9,27 @@
           <label class="form-label" for="titulo">Titulo <span class="field-required text-danger"></span></label>
             <input class="form-control" type="text" name="title" id="titulo" placeholder="Ingrese un título" value="<%= locals.old?.titulo %>">
             <p class="text-danger error-titulo">
-                <%= locals.errors?.titulo?.msg %>
+                <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'title') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
+                
               </p>
         </div>
         <div class="col-sm-12 col-md-6 mb-2">
             <label class="form-label" for="precio">Precio <span class="field-required text-danger"></span></label>
             <input class="form-control" type="number" name="price" id="precio" placeholder="Ingrese el precio" value="<%= locals.old?.precio %>">
             <p class="text-danger error-precio">
-                <%= locals.errors?.precio?.msg %>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'price') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
         </div>
 
@@ -24,7 +37,13 @@
             <label class="form-label" for="descuento">Descuento <span class="field-required text-danger"></span></label>
             <input class="form-control" type="number" name="discount" id="descuento" placeholder="Descuento del" value="<%= locals.old?.descuento %>">
             <p class="text-danger error-descuento">
-                <%= locals.errors?.descuento?.msg %>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'discount') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
         </div>
 
@@ -40,14 +59,26 @@
                 <label for="enviosNo" class="form-check-label">No</label>
             </div>
             <p class="text-danger error-freeShipping">
-                <%= locals.errors?.freeShipping?.msg %>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'freeShipping') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
         </div>
         <div class="mb-2 fs-5">
             <label for="fotoproducto" class="form-label">Foto del producto <span class="field-required text-danger"></span></label>
             <input class="form-control" type="file" id="fotoproducto" name="image" value="<%= locals.old?.file %>">
             <p class="text-danger error-file">
-                <%= locals.errors?.file?.msg %>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'file') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
               </p>
         </div>
 
@@ -67,14 +98,28 @@
                 <label for="papas" class="form-check-label">Papas</label>
             </div>
             <p class="text-danger error-categoria">
-                <%= locals.errors?.categoria?.msg %>
-            </p>
+               <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'category') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
+              </p>
+            
         </div>
 
         <div class="mb-5">
             <textarea class="form-control" placeholder="Escribe la descripción" id="exampleTextarea" name="detail" style="height: 100px" value="<%= locals.old?.detail %>"></textarea>
             <p class="text-danger error-detail">
-                <%= locals.errors?.detail?.msg %>
+                
+                <% if (locals.errors) { %>
+                    <% locals.errors.forEach(error => { %>
+                        <% if (error.path === 'detail') { %>
+                            <span class="feedback"><%= error.msg %></span>   
+                        <% } %>
+                    <% }) %>
+                <% } %>
             </p>
         </div>
         <br>
