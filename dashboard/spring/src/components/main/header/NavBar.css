@@ -1,0 +1,34 @@
+.conteiner-navbar{
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.container-notifications{
+   padding-right: 20px;
+  
+   
+}
+.container-search{
+   display: flex;
+   margin: auto;
+   width: 35%;
+  
+   
+}
+.container-search span, .container-search input{
+  border-radius: 20px;
+background-color: #434463;
+}
+.container-search input:focus{
+  background-color: #434463;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+.color-bg{
+   background-color: #1B1F39;
+   
+}

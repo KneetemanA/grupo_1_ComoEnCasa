@@ -1,25 +1,25 @@
 const db = require("../../../database/models")
 module.exports= function(req,res){
-   const { page } = req.query
-
-   db.Product.paginate({
-      
-      page: +page,
-      paginate: 5,
-      order: [['id', 'ASC']],
-
-    include: [{ association: "categorias" }],	
-   })
-   .then( ({ docs:productos, pages, total }) =>{
-    res.status(200).json({
-      data:productos, 
-      paginas:pages, 
-      total
+    const { page } = req.query
+ // con paginacion
+    db.Product.paginate({
+       
+       page: +page,
+       paginate: 5,
+       order: [['id', 'ASC']],
+ 
+     include: [{ association: "categorias" }],	
     })
-   })
-   .catch(error => {
-    console.error("Error al obtener productos:", error);
-    res.status(500).send("Error interno del servidor");
-   })
-
-}
+    .then( ({ docs:productos, pages, total }) =>{
+     res.status(200).json({
+       data:productos, 
+       paginas:pages, 
+       total
+     })
+    })
+    .catch(error => {
+     console.error("Error al obtener productos:", error);
+     res.status(500).send("Error interno del servidor");
+    })
+ 
+ }

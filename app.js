@@ -7,6 +7,7 @@ const partials = require('express-partials');
 const methodOverride = require("method-override");
 const session = require("express-session");
 const recordarmeCookie = require("./middleware/recordarmeCookie")
+const cors = require('cors');
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -24,6 +25,7 @@ const search= require("./routes/search.routes");
 const apiUser = require("./routes/api/user.api");
 const apiAdmin = require("./routes/api/admin.api");
 const apiProduct = require("./routes/api/product.api")
+const apiList = require("./routes/api/lists.api")
 
 
 
@@ -38,6 +40,7 @@ app.use(methodOverride("_method"))
 app.use(partials())
 app.use(session({secret: "esto es secreto"}))
 app.use(recordarmeCookie)
+app.use(cors());
 
 app.use('/', homeRoutes);
 app.use('/user', authenticationRoutes);
@@ -51,6 +54,7 @@ app.use("/",search)
 app.use("/api/user",apiUser);
 app.use("/api/admin",apiAdmin);
 app.use("/api/product",apiProduct)
+app.use("/api/list",apiList)
 
 
 app.use("*", errorPagina)

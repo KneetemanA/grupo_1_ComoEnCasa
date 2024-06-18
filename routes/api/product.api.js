@@ -8,4 +8,5 @@ router.get("/:id",productApi.detalle);
 
 
 
+
 module.exports = router
