@@ -1,19 +1,16 @@
 import React from "react";
-import Styles from "./styles.module.css"
 
-const Cards = () => {
+const Cards = ({title, number, icon}) => {
     return (
-            <div className={Styles.divAbueloCards}>
-                <div className={Styles.divPadreCards}>
-                <div className={Styles.iconCards}>
-                        <i className={`fas fa-pizza-slice fa-2x text-gray-300`}></i>
-                    </div>
-                    <div className={Styles.divHijoUnoCards}>
-                        <h1 className={Styles.tituloCards}>Productos</h1>
-                        <h2 className={Styles.numeroCards}>15</h2>
-                    </div>
-                </div>
-            </div>
+          <div className="d-flex gap-3  align-items-center text-center p-3 px-5 coineinerCard">
+          <div className="iconCards ">
+            <i className={`fas fa-${icon} fa-2x text-white`}></i>
+          </div>
+          <div className="">
+            <h4>{title}</h4>
+            <span className="fs-5 fw-bold">{number}</span>
+          </div>
+          </div>
              ); 
   };
   

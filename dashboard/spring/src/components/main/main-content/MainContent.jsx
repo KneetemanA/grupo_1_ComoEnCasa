@@ -1,12 +1,10 @@
-import Cards from "./Cards"
+import CardsMap from "./Cards/CardsMaps";
 
 function MainContent() {
   return (
-    <main className="col-md-10 col-lg-10 px-md-4 text-white">
-      <div className="p-3 mt-5 ms-3 d-flex">
-      <Cards/>
-      <Cards/>
-      <Cards/>
+    <main className="col-md-10 mt-5 m-auto col-lg-10 p-4 text-white">
+      <div className="d-flex w-100 justify-content-around ">
+        <CardsMap/>
       </div>
     </main>
   );
