@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "Este equipo comenzó a desarrollar un sitio web donde se ofrece comida rapida, como hamburguesas, pizzas y diferentes variedades de papas fritas. dicho sitio va dirigido a todas aquellas personas que quieran comer algo rico, rapido, y sin moverse de su casa.",
   "main": "app.js",
-  "scripts": {
+  "scripts": { 
     "start": "node app.js",
-    "dev": "nodemon app.js",
+    "server-dev": "nodemon app.js",
+    "client-dev": "cd dashboard & cd spring & npm run dev",
+    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
     "db:reset": "sequelize db:drop & sequelize db:create & sequelize db:migrate & sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "ejs": "^3.1.9",
