@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types'
 
 const Cards = ({title, number, icon}) => {
     return (
@@ -13,5 +13,10 @@ const Cards = ({title, number, icon}) => {
           </div>
              ); 
   };
+  Cards.propTypes = {
+    title: PropTypes.string,
+    number: PropTypes.number,
+    icon: PropTypes.string 
+  }
   
   export default Cards;
