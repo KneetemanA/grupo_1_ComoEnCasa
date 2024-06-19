@@ -8,6 +8,7 @@ module.exports = function (req, res) {
         .then((productos) => {
             res.status(200).json({
                 data: productos,
+                total: productos.length,
             });
         })
         .catch((error) => {

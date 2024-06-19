@@ -35,7 +35,7 @@
 }
 .divAbueloCards{
     display: flex;
-    width: 400px;
+    width: 100%;
 }
 .divHijoUnoCards{
     margin-left: 30px ;
