@@ -1,56 +1,53 @@
-const db = require('../../../database/models')
-const { validationResult } = require("express-validator");
-const fs = require('fs');
+const db = require('../../../database/models');
 const path = require('path');
+const fs = require('fs');
 
-module.exports = async (req, res) => {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const { id } = req.params;
-  const { category, title, price, discount, free_shipping, detail } = req.body;
+module.exports = async function (req, res) {
   const image = req.file;
-  const previousImage = product.image;
-  
+  const { id } = req.params;
 
   try {
+   
     const product = await db.Product.findByPk(id);
-
     if (!product) {
-      return res.status(404).json({ message: "Producto no encontrado" });
+      return res.status(404).json({ success: false, message: 'Product not found' });
     }
 
-    await db.Product.update(
-      {
-        category_id: +category,
-        name: title ? title.trim() : title,
-        price: +price,
-        discount: +discount,
-        free_shipping: free_shipping === "true",
-        detail: detail ? detail.trim() : detail,
-        image: image ? `/images/${image.filename}` : previousImage,
-      },
-      {
-        where: { id: id },
-      }
-    );
+    const imagenPrevia = product.image;
 
-    if (image && previousImage !== "/images/default.jpg") {
-      const previousImagePath = path.join(__dirname, `../../public${previousImage}`);
-      const fileExists = fs.existsSync(previousImagePath);
+   
+    const updateData = {
+      name: req.body.name,
+      price: +req.body.price,
+      discount: +req.body.discount,
+      free_shipping: req.body.free_shipping === 'true',
+      image: image ? `/images/${image.filename}` : imagenPrevia,
+      detail: req.body.detail,
+      category_id: +req.body.category_id
+    };
 
-      if (fileExists) {
-        fs.unlinkSync(previousImagePath);
+   
+    await db.Product.update(updateData, {
+      where: { id: id }
+    });
+
+ 
+    if (image && imagenPrevia !== "/images/default.jpg") {
+      const pathBefore = path.join(__dirname, `../../../public${imagenPrevia}`);
+      const existsFile = fs.existsSync(pathBefore);
+
+      if (existsFile) {
+        fs.unlinkSync(pathBefore);
       }
     }
 
-    return res.status(200).json({ message: "Producto actualizado con exito" });
+    res.json({
+      success: true,
+      message: 'Actualizado'
+    });
+
   } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).json({ message: "Error interno del servidor" });
+    console.error('Error updating product:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
-

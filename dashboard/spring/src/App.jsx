@@ -5,7 +5,8 @@ import MainContent from "./components/main/main-content/MainContent";
 import Orders from "./components/main/main-content/Orders";
 import Users from "./components/main/main-content/Users";
 import Products from "./components/main/main-content/Products";
-import CreateProduct from "./components/admin/createProduct";
+import CreateProduct2 from "./components/admin/FormularioProduct";
+
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/create" element={<CreateProduct />} />
+         <Route path="createProduct" element={<CreateProduct2 />} />
           
         </Routes>
       </Layout>

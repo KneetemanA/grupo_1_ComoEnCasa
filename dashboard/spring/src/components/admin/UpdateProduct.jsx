@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap'; // Asegúrate de que estás usando react-bootstrap si usas componentes de Form y Button
 

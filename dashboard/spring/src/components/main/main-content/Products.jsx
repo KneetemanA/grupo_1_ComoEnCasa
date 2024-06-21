@@ -1,5 +1,6 @@
 
 import CeldasProduct from "./childen/CeldasProduct";
+import {Link} from "react-router-dom";
 
 function Products() {
   return (
@@ -47,9 +48,9 @@ function Products() {
         </table>
       </div>
       <div className="d-flex justify-content-end mt-4">
-        <a href="#" className="btn btn-primary mt-4 ">
-          Crear Producto
-        </a>
+        <Link to="/createProduct" className="btn btn-primary mt-4">
+          Crear producto
+        </Link>
       </div>
       
     </main>
