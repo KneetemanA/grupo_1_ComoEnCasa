@@ -1,39 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import FormularioProduct from './children/formularioProduct';
+import  { useState, useEffect } from "react";
+import axios from "axios";
+import FormCreate from "./children/FormCreate";
 
 function CreateProduct() {
-  const [productos, setProductos] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/api/list/products")
-      .then((res) => res.json())
-      .then((data) => setProductos(data.data));
+    fetchProducts();
   }, []);
 
-  const handleOnSubmit = (producto) => {
-    fetch('http://localhost:3030/api/products', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(producto)
-    })
-    .then(response => response.json())
-    .then(data => {
-      setProductos([data, ...productos]);
-      console.log('Producto creado:', data);
-    })
-    .catch(error => {
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:3030/api/list/products");
+      setProducts(response.data.data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  const addProduct = async (productData) => {
+    try {
+      const formData = new FormData();
+      for (const key in productData) {
+        if (key === "image") {
+          formData.append(key, productData[key][0]);
+        } else {
+          formData.append(key, productData[key]);
+        }
+      }
+
+      const response = await axios.post("http://localhost:3030/api/admin/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setProducts([response.data, ...products]);
+      alert('Producto creado con éxito');
+    } catch (error) {
       console.error('Error al crear el producto:', error);
-    });
+      alert('Hubo un error al crear el producto');
+    }
+  };
+//Esta función se pasa como prop a FormCreate:
+  const handleFormSubmit = (data) => {
+    console.log("Datos del formulario:", data);
+    if (data.image && data.image.length > 0) {
+      console.log("Archivo de imagen:", data.image[0]);
+    }
+    addProduct(data);
   };
 
   return (
-    <React.Fragment>
-      <FormularioProduct handleOnSubmit={handleOnSubmit} />
-    </React.Fragment>
+    <FormCreate onSubmit={handleFormSubmit} />
   );
 }
 
 export default CreateProduct;
-

@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const adminApi=require("../../controllers/api/admin")
 
+const {upload} = require("../../middleware/uploadfile")
 
 
-router.post("/create",adminApi.create);
+
+router.post("/create",upload.single('image'),adminApi.create);
 router.put("/edit/:id", adminApi.update)
 
 

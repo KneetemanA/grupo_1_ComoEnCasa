@@ -9,6 +9,7 @@ const session = require("express-session");
 const recordarmeCookie = require("./middleware/recordarmeCookie")
 const cors = require('cors');
 
+
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 //app.set('views', path.join(__dirname, './views'));

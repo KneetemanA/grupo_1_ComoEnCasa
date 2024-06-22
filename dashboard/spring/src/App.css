@@ -3,6 +3,7 @@
 @import url("./components/main/header/NavBar.css");
 @import url("./components/main/main-content/content.css");
 @import url("./components/main/main-content/Cards/styles.module.css");
+@import url("./components/admin/children/FormCreate.css");
 
 
 
