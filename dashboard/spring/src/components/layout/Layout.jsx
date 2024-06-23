@@ -1,6 +1,10 @@
 
 import SideBar from '../sidebar/SideBar';
 import NavBar from '../main/header/NavBar';
+import PropTypes from 'prop-types'
+
+
+
 
 
 function Layout({ children }) {
@@ -9,6 +13,7 @@ function Layout({ children }) {
       <SideBar />
       <div className="flex-grow-1 d-flex flex-column color-bg">
         <NavBar />
+         
         
           {children}
         
@@ -16,5 +21,12 @@ function Layout({ children }) {
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
+
+}
+
+
 
 export default Layout;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Cards from "./index.jsx";
+import Cards from "./Cards.jsx";
 const CardsMap = () => {
     const[productos,setProductos]=useState([])
     const[users,setUsers]=useState([])
@@ -25,9 +25,9 @@ const CardsMap = () => {
    
     return (
         <>
-        <Cards title={"Productos"} number={productos.length} icon={"pizza-slice"}/>
-        <Cards title={"Categorias"} number={categories.length} icon={"layer-group"}/>
-        <Cards title={"Usuarios"} number={users.length} icon={"users"}/>
+        <Cards title={"Productos"} number={productos.length} icon={"pizza-slice"} color={"text-success"} bg={"bg-success-subtle"} />
+        <Cards title={"Categorias"} number={categories.length} icon={"layer-group"} color={"text-danger"} bg={"bg-danger-subtle"}/>
+        <Cards title={"Usuarios"} number={users.length} icon={"users"} color={"text-primary"} bg={"bg-primary-subtle"}/>
         </>
     )
 }

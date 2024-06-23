@@ -29,9 +29,9 @@ function Products() {
         </table>
       </div>
       <div className="d-flex justify-content-end mt-4">
-        <Link to="/createProduct" className="btn btn-primary mt-4">
-          Crear producto
-        </Link>
+      <div>
+          <Link to="/createProduct"><button type="button" className="btn btn-outline-secondary text-white">Crear Producto</button></Link>
+        </div>
       </div>
       
     </main>
