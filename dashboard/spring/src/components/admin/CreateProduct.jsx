@@ -1,6 +1,7 @@
 import  { useState, useEffect } from "react";
 import axios from "axios";
 import FormCreate from "./children/FormCreate";
+import Swal from "sweetalert2";
 
 function CreateProduct() {
   const [products, setProducts] = useState([]);
@@ -36,10 +37,26 @@ function CreateProduct() {
       });
 
       setProducts([response.data, ...products]);
-      alert('Producto creado con éxito');
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Producto agregado', 
+        text: 'El producto se ha creado correctamente',
+        timer: 1500
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+
+     
     } catch (error) {
       console.error('Error al crear el producto:', error);
-      alert('Hubo un error al crear el producto');
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Error al crear el producto",
+
+});
     }
   };
 //Esta función se pasa como prop a FormCreate:
