@@ -7,7 +7,7 @@
       "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
       "tic": true,
       "role": "admin",
-      "image": "img-1714100632759.jpg"
+      "image": "default.jpg"
    },
    {
       "id": 2,
@@ -16,8 +16,8 @@
       "email": "luka@gmail.com",
       "password": "$2b$10$S3fEo82ADbm34sn2NEjvW.qJe9mkNnrVSwOhiYF5t2s13gd7efn56",
       "tic": true,
-      "role": "admin",
-      "image": "img-1714100632759.jpg"
+      "role": "user",
+      "image": "img-1714078472987.jpg"
    },
    {
       "id": 3,

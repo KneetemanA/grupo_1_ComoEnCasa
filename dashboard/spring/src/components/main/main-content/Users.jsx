@@ -1,3 +1,4 @@
+import CeldarUser from "./childen/CeldarUser"
 
 
 function Users() {
@@ -11,9 +12,10 @@ function Users() {
           <thead>
             <tr className="text-center">
               <th scope="col">ID</th>
+              <th scope="col">Image</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Password</th>
+              <th scope="col">UserName</th>
               <th scope="col">Rol</th>
               <th>Accion</th>
             </tr>
@@ -21,7 +23,7 @@ function Users() {
           <tbody>
             
           
-           
+           <CeldarUser/>
               
              
             
