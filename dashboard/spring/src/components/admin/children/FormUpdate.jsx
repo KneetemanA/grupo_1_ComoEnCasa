@@ -1,83 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
 
-function UpdateProduct() {
-  const [producto, setProducto] = useState(null);
-  const [imageFile, setImageFile] = useState(null);
-  const { id } = useParams();
-  const history = useHistory();
-
-  useEffect(() => {
-    fetch(`http://localhost:3030/api/products/${id}`)
-      .then((res) => res.json())
-      .then(data => {
-        setProducto(data.producto);
-      });
-  }, [id]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProducto({
-      ...producto,
-      [name]: value
-    });
-  };
-
-  const handleFileChange = (e) => {
-    setImageFile(e.target.files[0]);
-  };
-
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('name', producto.title);
-    formData.append('price', producto.price);
-    formData.append('discount', producto.discount);
-    formData.append('detail', producto.detail);
-    formData.append('free_Shipping', producto.free_Shipping);
-    formData.append('category', producto.category)
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
-
-    fetch(`http://localhost:3030/api/products/${id}`, {
-      method: 'PUT',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Producto actualizado:', data);
-        history.push('/products'); // Redirige a la lista de productos o a la página que prefieras
-      })
-      .catch(error => {
-        console.error('Error al actualizar el producto:', error);
-      });
-  };
-
+function FormUpdate({ onSubmit, id, producto}) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
  
   return (
-    <div className="container-form mx-auto mt-4 px-5">
-      <Link
-        to="/products"
-        className="btn btn-primary mb-3 text-decoration-none"
-      >
-        Ver Lista
-      </Link>{" "}
+   
       <form
         className="row mx-auto text-center p-4 form-border text-white"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
 
-        // Cuando el usuario envía el formulario:
-        // react-hook-form recopila todos los datos del formulario.
-        // handleSubmit procesa estos datos.
-        // Luego, handleSubmit llama a onSubmit (que es la función handleFormSubmit de CreateProduct) y le pasa los datos del formulario como argumento.
       >
-        <h4>Creación de Nuevo Producto</h4>
+        <h4>Editar Producto</h4>
         <h6 className="text-light" id="form-create">
           Ingrese la información
-        </h6>
+        </h6> 
+        <div className="col-sm-12 col-md-6 mb-2 text-white">
+          <label className="form-label" htmlFor="title">ID</label>
+          <input className="form-control" type="text" name="title" value={id} />
+    </div>
 
         <div className="col-sm-12 col-md-6 mb-2">
           <label className="form-label d-block fw-bolder" htmlFor="name">
@@ -88,8 +34,9 @@ function UpdateProduct() {
             type="text"
             id="name"
             {...register("name", { required: "El nombre es requerido" })}
+            defaultValue={producto.name}
             placeholder="Ingrese el nombre del producto"
-            onChange={handleFileChange} 
+
           />
           {errors.name && <p className="text-danger">{errors.name.message}</p>}
         </div>
@@ -109,8 +56,9 @@ function UpdateProduct() {
                 message: "El precio debe ser mayor o igual a 0",
               },
             })}
+            defaultValue={producto.price}
             placeholder="Ingrese el precio del producto"
-            onChange={handleFileChange} 
+
           />
           {errors.price && (
             <p className="text-danger">{errors.price.message}</p>
@@ -133,8 +81,9 @@ function UpdateProduct() {
                 message: "El descuento no puede ser mayor a 100",
               },
             })}
+            defaultValue={producto.discount}
             placeholder="Ingrese el descuento del producto"
-            onChange={handleFileChange} 
+
           />
           {errors.discount && (
             <p className="text-danger">{errors.discount.message}</p>
@@ -153,7 +102,8 @@ function UpdateProduct() {
                 {...register("free_shipping", {
                   required: "Debes seleccionar una opción",
                 })}
-                onChange={handleFileChange} 
+                defaultValue={producto.free_Shipping}
+    
               />
               <label className="form-check-label fw-bolder" htmlFor="si">
                 Sí
@@ -168,6 +118,7 @@ function UpdateProduct() {
                 {...register("free_shipping", {
                   required: "Debes seleccionar una opción",
                 })}
+            
               />
               <label className="form-check-label fw-bolder" htmlFor="no">
                 No
@@ -188,6 +139,8 @@ function UpdateProduct() {
             {...register("image", {
               required: "La imagen es requerida",
             })}
+            defaultValue={producto.image}
+            
           />
           {errors.image && (
             <p className="text-danger">{errors.image.message}</p>
@@ -206,7 +159,8 @@ function UpdateProduct() {
                 {...register("category_id", {
                   required: "Debes seleccionar una categoría",
                 })}
-                onChange={handleFileChange} 
+                defaultValue={producto.category_id}
+    
               />
               <label className="form-check-label fw-bolder" htmlFor="pizza">
                 Pizza
@@ -221,7 +175,8 @@ function UpdateProduct() {
                 {...register("category_id", {
                   required: "Debes seleccionar una categoría",
                 })}
-                onChange={handleFileChange} 
+                defaultValue={producto.category_id}
+    
               />
               <label
                 className="form-check-label fw-bolder"
@@ -239,7 +194,8 @@ function UpdateProduct() {
                 {...register("category_id", {
                   required: "Debes seleccionar una categoría",
                 })}
-                onChange={handleFileChange} 
+                defaultValue={producto.category_id}
+    
               />
               <label className="form-check-label fw-bolder" htmlFor="papas">
                 Papas Fritas
@@ -259,8 +215,9 @@ function UpdateProduct() {
               required: "Debes proporcionar detalles del producto",
             })}
             style={{ height: "75px" }}
+            defaultValue={producto.detail}
             placeholder="Ingrese los detalles del producto"
-            onChange={handleFileChange} 
+
           ></textarea>
           {errors.detail && (
             <p className="text-danger">{errors.detail.message}</p>
@@ -269,20 +226,23 @@ function UpdateProduct() {
 
         <div className="col mb-1 d-flex justify-content-end gap-2">
           <button type="submit" className="btn btn-success">
-            Crear
+            Actualizar
           </button>
           <button type="reset" className="btn btn-danger">
             Limpiar
           </button>
         </div>
-      </form>
-    </div>
-  );
+        </form>
+
+      )   
+
+    }
+
+UpdateProduct.propTypes = {
+  productId: PropTypes.string.isRequired,
+  refreshProducts: PropTypes.func.isRequired
+
 }
 
 
-UpdateProduct.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-export default UpdateProduct;
+export default FormUpdate

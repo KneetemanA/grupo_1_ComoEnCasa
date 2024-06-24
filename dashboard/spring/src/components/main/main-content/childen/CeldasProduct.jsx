@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import ModalDelete from './ModalDelete';
 import { Link } from 'react-router-dom';
 
+
 function CeldasProduct() {
     const [productos, setProductos] = useState([]);
     const [productIdToDelete, setProductIdToDelete] = useState(null);
+   
 
     useEffect(() => {
         fetchProductos();
@@ -30,7 +32,7 @@ function CeldasProduct() {
                     <td>{producto.detail}</td>
                     <td>
                         <div className="d-flex flex-column align-items-center fs-5">
-                            <a href="#"><i className="bi bi-pencil-square decoration-none text-white"></i></a>
+                            <Link to="#"><i className="bi bi-pencil-square decoration-none text-white"></i></Link>
                             <Link to="#" onClick={() => setProductIdToDelete(producto.id)}>
                                 <i className="bi bi-trash decoration-none text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </Link>
@@ -39,6 +41,8 @@ function CeldasProduct() {
                 </tr>
             ))}
             <ModalDelete productId={productIdToDelete} refreshProducts={fetchProductos} />
+         
+
         </>
     );
 }
