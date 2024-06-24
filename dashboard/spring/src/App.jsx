@@ -9,6 +9,7 @@ import CreateProduct from "./components/admin/CreateProduct";
 
 
 
+
 function App() {
   return (
     <Router>
@@ -19,7 +20,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/users" element={<Users />} />
          <Route path="createProduct" element={<CreateProduct />} />
-          
+      
         </Routes>
       </Layout>
     </Router>
