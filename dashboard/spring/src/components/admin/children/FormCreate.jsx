@@ -11,12 +11,7 @@ function FormCreate({ onSubmit }) {
 
   return (
     <div className="container-form mx-auto mt-4 px-5">
-      <Link
-        to="/products"
-        className="btn btn-primary mb-3 text-decoration-none"
-      >
-        Ver Lista
-      </Link>{" "}
+    <Link to="/products"><button type="button" className="btn btn-outline-secondary text-white mb-3">Ver lista</button></Link>
       <form
         className="row mx-auto text-center p-4 form-border text-white"
         onSubmit={handleSubmit(onSubmit)}

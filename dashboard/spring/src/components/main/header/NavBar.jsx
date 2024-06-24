@@ -2,7 +2,8 @@
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark  p-0 color-bg">
+   <>
+   <nav className="navbar navbar-expand-lg navbar-dark  p-0 color-bg">
       <div className="conteiner-navbar">
         <div className="input-group container-search">
           <span className="input-group-text  border-0">
@@ -11,10 +12,12 @@ function NavBar() {
           <input
             type="text"
             className="form-control  border-0 text-secondary fs-5"
-            placeholder="Search for..."
+            placeholder="Buscar Producto..."
             aria-label="Search"
           />
         </div>
+
+        
 
         <div className="container-notifications">
           <ul className="navbar-nav ms-auto d-flex flex-row align-items-center justify-content-end p-3">
@@ -34,6 +37,9 @@ function NavBar() {
         </div>
       </div>
     </nav>
+    
+    </>
+    
   );
 }
 

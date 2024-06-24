@@ -2,10 +2,35 @@
 
 function Users() {
   return (
-    <main className="col-md-10 ms-sm-auto col-lg-10 px-md-4 text-white">
-    <h1>USUARIOS</h1>
     
-  </main>
+    <div className="col-md-10 mt-4 m-auto col-lg-10 text-white">
+
+      <div className="table-container">
+        <h4>List Users</h4>
+        <table className="table table-dark table-striped">
+          <thead>
+            <tr className="text-center">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+              <th scope="col">Rol</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          
+           
+              
+             
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+ 
   )
 }
 

@@ -7,6 +7,7 @@ const {upload} = require("../../middleware/uploadfile")
 
 router.post("/create",upload.single('image'),adminApi.create);
 router.put("/edit/:id", adminApi.update)
+router.delete("/delete/:id",adminApi.delete)
 
 
 module.exports = router
