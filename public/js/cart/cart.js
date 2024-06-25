@@ -113,6 +113,32 @@ botonDelete.addEventListener("click", async () =>{
     }
 });
 
+//BOTON COMPRAR
+btnBuy.addEventListener("click", async () => {
+    try {
+      const { ok, msg } = await fetch(`${server}/api/cart/completed?idUser`, {
+        method: "PATCH",
+      }).then((res) => res.json());
+
+      if (ok) {
+        const result = await createAlertProgress({
+          title: "Completando compra...",
+          timer: 4000,
+        })
+
+        if (result.dismiss === Swal.DismissReason.timer) {
+          reloadCart(server, mainCarrito, outputTotal);
+
+          setTimeout(() => {
+            location.href = "/";
+          }, 1000);
+        }
+       
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
 });
 
 //DISMINUIR CANTIDAD DE PRODUCTOS
@@ -151,6 +177,8 @@ const moreProduct = async(id) =>{
         console.error(error.message);
     }
 }
+
+
 
 //ELIMINAR O VACIAR EL CARRITO
 

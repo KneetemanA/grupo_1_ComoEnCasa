@@ -30,9 +30,10 @@ toastr.option = {
 
 
 const addProductCart = async (id) => {
-    const server = "http//localhost:3030"
+    const server = "http//localhost:3030/"
     try {
-        const { ok, msg } = await fetch(`${server}/api/cart/add/${id}?idUser=2`, {
+        const { ok, msg } = await fetch(`${server}/api/cart/add/${id}?idUser`, 
+            {
           method: "PATCH",
         }).then((res) => res.json());
     
