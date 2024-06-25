@@ -2,10 +2,12 @@ import  { useState, useEffect } from "react";
 import axios from "axios";
 import FormCreate from "./children/FormCreate";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function CreateProduct() {
   const [products, setProducts] = useState([]);
 
+  const location = useNavigate()
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -38,15 +40,21 @@ function CreateProduct() {
 
       setProducts([response.data, ...products]);
 
-      Swal.fire({
+      await Swal.fire({
         icon: 'success',
         title: 'Producto agregado', 
-        text: 'El producto se ha creado correctamente',
+        text:"El producto "+productData.name+" se agrego correctamente",
         timer: 1500
       });
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+
+  location("/products#"+ response.data.id )
+
+     
+      
+    
+     
+
+    
 
      
     } catch (error) {
