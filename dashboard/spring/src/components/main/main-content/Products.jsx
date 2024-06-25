@@ -24,7 +24,8 @@ function Products() {
            
             
             <CeldasProduct/>
-            
+          
+          
           </tbody>
         </table>
       </div>

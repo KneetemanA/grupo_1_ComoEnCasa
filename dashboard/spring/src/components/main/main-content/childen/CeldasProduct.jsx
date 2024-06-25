@@ -21,7 +21,7 @@ function CeldasProduct() {
     return (
         <>
             {productos.map((producto) => (
-                <tr className='text-center' key={producto.id}>
+                <tr id={producto.id}  className='text-center' key={producto.id}>
                     <th>{producto.id}</th>
                     <td>
                         <img src={`http://localhost:3030${producto.image}`} alt={producto.name} style={{ width: "100px" }} />
@@ -39,7 +39,9 @@ function CeldasProduct() {
                         </div>
                     </td>
                 </tr>
+                
             ))}
+            
             <ModalDelete productId={productIdToDelete} refreshProducts={fetchProductos} />
          
 
