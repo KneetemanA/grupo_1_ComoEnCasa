@@ -1,12 +1,37 @@
+import CeldasOrder from "./childen/CeldasOrder"
 
 
-const Orders = () => {
+function Orders() {
   return (
-    <main className="col-md-10 ms-sm-auto col-lg-10 px-md-4 text-white">
-    <h1>ORDENES</h1>
-    <span className="fs-3 fw-bold">vista en contruccion</span>
-    
-  </main>
+    <div className="col-md-10 mt-4 m-auto col-lg-10 text-white">
+
+      <div className="table-container">
+        <h4>List Orders</h4>
+        <table className="table table-dark table-striped">
+          <thead>
+            <tr className="text-center">
+              <th  scope="col">ID</th>
+              <th scope="col">Estado</th>
+              <th className="text-start" scope="col">Usuario</th>
+              <th className="text-start"  scope="col">Productos</th>
+              <th scope="col" >SubTotal</th>
+              <th scope="col">Total</th>
+              <th scope="col">Acciones</th>
+           
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+          <CeldasOrder/>
+          
+              
+             
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
   )
 }
 
