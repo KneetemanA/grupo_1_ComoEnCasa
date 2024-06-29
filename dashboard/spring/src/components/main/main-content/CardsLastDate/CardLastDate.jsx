@@ -1,7 +1,12 @@
+import Grafico from "./Grafico";
+
 function CardLastDate({ name,price,user,nameuser,imgpro,imguser})  {
     return (
       <div className="d-flex w-100 justify-content-between mt-3">
-        <div className="container-graficos-card p-3">Grafico</div>
+        <div className="container-graficos-card p-3 ps-0">
+          
+          <Grafico />
+          </div>
         <div className="container-last-date">
           <div className="user-last-date p-3">
            <div className="d-flex justify-content-between align-items-center">
