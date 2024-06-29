@@ -4,16 +4,16 @@ const { getOrderPending } = require("../../utils");
 
 module.exports = async (req, res) => {
   try {
-    const { id: productId } = req.params;
+    const { id: product_id } = req.params;
 
-    if (!productId) throw new Error("El id no fue recibido");
+    if (!product_id) throw new Error("El id no fue recibido");
 
     const [order, isCreate] = await getOrderPending(req);
 
     await db.OrderProduct.destroy({
       where: {
-        orderId: order.id,
-        productId,
+        order_id: order.id,
+        product_id,
       },
     });
 

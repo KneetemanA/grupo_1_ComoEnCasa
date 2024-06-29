@@ -4,21 +4,21 @@ const { getOrderPending } = require("../../utils");
 
 module.exports = async (req, res) => {
   try {
-    const { id: productId } = req.params;
+    const { id: product_id } = req.params;
 
-    if (!productId) throw new Error("El id no encontrado");
+    if (!product_id) throw new Error("El id no encontrado");
 
-    let [order, isCreate] = await getOrderPending(req);
+    let [order] = await getOrderPending(req);
 
     await db.OrderProduct.create({
-      orderId: order.id,
-      productId,
+      order_id: order.id,
+      product_id,
     });
 
     order = await order.reload({
       include: [
         {
-          association: "products",
+          association: "product",
           through: {
             attributes: ["quantity"],
           },
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     order = order.products.forEach(
       ({
         price,
-        orderproducts: {
+        orderProducts: {
           dataValues: { quantity },
         },
       }) => {

@@ -11,10 +11,10 @@ module.exports = async (req, res) => {
       where: {
         [Op.and]: [
           {
-            orderId: order.id,
+            order_id: order.id,
           },
           {
-            productId: id,
+            product_id: id,
           },
         ],
       },

@@ -1,8 +1,10 @@
-const { default: Swal } = require("sweetalert2");
 
 const $ = (element) => document.querySelector(element);
+
+//Const para la descripción
 const cutText = (text = "", long) => text.substring(0, long) + "...";
 
+//const para convertir
 const convertMoney = (num = 0) => num.toLocaleString({
     currency: "ARS",
     style: "currency",
@@ -31,81 +33,68 @@ const createAlertProgress = ({
     })
 };
 
+//url de la api de carrito
 const server = "http://http://localhost:3030/";
 let productCart = [];
 
-const getShoppingCart = (server) => fetch(`${server}/api/cart?idUser`).then((res) => res.json())
+//Retornar los productos de la base de datos en el carrito de compras
+const getShoppingCart = (server) => fetch(`${server}/api/cart?user_id`).then((res) => res.json())
 
 const getCartStructure = (p) =>{
 
-    return `<div class="container-table">
-    <table class="table cart-items">
-        <thead>
-            <tr>
-                <th>Productos</th>
-                <th class="descripcion"></th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
-
-    <label for="">Cantidad</label>
-    <button class="btn btn-light" onclick="lessProduct(${p.id})">-</button>
-
-    <output>${p.orderproducts.quantity}</output>
-
-    <button class="btn btn-light" onclick="moreProduct(${p.id})">+</button>
-
-    <span class="text-primary">$ ${convertMoney(p.price)}</span>
-
-</div>`
+    return 
+    `
+<tr class="container-detail">
+    <td class="td-img"><img src="${p.image}" alt="imagen-producto"></td>
+    <td class="td-name">${p.name}</td>
+    <td class="td-price">$ ${convertMoney(p.price)}</td>
+    <td class="td-cantidad">${p.orderproduct.quantity}</td>                                
+    <td class="td-total">2000</td>
+    <td class="td-borrar onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
+</tr>
+    `;
 }
 
-
-const paintCartInView = ( products = [], elementMainCarrito) =>{
-    elementMainCarrito.innetHTML = "";
-    products.forEach((product) =>{
-        elementMainCarrito.innetHTML += getCartStructure(product);
+const paintCartInView = ( product = [], ) =>{
+    e.innetHTML = "";
+    product.forEach((p) =>{
+        elementmodalcBody.innetHTML += getCartStructure(p);
     })
-
 };
 
-const reloadCart = async (server, mainCarrito, outputTotal) =>{
+const reloadCart = async (server, modalcBody, outputTotal) =>{
     const {
         ok,
-        data: {total, products}
+        data: {total, product}
     } = await getShoppingCart(server);
 
-    ok && (productCart = products);
+    ok && (productCart = product);
 
-    paintCartInView(productCart, mainCarrito);
+    paintCartInView(productCart, modalcBody);
     outputTotal.ineerHTML = total;
 };
 
 //CAPTURAR EL FURMULARIO O CARD!
 window.addEventListener("load", async(event) =>{
-    const mainCarrito = $(".mainCarrito")
-    const outputTotal =$()
-
+    const modalcBody = $(".mainCarrito")
+    const outputTotal =$(".total")
+    const btnDelete = $(".boton-borrar")
+    const btnBuy = $(".boton-comprar")
 try {
-    reloadCart(server, mainCarrito, outputTotal)
+    reloadCart(server, modalcBody, outputTotal)
 } catch (error) {
     console.error(error.message)    
 }
 
+//BOTON PARA ELIMINAR LOS PRODUCTOS
 
-//PARA ELIMINAR LOS PRODUCTOS
-
-botonDelete.addEventListener("click", async () =>{
+btnDelete.addEventListener("click", async () =>{
     try {
-        const {ok, msg } = await fetch(`${server}/api/cart/clear?idUser`, {
+        const {ok, msg } = await fetch(`${server}/api/cart/clear?user_id`, {
             method: "PATCH",
         }).then((res) => res.json());
         if (ok) {
-            reloadCart(server, mainCarrito);
+            reloadCart(server, modalcBody, outputTotal);
         }
     } catch (error) {
         console.error(error.message)
@@ -116,7 +105,7 @@ botonDelete.addEventListener("click", async () =>{
 //BOTON COMPRAR
 btnBuy.addEventListener("click", async () => {
     try {
-      const { ok, msg } = await fetch(`${server}/api/cart/completed?idUser`, {
+      const { ok, msg } = await fetch(`${server}/api/cart/completed?user_id`, {
         method: "PATCH",
       }).then((res) => res.json());
 
@@ -127,7 +116,7 @@ btnBuy.addEventListener("click", async () => {
         })
 
         if (result.dismiss === Swal.DismissReason.timer) {
-          reloadCart(server, mainCarrito, outputTotal);
+          reloadCart(server, modalcBody, outputTotal);
 
           setTimeout(() => {
             location.href = "/";
@@ -145,14 +134,15 @@ btnBuy.addEventListener("click", async () => {
 
 const lessProduct = async (id) => {
     try {
-        const mainCarrito = $(".mainCarrito");
-        const outputTotal = $("IMPUT DEL TOTAL")
-        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?idUser`, {
+        const modalcBody = $(".modalc-body");
+        const outputTotal = $(".total")
+       
+        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?user_id`, {
             method: "PATCH",
 
         }).then((res) =>res.json());
         if(ok){
-            reloadCart(server, mainCarrito, outputTotal);
+            reloadCart(server, modalcBody, outputTotal);
         }
     } catch (error) {
         console.error(error.message);
@@ -164,34 +154,34 @@ const lessProduct = async (id) => {
 
 const moreProduct = async(id) =>{
     try {
-        const mainCarrito = $(".mainCarrito");
-        const outputTotal = $("IMPUT DEL TOTAL")
-        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?idUser`, 
+        const modalcBody = $(".modalc-body");
+        const outputTotal = $(".total")
+
+        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?user_id`, 
             {
             method: "PATCH",
         }).then((res) =>res.json());
         if(ok){
-            reloadCart(server, mainCarrito, outputTotal);
+            reloadCart(server, modalcBody, outputTotal);
         }
     } catch (error) {
         console.error(error.message);
     }
 }
 
-
-
 //ELIMINAR O VACIAR EL CARRITO
 
 const removeProductCart = async (id) =>{
     try {
-        const mainCarrito = $(".mainCarrito");
-        const outputTotal = $("IMPUT DEL TOTAL")
-        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?idUser`, 
+        const modalcBody = $(".modalc-body");
+        const outputTotal = $(".total")
+
+        const {ok, msg} = await fetch(`${server}/api/cart/less/${id}?user_id`, 
             {
             method: "PATCH",
         }).then((res) =>res.json());
         if(ok){
-            reloadCart(server, mainCarrito, outputTotal);
+            reloadCart(server, modalcBody, outputTotal);
         }
     } catch (error) {
         console.error(error.message);

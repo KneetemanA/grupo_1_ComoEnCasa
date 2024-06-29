@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
         where: {
           [Op.and]: [
             {
-              userId: req.query.userId,
+              user_id: req.query.user_id,
             },
             {
               state: "pending",
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
           ],
         },
         defaults: {
-          userId: req.query.userId,
+          user_id: req.query.user_id,
         },
         include: [
           {
@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
         where: {
           [Op.and]: [
             {
-              userId: req.query.userId,
+              user_id: req.query.user_id,
             },
             {
               state: req.query.state || "pending",
