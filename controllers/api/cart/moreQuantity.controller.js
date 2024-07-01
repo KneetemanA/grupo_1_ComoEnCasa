@@ -5,7 +5,7 @@ const { getOrderPending } = require("../../utils");
 module.exports = async (req, res) => {
   try {
     const { id } = req.params;
-    const [order, isCreate] = await getOrderPending(req);
+    let [order, isCreate] = await getOrderPending(req);
 
     const record = await db.OrderProduct.findOne({
       where: {
@@ -21,8 +21,22 @@ module.exports = async (req, res) => {
     });
 
     record.quantity++;
-
     await record.save();
+
+    order = await order.reload({
+      include: [
+        {
+          association: "product",
+          through: {
+            attributes: ["quantity"],
+          },
+        },
+      ],
+    });
+    const total = getTotalOrder(order.product);
+    order.total = total;
+
+    await order.save();
 
     res.status(200).json({
       ok: true,

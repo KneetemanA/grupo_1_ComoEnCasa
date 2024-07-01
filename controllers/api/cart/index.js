@@ -1,9 +1,11 @@
 module.exports = {
-    getOrder: require("./getOrder.controller.api"),
-    addProductToOrder: require("./addProdOrder.controller.api"),
-    removeProductToOrder: require("./removeProdOrder.controller.api"),
-    canceledOrder:require("./cancelarOrder.controller.api"),
-    completedOrder:require("./completeOrder.controller.api"),
-    moreQuantity: require("./moreQuantity.controller.api"),
-    lessQuantity: require("./lessQuantity.controller.api"),
+    getOrder: require("./getOrder.controller"),
+    addProdOrder: require("./addProdOrder.controller"),
+    clearProductOrder: require("./clearProductOrder.controller"),
+    completeOrder: require("./completeOrder.controller"),
+    canceledOrder: require("./canceledOrder.controller"),
+    lessQuantity: require("./lessQuantity.controller"),
+    moreQuantity: require("./moreQuantity.controller"),
+    removeProdOrder: require("./removeProdOrder.controller"),
+
 }

@@ -3,30 +3,28 @@ const db = require("../../database/models");
 
 module.exports = async (req) => {
 
-  const dataOrder = await db.Order.findOrCreate({
-
-    where: {
-      [Op.and]: [
+    const dataOrder = await db.Order.findOrCreate({
+      where: {
+        [Op.and]: [
+          {
+            user_id: req.session.userLogin?.id || req.query.user_id,
+          },
+          {
+            state: "pending",
+          },
+        ],
+      },
+      defaults: {
+        userId: req.session.userLogin?.id || req.query.user_id,
+      },
+      include: [
         {
-          user_id: req.query.user_id,
-        },
-        {
-          state: "pending",
+          association: "product",
+          through: {
+            attributes: ["quantity"],
+          },
         },
       ],
-    },
-    defaults: {
-      user_id: req.query.user_id,
-    },
-    include: [
-      {
-        association: "products",
-        through: {
-          attributes: ["quantity"],
-        },
-      },
-    ],
-  });
-  
+    });
   return dataOrder;
 };

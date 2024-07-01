@@ -1,25 +1,25 @@
 const router = require("express").Router();
 const {
-  getOrder, addProductToOrder, canceledOrder, completedOrder, removeProductToOrder, moreQuantity, lessQuantity, 
+  getOrder, addProdOrder, canceledOrder, clearProductOrder, 
+  completeOrder, removeProdOrder, moreQuantity, lessQuantity, 
 } = require("../../controllers/api/cart");
 
 /* /api/cart */
 router.get("/", getOrder);
 
-router.patch("/agregar/:id", addProductToOrder);
+router.patch("/agregar/:id", addProdOrder);
 
-router.patch("/completar", completedOrder);
+router.patch("/completar", completeOrder);
 
 router.patch("/cancelar", canceledOrder);
 
-router.patch("/remover/:id", removeProductToOrder);
+router.patch("/clear", clearProductOrder);
+
+router.patch("/remover/:id", removeProdOrder);
 
 router.patch("/more/:id", moreQuantity);
 
 router.patch("/less/:id", lessQuantity);
-
-
-
 
 
 module.exports = router;

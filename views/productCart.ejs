@@ -23,27 +23,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="container-detail">
-                                <td class="td-img"><img src="/images/default.jpg" alt="imagen-producto"></td>
-                                <td class="td-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus.</td>
-                                <td class="td-price">2000</td>
-                                <td class="td-cantidad">1</td>                                
-                                <td class="td-total">2000</td>
-                                <td class="td-borrar"><i class="fa-solid fa-trash boton-borrar"></i></td>
+                            <tr class="container-detail" id="containerCard">
+                                <!-- ... CARDS ... -->
                             </tr>
-                            <tr class="container-detail">
-                                <td class="td-img"><img src="/images/default.jpg" alt="imagen-producto"></td>
-                                <td class="td-name">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                <td class="td-price">2000</td>
-                                <td class="td-cantidad">1</td>
-                                <td class="td-total">2000</td>
-                                <td class="td-borrar"><i class="fa-solid fa-trash boton-borrar"></i></td>
+                            <tr class="container-detail" id="containerCard">
+                                <!-- ... CARDS ... -->
                             </tr>
                         </tbody>
                     </table>
                     <div class="text-end">
-                        <span class="btn btn-danger boton-vaciar">
-                            <a href="#">Vaciar Carrito</a>
+                        <span class="btn btn-danger" id="boton-vaciar">
+                            Vaciar Carrito
                         </span>
                     </div>
                 </div>
@@ -68,8 +58,8 @@
                         </tbody>
                     </table>
                     <div>
-                        <span class="btn btn-primary boton-comprar">
-                            <a href="#">Ir a pagar</a>
+                        <span class="btn btn-primary" id="boton-comprar" >
+                            <a href="#">Comprar</a>
                         </span>
                     </div>
                 </div>
@@ -77,6 +67,7 @@
         </div>
     </main>
     <%- include ("./partials/footer") %>
-    <script src="../public/js/cart/cart.js"></script>
+
+    <script src="../public/js/cart/"></script>
 </body>
 </html>

@@ -6,9 +6,9 @@ module.exports = async (req, res) => {
   try {
     const { id: product_id } = req.params;
 
-    if (!product_id) throw new Error("El id no encontrado");
+    if (!product_id) throw new Error("El id no fue recibido");
 
-    let [order] = await getOrderPending(req);
+    let [order, isCreate] = await getOrderPending(req);
 
     await db.OrderProduct.create({
       order_id: order.id,
@@ -26,18 +26,8 @@ module.exports = async (req, res) => {
       ],
     });
 
-    let total = 0;
-    order = order.products.forEach(
-      ({
-        price,
-        orderProducts: {
-          dataValues: { quantity },
-        },
-      }) => {
-        const priceTotalProduct = price * quantity;
-        total += priceTotalProduct;
-      }
-    );
+    const total = getTotalOrder(order.product);
+    
     order.total = total;
     await order.save();
 
@@ -51,5 +41,4 @@ module.exports = async (req, res) => {
       msg: err.message,
     });
   }
-
 };

@@ -2,29 +2,26 @@ const db = require("../../../database/models");
 const { getOrderPending } = require("../../utils");
 
 module.exports = async (req, res) => {
+  const [order] = await getOrderPending(req);
+
   try {
-    const { id: product_id } = req.params;
-
-    if (!product_id) throw new Error("El id no fue recibido");
-
-    const [order] = await getOrderPending(req);
-
     await db.OrderProduct.destroy({
       where: {
         order_id: order.id,
-        product_id,
       },
     });
 
+    order.total = 0;
+    await order.save();
+
     res.status(200).json({
       ok: true,
-      msg: "Producto eliminado del carrito con éxito",
+      msg: "Productos eliminados con éxito",
     });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({
       ok: false,
-      msg: err.message,
+      msg: error.message,
     });
   }
-
 };
