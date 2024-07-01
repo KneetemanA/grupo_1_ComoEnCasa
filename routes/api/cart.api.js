@@ -4,7 +4,7 @@ const {
   completeOrder, removeProdOrder, moreQuantity, lessQuantity, 
 } = require("../../controllers/api/cart");
 
-/* /api/cart */
+/* /api/carrito */
 router.get("/", getOrder);
 
 router.patch("/agregar/:id", addProdOrder);

@@ -15,7 +15,7 @@ module.exports = async (req) => {
         ],
       },
       defaults: {
-        userId: req.session.userLogin?.id || req.query.user_id,
+        user_id: req.session.userLogin?.id || req.query.user_id,
       },
       include: [
         {

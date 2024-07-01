@@ -25,8 +25,9 @@ const errorPagina = require("./routes/error.routes");
 const search= require("./routes/search.routes");
 const apiUser = require("./routes/api/user.api");
 const apiAdmin = require("./routes/api/admin.api");
-const apiProduct = require("./routes/api/product.api")
-const apiList = require("./routes/api/lists.api")
+const apiProduct = require("./routes/api/product.api");
+const apiList = require("./routes/api/lists.api");
+const apiCart = require("./routes/api/cart.api")
 
 
 
@@ -55,7 +56,8 @@ app.use("/",search)
 app.use("/api/user",apiUser);
 app.use("/api/admin",apiAdmin);
 app.use("/api/product",apiProduct)
-app.use("/api/list",apiList)
+app.use("/api/list",apiList);
+app.use("/api/carrito", apiCart)
 
 
 app.use("*", errorPagina)

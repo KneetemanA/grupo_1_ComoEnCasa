@@ -63,7 +63,7 @@ const reloadCart = async (server, containerCard, outputTotal) => {
 //Capturar los selectores de la tarjeta del carrito
 
 window.addEventListener("load", async (event) => {
-    const containerCard = $("#containerCard");
+    const containerCard = $("#container-card");
     const outputTotal = $("#total");
     const btnDelete = $("#boton-vaciar");
     const btnBuy = $(".boton-comprar");
