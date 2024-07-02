@@ -32,7 +32,7 @@ function CeldasProduct() {
                     <td>{producto.detail}</td>
                     <td>
                         <div className="d-flex flex-column align-items-center fs-5">
-                            <Link to="#"><i className="bi bi-pencil-square decoration-none text-white"></i></Link>
+                            <Link to="/updateProduct"><i className="bi bi-pencil-square decoration-none text-white"></i></Link>
                             <Link to="#" onClick={() => setProductIdToDelete(producto.id)}>
                                 <i className="bi bi-trash decoration-none text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </Link>

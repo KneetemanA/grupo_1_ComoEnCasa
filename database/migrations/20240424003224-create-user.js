@@ -30,12 +30,12 @@ module.exports = {
       role: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date()
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date()

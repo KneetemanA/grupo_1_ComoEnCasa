@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'infoUser',
     tableName: 'infousers',
-    timestamps:false
+    timestamps:false,
+    underscored: true
   });
 
   sequelizePaginate.paginate(infoUser);

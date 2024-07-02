@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(methodOverride("_method"))
 app.use(partials())
-app.use(session({secret: "esto es secreto"}))
+app.use(session({secret: "esto es secreto", resave:true, saveUninitialized:true}))
 app.use(recordarmeCookie)
 app.use(cors());
 

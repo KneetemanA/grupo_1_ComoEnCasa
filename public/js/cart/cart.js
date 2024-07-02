@@ -26,7 +26,13 @@ const server = "http://localhost:3030";
 let productsCart = [];
 
 //Función para la url de la api carrito
-const getShoppingCart = (server) => fetch(`${server}/api/carrito?user_id`).then((res) => res.json());
+const getShoppingCart = async (server) => {
+    try {
+         return fetch(`${server}/api/carrito`).then((res) => res.json());
+    } catch (error) {
+        console.log(error);
+    }
+    }
 
 //Estructura de la tarjeta, trae los datos de los productos
 const getCartStructure = (p) => {
@@ -34,12 +40,15 @@ const getCartStructure = (p) => {
             <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
             <td class="td-name" id="detail">${p.detail}</td>
             <td class="td-price" id="price">$ ${convertMoney(p.price)}</td>
-            <td class="td-cantidad" id="quantity">${p.orderproduct.quantity}</td>
-            <td class="td-total" id="total">$ ${convertMoney(p.orderproduct.quantity * p.price)}</td>
+            
+            
             <td class="td-borrar" id="borrar" onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
           `;
 };
-
+/* 
+ <td class="td-cantidad" id="quantity">${p.orderproduct.quantity}</td>
+            <td class="td-total" id="total">$ ${convertMoney(p.orderproduct.quantity * p.price)}</td>
+*/
 // Función para cargar y ver tarjeta del carrito
 const paintCartInView = (products = [], containerCard) => {
     containerCard.innerHTML = "";
@@ -50,13 +59,19 @@ const paintCartInView = (products = [], containerCard) => {
 
 //Función para recargar la información del carrito
 const reloadCart = async (server, containerCard, outputTotal) => {
-    const {ok, 
-        data: { total, products }} = await getShoppingCart(server);
+    try {
+        
+        const {ok, data: { total, product }} = await getShoppingCart(server);
+            
+            console.log(product);
+            ok && (productsCart = product);
+            
+            paintCartInView(productsCart, containerCard);
+            outputTotal.innerHTML = total;
 
-      ok && (productsCart = products);
-    
-      paintCartInView(productsCart, containerCard);
-      outputTotal.innerHTML = total;
+        } catch (error) {
+            console.log(error.message);
+        }
 };
 
 
@@ -68,8 +83,9 @@ window.addEventListener("load", async (event) => {
     const btnDelete = $("#boton-vaciar");
     const btnBuy = $(".boton-comprar");
 
+
     try {
-        await reloadCart(server, containerCard, outputTotal);
+        reloadCart(server, containerCard, outputTotal);
     } catch (error) {
         console.error(error.message);
     }
@@ -77,11 +93,11 @@ window.addEventListener("load", async (event) => {
 //Función del boton vaciar carrito
     btnDelete.addEventListener("click", async () => {
         try {
-            const response = await fetch(`${server}/api/carrito/clear?user_id`, {
+            const response = await fetch(`${server}/api/carrito/clear`, {
                 method: "DELETE",
             });
             if (response.ok) {
-                await reloadCart(server, containerCard, outputTotal);
+                reloadCart(server, containerCard, outputTotal);
             } else {
                 console.error("Error al vaciar el carrito");
             }
@@ -93,7 +109,7 @@ window.addEventListener("load", async (event) => {
 // Función el boton comprar del carrito
     btnBuy.addEventListener("click", async () => {
         try {
-            const response = await fetch(`${server}/api/carrito/completar?user_id`, {
+            const response = await fetch(`${server}/api/carrito/completar`, {
                 method: "PATCH",
             });
             if (response.ok) {
@@ -121,7 +137,7 @@ window.addEventListener("load", async (event) => {
 
 const lessQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/less/${id}?user_id`, {
+        const response = await fetch(`${server}/api/carrito/less/${id}`, {
             method: "PATCH",
         });
         if (response.ok) {
@@ -137,7 +153,7 @@ const lessQuantity = async (id) => {
 //Función para aumentar la cantidad de productos del carrito
 const moreQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/more/${id}?user_id`, {
+        const response = await fetch(`${server}/api/carrito/more/${id}`, {
             method: "PATCH",
         });
         if (response.ok) {
@@ -153,7 +169,7 @@ const moreQuantity = async (id) => {
 //Función para remover los productos del carrito
 const removeProductToOrder = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/remover/${id}?user_id`, 
+        const response = await fetch(`${server}/api/carrito/remover/${id}`, 
         {
             method: "PATCH",
         });

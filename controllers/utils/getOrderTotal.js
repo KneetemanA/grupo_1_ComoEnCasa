@@ -1,9 +1,9 @@
 const getTotalOrder = (data = []) => {
-    let total = 0;
+    let total = 1;
     data.forEach(
       ({
         price,
-        orderproduct: {
+        OrderProducts: {
           dataValues: { quantity },
         },
       }) => {

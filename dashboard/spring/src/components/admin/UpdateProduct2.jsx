@@ -8,7 +8,7 @@ function UpdateProduct2() {
   const [producto, setProducto] = useState();
 
   function getProduct() {
-    fetch(`http://localhost:3030/api/products/${id}`)
+    fetch(`http://localhost:3030/api/product/${id}`)
       .then((res) => res.json())
       .then(data => {
         setProducto(data.producto);
@@ -32,7 +32,7 @@ function UpdateProduct2() {
     }
   
     try {
-      const response = await fetch(`http://localhost:3030/api/products/${id}`, {
+      const response = await fetch(`http://localhost:3030/api/product/${id}`, {
         method: 'PUT',
         body: JSON.stringify(product),
         headers: {

@@ -22,11 +22,11 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <div id="container-card">
-                        <tbody>
+                
+                        <tbody id="container-card">
                            <!-- ... CARDS ... -->
                         </tbody>
-                        </div>
+                        
                         
                     </table>
                     <div class="text-end">
@@ -51,13 +51,13 @@
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>$2000</td>
+                                <td id="total">$2000</td>
                             </tr>
                         </tbody>
                     </table>
                     <div>
                         <span class="btn btn-primary" id="boton-comprar" >
-                            <a href="#">Comprar</a>
+                            <a href="#" class="boton-comprar">Comprar</a>
                         </span>
                     </div>
                 </div>
@@ -66,6 +66,6 @@
     </main>
     <%- include ("./partials/footer") %>
 
-    <script src="../public/js/cart/"></script>
+    <script src="/js/cart/cart.js"></script>
 </body>
 </html>

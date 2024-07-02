@@ -1,3 +1,6 @@
+
 module.exports = {
-    getOrderPending: require("./getOrderPending")
+    getOrderPending: require("./getOrderPending"),
+    getOriginUrl: require("./getOriginUrl"),
+ 
   }

@@ -38,7 +38,7 @@
         "user_id": 1,
         "subtotal": 7500,
         "total": 8000,
-        "state": "completed",
+        "state": "pending",
         "products": [
             {
                 "id": 2,

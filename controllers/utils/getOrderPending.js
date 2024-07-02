@@ -7,7 +7,7 @@ module.exports = async (req) => {
       where: {
         [Op.and]: [
           {
-            user_id: req.session.userLogin?.id || req.query.user_id,
+            user_id: 3 //req.session.user?.id
           },
           {
             state: "pending",
@@ -15,7 +15,7 @@ module.exports = async (req) => {
         ],
       },
       defaults: {
-        user_id: req.session.userLogin?.id || req.query.user_id,
+        user_id: 3 //req.session.user?.id
       },
       include: [
         {
@@ -26,5 +26,6 @@ module.exports = async (req) => {
         },
       ],
     });
+    
   return dataOrder;
 };
