@@ -3,8 +3,9 @@ const db =require("../../../database/models")
 
 module.exports=function(req,res){
 
-    db.Order.findAll({
-        include:["user","products","orderProducts"],
+    db.OrderProduct.findAll({
+        include:["order","product"],
+      
     })
     .then((orders) => {
         res.status(200).json({

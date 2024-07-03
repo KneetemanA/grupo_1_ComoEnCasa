@@ -7,7 +7,7 @@ module.exports = async (req) => {
       where: {
         [Op.and]: [
           {
-            user_id: 3 //req.session.user?.id
+            user_id: req.session.user?.id
           },
           {
             state: "pending",
@@ -15,7 +15,7 @@ module.exports = async (req) => {
         ],
       },
       defaults: {
-        user_id: 3 //req.session.user?.id
+        user_id: req.session.user?.id
       },
       include: [
         {

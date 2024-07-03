@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const db = require("../../../database/models");
 const { getOrderPending,  } = require("../../utils");
+const { getTotalOrder } = require("../../utils/getOrderTotal");
 
 module.exports = async (req, res) => {
   try {
@@ -26,7 +27,7 @@ module.exports = async (req, res) => {
       ],
     });
 
-    const total = getTotalOrder (order.product);
+    const total = getTotalOrder(order.product);
     
     order.total = total;
     await order.save();
