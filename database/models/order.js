@@ -20,10 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"user_id",
         as:"user"
       })
-      // Order.hasMany(models.OrderProduct,{
-      //   foreignKey:"order_id",
-      //   as:"orderProducts"
-      // })
+      Order.hasMany(models.OrderProduct,{
+        foreignKey:"order_id",
+        as:"orderProducts"
+      })
     }
     
   }
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Order',
-    underscored:true,
+    underscored: true,
     createdAt: "created_at",
     updatedAt:"updated_at"
   });

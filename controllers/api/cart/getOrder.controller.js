@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
             association: "product",
             attributes: {
               include: [
-                [literal(`CONCAT('${getOriginUrl(req)}/api/product/', image)`),
+                [literal(`CONCAT('${getOriginUrl(req)}/api/product', image)`),
                   "image",
                 ], ],
             },},
