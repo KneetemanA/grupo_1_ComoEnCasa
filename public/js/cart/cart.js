@@ -39,14 +39,15 @@ const getCartStructure = (p) => {
     return `
       <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
       <td class="td-name" id="detail">${p.detail}</td>
-      <td class="td-price" id="price"> $${convertMoney(p.price)}</td>
-     
+      <td class="td-price" id="price">$${convertMoney(p.price)}</td>
+     <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td>
+     <td class="td-total" id="total">${convertMoney(p.OrderProduct.quantity * p.price)}</td>
       `
   };
 // /*  <td class="td-cantidad" id="quantity">${p.orderProducts[0].quantity}</td>
 //      <td class="td-total" id="total">$ ${convertMoney(p.orderProducts[0].quantity * p.price)}</td>
-//           <td class="td-cantidad" id="quantity">${p.orderProducts.quantity}</td> ;
-//             <td class="td-total" id="total">$ ${convertMoney(p.orderProducts.quantity * p.price)}</td>
+//           <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td> ;
+//             
 //             <td class="td-borrar" id="borrar" onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
 // */
 
