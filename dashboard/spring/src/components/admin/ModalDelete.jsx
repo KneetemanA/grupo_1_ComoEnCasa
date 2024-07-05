@@ -25,6 +25,7 @@ function ModalDelete({productId, refreshProducts}) {
   };
 
   return (
+    
     <div
       className="modal fade"
       id="exampleModal"
@@ -32,8 +33,8 @@ function ModalDelete({productId, refreshProducts}) {
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog">
-        <div className="modal-content bg-dark">
+      <div className="modal-dialog p-0">
+        <div className="modal-content bg-modal-edit">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
               Eliminar el producto
@@ -75,7 +76,7 @@ function ModalDelete({productId, refreshProducts}) {
 
 }
 ModalDelete.propTypes = {
-    productId: PropTypes.string.isRequired,
+    productId: PropTypes.string,
     refreshProducts: PropTypes.func.isRequired
   
   }
