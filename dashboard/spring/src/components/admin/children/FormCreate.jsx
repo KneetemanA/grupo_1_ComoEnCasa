@@ -10,27 +10,21 @@ function FormCreate({ onSubmit }) {
   } = useForm();
 
   return (
-    <div className="container-form mx-auto mt-4 px-5">
-    <Link to="/products"><button type="button" className="btn btn-outline-secondary text-white mb-3">Ver lista</button></Link>
+    <div className="container-form  modal-lg mx-auto mt-4 px-5">
+      <Link to="/products">
+        <button type="button" className="btn btn-outline-secondary text-white mb-3">
+          Ver lista
+        </button>
+      </Link>
       <form
-        className="row mx-auto text-center p-4 form-border text-white"
+        className="row g-3 mx-auto p-4 bg-modal-edit text-white rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
-
-        // Cuando el usuario envía el formulario:
-        // react-hook-form recopila todos los datos del formulario.
-        // handleSubmit procesa estos datos.
-        // Luego, handleSubmit llama a onSubmit (que es la función handleFormSubmit de CreateProduct) y le pasa los datos del formulario como argumento.
       >
-        <h4>Creación de Nuevo Producto</h4>
-        <h6 className="text-light" id="form-create">
-          Ingrese la información
-        </h6>
+        <h3 className="col-12 text-center fs-4 fw-bolder mb-4">Creación de Nuevo Producto</h3>
 
-        <div className="col-sm-12 col-md-6 mb-2">
-          <label className="form-label d-block fw-bolder" htmlFor="name">
-            Nombre
-          </label>
+        <div className="col-md-6">
+          <label className="form-label fw-bolder text-center d-block" htmlFor="name">Nombre</label>
           <input
             className="form-control"
             type="text"
@@ -41,32 +35,23 @@ function FormCreate({ onSubmit }) {
           {errors.name && <p className="text-danger">{errors.name.message}</p>}
         </div>
 
-        <div className="col-sm-12 col-md-6 mb-2">
-          <label className="form-label d-block fw-bolder" htmlFor="price">
-            Precio
-          </label>
+        <div className="col-md-6">
+          <label className="form-label fw-bolder text-center d-block" htmlFor="price">Precio</label>
           <input
             className="form-control"
             type="number"
             id="price"
             {...register("price", {
               required: "El precio es requerido",
-              min: {
-                value: 0,
-                message: "El precio debe ser mayor o igual a 0",
-              },
+              min: { value: 0, message: "El precio debe ser mayor o igual a 0" },
             })}
             placeholder="Ingrese el precio del producto"
           />
-          {errors.price && (
-            <p className="text-danger">{errors.price.message}</p>
-          )}
+          {errors.price && <p className="text-danger">{errors.price.message}</p>}
         </div>
 
-        <div className="col-sm-12 col-md-6 mb-2">
-          <label className="form-label d-block fw-bolder" htmlFor="discount">
-            Descuento
-          </label>
+        <div className="col-md-6">
+          <label className="form-label fw-bolder text-center d-block" htmlFor="discount">Descuento</label>
           <input
             className="form-control"
             type="number"
@@ -74,146 +59,103 @@ function FormCreate({ onSubmit }) {
             {...register("discount", {
               required: "El descuento es requerido",
               min: { value: 0, message: "El descuento no puede ser negativo" },
-              max: {
-                value: 100,
-                message: "El descuento no puede ser mayor a 100",
-              },
+              max: { value: 100, message: "El descuento no puede ser mayor a 100" },
             })}
             placeholder="Ingrese el descuento del producto"
           />
-          {errors.discount && (
-            <p className="text-danger">{errors.discount.message}</p>
-          )}
+          {errors.discount && <p className="text-danger">{errors.discount.message}</p>}
         </div>
 
-        <div className="col-sm-12 col-md-6 mb-2">
-          <label className="form-label fw-bolder">Envío Gratis</label>
-          <div className="d-flex gap-3 justify-content-center">
-            <div>
+        <div className="col-md-6">
+          <label className="form-label fw-bolder text-center d-block">Envío Gratis</label>
+          <div className="text-center">
+            <div className="form-check form-check-inline">
               <input
-                className="form-check-input mx-1"
+                className="form-check-input"
                 type="radio"
                 id="si"
                 value="true"
-                {...register("free_shipping", {
-                  required: "Debes seleccionar una opción",
-                })}
+                {...register("free_shipping", { required: "Debes seleccionar una opción" })}
               />
-              <label className="form-check-label fw-bolder" htmlFor="si">
-                Sí
-              </label>
+              <label className="form-check-label" htmlFor="si">Sí</label>
             </div>
-            <div>
+            <div className="form-check form-check-inline">
               <input
-                className="form-check-input mx-1"
+                className="form-check-input"
                 type="radio"
                 id="no"
                 value="false"
-                {...register("free_shipping", {
-                  required: "Debes seleccionar una opción",
-                })}
+                {...register("free_shipping", { required: "Debes seleccionar una opción" })}
               />
-              <label className="form-check-label fw-bolder" htmlFor="no">
-                No
-              </label>
+              <label className="form-check-label" htmlFor="no">No</label>
             </div>
           </div>
-          {errors.free_shipping && (
-            <p className="text-danger">{errors.free_shipping.message}</p>
-          )}
+          {errors.free_shipping && <p className="text-danger">{errors.free_shipping.message}</p>}
         </div>
 
-        <div className="col-12 mb-2">
-          <label className="form-label fw-bolder">Imagen del producto</label>
+        <div className="col-12">
+          <label className="form-label fw-bolder text-center d-block">Imagen del producto</label>
           <input
             className="form-control"
             type="file"
             id="image"
-            {...register("image", {
-              required: "La imagen es requerida",
-            })}
+            {...register("image", { required: "La imagen es requerida" })}
           />
-          {errors.image && (
-            <p className="text-danger">{errors.image.message}</p>
-          )}
+          {errors.image && <p className="text-danger">{errors.image.message}</p>}
         </div>
 
-        <div className="col-12 mb-2">
-          <label className="form-label fw-bolder">Categoría</label>
-          <div className="d-flex gap-3 justify-content-center">
-            <div>
+        <div className="col-12">
+          <label className="form-label fw-bolder text-center d-block">Categoría</label>
+          <div className="text-center">
+            <div className="form-check form-check-inline">
               <input
-                className="form-check-input mx-1"
+                className="form-check-input"
                 type="radio"
                 id="pizza"
                 value="2"
-                {...register("category_id", {
-                  required: "Debes seleccionar una categoría",
-                })}
+                {...register("category_id", { required: "Debes seleccionar una categoría" })}
               />
-              <label className="form-check-label fw-bolder" htmlFor="pizza">
-                Pizza
-              </label>
+              <label className="form-check-label" htmlFor="pizza">Pizza</label>
             </div>
-            <div>
+            <div className="form-check form-check-inline">
               <input
-                className="form-check-input mx-1"
+                className="form-check-input"
                 type="radio"
                 id="hamburguesa"
                 value="3"
-                {...register("category_id", {
-                  required: "Debes seleccionar una categoría",
-                })}
+                {...register("category_id", { required: "Debes seleccionar una categoría" })}
               />
-              <label
-                className="form-check-label fw-bolder"
-                htmlFor="hamburguesa"
-              >
-                Hamburguesa
-              </label>
+              <label className="form-check-label" htmlFor="hamburguesa">Hamburguesa</label>
             </div>
-            <div>
+            <div className="form-check form-check-inline">
               <input
-                className="form-check-input mx-1"
+                className="form-check-input"
                 type="radio"
                 id="papas"
                 value="1"
-                {...register("category_id", {
-                  required: "Debes seleccionar una categoría",
-                })}
+                {...register("category_id", { required: "Debes seleccionar una categoría" })}
               />
-              <label className="form-check-label fw-bolder" htmlFor="papas">
-                Papas Fritas
-              </label>
+              <label className="form-check-label" htmlFor="papas">Papas Fritas</label>
             </div>
           </div>
-          {errors.category_id && (
-            <p className="text-danger">{errors.category_id.message}</p>
-          )}
+          {errors.category_id && <p className="text-danger">{errors.category_id.message}</p>}
         </div>
 
-        <div className="col-12 mb-4 mt-3">
+        <div className="col-12">
+          <label className="form-label fw-bolder text-center d-block" htmlFor="detail">Detalles del producto</label>
           <textarea
             className="form-control"
             id="detail"
-            {...register("detail", {
-              required: "Debes proporcionar detalles del producto",
-            })}
-            style={{ height: "75px" }}
+            rows="3"
+            {...register("detail", { required: "Debes proporcionar detalles del producto" })}
             placeholder="Ingrese los detalles del producto"
           ></textarea>
-          {errors.detail && (
-            <p className="text-danger">{errors.detail.message}</p>
-          )}
+          {errors.detail && <p className="text-danger">{errors.detail.message}</p>}
         </div>
 
-        <div className="col mb-1 d-flex justify-content-end gap-2">
-          <button type="submit" className="btn btn-success">
-            Crear
-          </button>
-          <button type="reset" className="btn btn-danger">
-            Limpiar
-          </button>
+        <div className="col-12 text-end mt-4">
+          <button type="submit" className="btn btn-outline-light me-2">Crear</button>
+          <button type="reset" className="btn btn-danger">Limpiar</button>
         </div>
       </form>
     </div>
