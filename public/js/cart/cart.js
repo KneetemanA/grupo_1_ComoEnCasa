@@ -37,33 +37,35 @@ const getShoppingCart = async (server) => {
 //Estructura de la tarjeta, trae los datos de los productos
 const getCartStructure = (p) => {
     return `
-            <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
-            <td class="td-name" id="detail">${p.detail}</td>
-            <td class="td-price" id="price">$ ${convertMoney(p.price)}</td>
-           `
-};
-/* 
-            <td class="td-cantidad" id="quantity"></td>;
-            <td class="td-total" id="total">$ ${convertMoney(p.orderproduct.quantity * p.price)}</td>
-            <td class="td-borrar" id="borrar" onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
-*/
+      <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
+      <td class="td-name" id="detail">${p.detail}</td>
+      <td class="td-price" id="price"> $${convertMoney(p.price)}</td>
+     
+      `
+  };
+// /*  <td class="td-cantidad" id="quantity">${p.orderProducts[0].quantity}</td>
+//      <td class="td-total" id="total">$ ${convertMoney(p.orderProducts[0].quantity * p.price)}</td>
+//           <td class="td-cantidad" id="quantity">${p.orderProducts.quantity}</td> ;
+//             <td class="td-total" id="total">$ ${convertMoney(p.orderProducts.quantity * p.price)}</td>
+//             <td class="td-borrar" id="borrar" onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
+// */
 
 // Función para cargar y ver tarjeta del carrito
 const paintCartInView = (products = [], containerCard) => {
     containerCard.innerHTML = "";
     products.forEach((p) => {
-        containerCard.innerHTML += getCartStructure(p);
+      containerCard.innerHTML += getCartStructure(p);
     });
-};
+  };
 
 //Función para recargar la información del carrito
 const reloadCart = async (server, containerCard, outputTotal) => {
     try {
         
-        const {ok, data: { total, product }} = await getShoppingCart(server);
+        const {ok, data: { total, products }} = await getShoppingCart(server);
             
-            console.log(product);
-            ok && (productsCart = product);
+            console.log(products);
+            ok && (productsCart = products);
             
             paintCartInView(productsCart, containerCard);
             outputTotal.innerHTML = total;

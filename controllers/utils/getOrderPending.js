@@ -15,11 +15,12 @@ module.exports = async (req) => {
         ],
       },
       defaults: {
-        user_id: req.session.user?.id
+        user_id: req.session.user?.id,
+        state: "pending",
       },
       include: [
         {
-          association: "product",
+          association: "products",
           through: {
             attributes: ["quantity"],
           },

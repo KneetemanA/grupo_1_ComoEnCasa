@@ -26,26 +26,28 @@ module.exports = async (req, res) => {
     order = await order.reload({
       include: [
         {
-          association: "product",
+          association: "products",
           through: {
             attributes: ["quantity"],
           },
         },
       ],
     });
-    const total = getTotalOrder(order.product);
+    const total = getTotalOrder(order.products);
     order.total = total;
 
     await order.save();
 
     res.status(200).json({
       ok: true,
+      total,
       msg: "Cantidad aumentada con éxito",
     });
 
   } catch (error) {
     res.status(500).json({
       ok: false,
+      total,
       msg: error.message,
     });
   }

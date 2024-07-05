@@ -11,12 +11,15 @@ module.exports = async (req, res) => {
       data: await order.reload({
         include: [
           {
-            association: "product",
+            association: "products",
             attributes: {
               include: [
                 [literal(`CONCAT('${getOriginUrl(req)}/api/product', image)`),
                   "image",
                 ], ],
+                through: {
+                  attributes: ["quantity"],
+              }
             },},
         ],
       }),
