@@ -3,6 +3,11 @@ const $ = (element) => document.querySelector(element);
 //Función para convertir la plata 
 const convertMoney = (num = 0) => num.toLocaleString("es-AR", { style: "currency", currency: "ARS" });
 
+const subTotal = (price, discount, OrderProduct) => {
+    const { quantity } = OrderProduct;
+    return (+price * quantity) - ((+price * discount / 100) * quantity);
+};
+
 const createAlertProgress = ({ name = "Realizando la compra", html = " progreso <b></b> milisegundos.", timer = 2000 }) => {
     let timerInterval;
     return Swal.fire({
@@ -36,22 +41,18 @@ const getShoppingCart = async (server) => {
 
 //Estructura de la tarjeta, trae los datos de los productos
 const getCartStructure = (p) => {
+    const subtotal = subTotal(p.price, p.discount, p.OrderProduct);
     return `
       <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
       <td class="td-name" id="detail">${p.detail}</td>
       <td class="td-price" id="price">$${convertMoney(p.price)}</td>
      <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td>
-     <td class="td-total" id="total">${convertMoney(p.OrderProduct.quantity * p.price)}</td>
+     <td class="td-total" id="total">${convertMoney(subtotal)}</td>
       `
   };
-// /*  <td class="td-cantidad" id="quantity">${p.orderProducts[0].quantity}</td>
-//      <td class="td-total" id="total">$ ${convertMoney(p.orderProducts[0].quantity * p.price)}</td>
-//           <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td> ;
-//             
-//             <td class="td-borrar" id="borrar" onclick="removeProductCart(${p.id})"><i class="fa-solid fa-trash boton-borrar"></i></td>
-// */
 
-// Función para cargar y ver tarjeta del carrito
+
+// Función para cargar y ver tarjeta del carrito, p.OrderProduct.quantity * p.price
 const paintCartInView = (products = [], containerCard) => {
     containerCard.innerHTML = "";
     products.forEach((p) => {
