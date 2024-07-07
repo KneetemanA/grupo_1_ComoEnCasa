@@ -47,8 +47,9 @@ function CreateProduct() {
         timer: 1500
       });
 
-  location("/products#"+ response.data.id )
-
+ location("/products#"+ response.data.id )
+  
+  open("http://localhost:3030/productos/detalle/" + response.data.id, "blank")
      
       
     

@@ -23,7 +23,7 @@ module.exports = async function (req, res) {
       free_shipping: req.body.free_shipping === 'true',
       image: image ? `/images/${image.filename}` : imagenPrevia,
       detail: req.body.detail,
-      category_id: +req.body.category_id
+      category_id: req.body.category_id
     };
 
    
