@@ -1,14 +1,4 @@
 const getTotalOrder = (orders = []) => {
-//   let total = 0;
-
-//   data.forEach(({ price, orderProducts }) => {
-    
-//     orderProducts.forEach(({ quantity }) => 
-// {
-//       total += price * quantity;
-//     });
-//   });
-//   return total;
 
 const total = orders.map(order => {
   let total = 0;
@@ -25,4 +15,5 @@ const total = orders.map(order => {
 return total;
 
 };
+
 module.exports = { getTotalOrder };

@@ -37,48 +37,43 @@
         </form>
       </div>
     </div>
+    
     <div class="modalc" id="modalCarrito">
       <div class="modal-contenido">
         <span class="closeModal"><i class="fa-solid fa-circle-xmark fs-1"></i></span>
         <div class="modalc-header mb-3">
           <span> <i class="fa-solid fa-cart-shopping fs-2"></i></span>
           <h2>Carrito de compras</h2>
-          
         </div>
         <div class="modalc-body">
-          <div class="product-item d-flex justify-content-between align-items-center p-2 my-2 bg-white rounded shadow-sm">
-            <div class="d-flex align-items-center">
-              <img class="product-image me-2 rounded" src="/images/default.jpg" alt="Product image">
-              <span class="product-name fs-6 fw-semibold ">Pizza Muzza</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 agregar-items rounded shadow-sm bg-light">
-              <button class="btn bg-secondary btn-sm  fw-bold fs-6 boton-agregar-restar  rounded ">-</button>
-              <span class="quantity fs-5 fw-bold ">1</span>
-              <button class="btn bg-primary btn-sm  fw-bold fs-6 boton-agregar-restar rounded ">+</button>
-              <button class="btn btn-outline-danger bg-danger btn-sm fs-6 ms-1 boton-agregar-restar rounded ">
-                <i class="fas fa-trash fs-6"></i>
-              </button>
-            </div>
-          </div>
-          <div class="product-item d-flex justify-content-between align-items-center p-2 my-3 bg-white rounded shadow-sm">
-            <div class="d-flex align-items-center">
-              <img class="product-image me-2 rounded" src="/images/default.jpg" alt="Product image">
-              <span class="product-name fs-6 fw-semibold ">Pizza Muzza</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 agregar-items rounded shadow-sm bg-light">
-              <button class="btn bg-secondary btn-sm  fw-bold fs-6 boton-agregar-restar  rounded   ">-</button>
-              <span class="quantity fs-5 fw-bold ">1</span>
-              <button class="btn bg-primary btn-sm  fw-bold fs-6 boton-agregar-restar rounded ">+</button>
-              <button class="btn btn-outline-danger bg-danger btn-sm fs-6 ms-1 boton-agregar-restar rounded ">
-                <i class="fas fa-trash fs-6"></i>
-              </button>
-            </div>
-          </div>
-          <a href="/carrito" class="btn btn-primary">Ir a pagar</a>
+          <% if (productsCart && productsCart.length > 0) { %>
+            <% productsCart.forEach(p => { %>
+              <div class="product-item d-flex justify-content-between align-items-center p-2 my-2 bg-white rounded shadow-sm">
+                <div class="d-flex align-items-center">
+                  <img class="product-image me-2 rounded" src="<%= p.image %>" alt="Product image">
+                  <span class="product-name fs-6 fw-semibold"><%= p.title %></span>
+                </div>
+                <div class="d-flex align-items-center gap-2 agregar-items rounded shadow-sm bg-light">
+                  <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="lessQuantity('<%= p.id %>')">-</button>
+                  <span class="quantity fs-5 fw-bold"><%= p.OrderProduct.quantity %></span>
+                  <button class="btn bg-primary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="moreQuantity('<%= p.id %>')">+</button>
+                  <button class="btn btn-outline-danger bg-danger btn-sm fs-6 ms-1 boton-agregar-restar rounded" onclick="removeProductToOrder('<%= p.id %>')">
+                    <i class="fas fa-trash fs-6"></i>
+                  </button>
+                </div>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>No hay productos en el carrito.</p>
+          <% } %>
         </div>
+        <a href="/carrito" class="btn btn-primary">Ir a pagar</a>
       </div>
+    </div>
+ 
     </div>
 
     <script src="/js/modal-carrito.js"></script>
     <script src="/js/cart/cart.js"></script>
+    <script src="/js/modalCarrito1.js"></script>
   </header>
