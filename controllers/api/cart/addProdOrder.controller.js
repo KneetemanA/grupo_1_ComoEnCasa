@@ -1,6 +1,8 @@
 const { Op } = require("sequelize");
 const db = require("../../../database/models");
-const { getOrderPending, getTotalOrder } = require("../../utils");
+const { getOrderPending } = require("../../utils");
+const { getTotalOrder } = require("../../utils/getOrderTotal")
+
 
 module.exports = async (req, res) => {
   try {
@@ -9,26 +11,12 @@ module.exports = async (req, res) => {
 
     let [order, isCreate] = await getOrderPending(req);
 
-    let orderProduct = await db.OrderProduct.findOne({
-      where: {
-        [Op.and]: 
-        [{ order_id: order.id }, 
-          { product_id }]
-      }
-    });
-
-    if (orderProduct) {
-    
-      orderProduct.quantity++;
-      await orderProduct.save();
-    
-    } else {
-    
-      await db.OrderProduct.create({ 
+       await db.OrderProduct.create({ 
         order_id: order.id, 
         product_id, 
-        quantity: 1 });
-    }
+        quantity: 1 
+      });
+   
 
     order = await order.reload({
       include: [
@@ -43,13 +31,11 @@ module.exports = async (req, res) => {
     await order.save();
 
     res.status(201).json({ 
-      ok: true, 
-      total, 
+      ok: true,
       msg: "Producto agregado al carrito con éxito" });
   } catch (err) {
     res.status(500).json({ 
-      ok: false, 
-      total, 
+      ok: false,
       msg: err.message });
   }
 };

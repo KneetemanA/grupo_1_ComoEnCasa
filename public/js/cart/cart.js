@@ -8,6 +8,7 @@ const subTotal = (price, discount, OrderProduct) => {
     return (+price * quantity) - ((+price * discount / 100) * quantity);
 };
 
+
 const createAlertProgress = ({ name = "Realizando la compra", html = " progreso <b></b> milisegundos.", timer = 2000 }) => {
     let timerInterval;
     return Swal.fire({
@@ -43,11 +44,13 @@ const getShoppingCart = async (server) => {
 const getCartStructure = (p) => {
     const subtotal = subTotal(p.price, p.discount, p.OrderProduct);
     return `
-      <td class="td-img" id="img"><img src="${p.image}" alt="imagen-producto"></td>
+      <td class="td-img" id="img"><img src="${p.image}" width=100" height="80"></td>
       <td class="td-name" id="detail">${p.detail}</td>
       <td class="td-price" id="price">$${convertMoney(p.price)}</td>
-     <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td>
-     <td class="td-total" id="total">${convertMoney(subtotal)}</td>
+      <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded"  onclick="lessQuantity('<%= p.id %>')">-</button>
+      <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td>
+      <button class="btn bg-primary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="moreQuantity('<%= p.id %>')">+</button>
+       <td class="td-total" id="total">${convertMoney(subtotal)}</td>
       `
   };
 
@@ -77,15 +80,19 @@ const reloadCart = async (server, containerCard, outputTotal) => {
         }
 };
 
+//Función para calcular el total de los subtotales
+/*const totalFinal = () => {
+    const total = calcularTotal(productsCart);
+    const outputTotal = $("#total");
+    outputTotal.textContent = `$${total.toFixed(2)}`
+}*/
 
 //Capturar los selectores de la tarjeta del carrito
-
 window.addEventListener("load", async (event) => {
     const containerCard = $("#container-card");
     const outputTotal = $("#total");
     const btnDelete = $("#boton-vaciar");
     const btnBuy = $(".boton-comprar");
-
 
     try {
         reloadCart(server, containerCard, outputTotal);
@@ -93,11 +100,12 @@ window.addEventListener("load", async (event) => {
         console.error(error.message);
     }
 
+
 //Función del boton vaciar carrito
     btnDelete.addEventListener("click", async () => {
         try {
             const response = await fetch(`${server}/api/carrito/clear`, {
-                method: "DELETE",
+                method: "PATCH",
             });
             if (response.ok) {
                 reloadCart(server, containerCard, outputTotal);
@@ -136,12 +144,13 @@ window.addEventListener("load", async (event) => {
 
 });
 
+
 //Función para disminuir la cantidad de productos del carrito
 
 const lessQuantity = async (id) => {
     try {
 
-        const containerCard = $("#container-card");
+    const containerCard = $("#container-card");
     const outputTotal = $("#total")
 
     const { ok, msg } = await fetch(`${server}/api/carrito/less/${id}`, {
@@ -151,21 +160,11 @@ const lessQuantity = async (id) => {
       if (ok) {
         reloadCart(server, containerCard, outputTotal);
       }
-      // console.log({ok, msg})
+    
     } catch (error) {
       console.error(error.message);
     }
-    //     const response = await fetch(`${server}/api/carrito/less/${id}`, {
-    //         method: "PATCH",
-    //     });
-    //     if (response.ok) {
-    //         await reloadCart(server, containerCard, outputTotal);
-    //     } else {
-    //         console.error("Error al disminuir la cantidad del producto");
-    //     }
-    // } catch (error) {
-    //     console.error(error.message);
-    // }
+   
 };
 
 //Función para aumentar la cantidad de productos del carrito
@@ -181,21 +180,10 @@ const moreQuantity = async (id) => {
           if (ok) {
             reloadCart(server, containerCard, outputTotal);
           }
-          // console.log({ok, msg})
         } catch (error) {
           console.error(error.message);
         }
-    //     const response = await fetch(`${server}/api/carrito/more/${id}`, {
-    //         method: "PATCH",
-    //     });
-    //     if (response.ok) {
-    //         await reloadCart(server, containerCard, outputTotal);
-    //     } else {
-    //         console.error("Error al aumentar la cantidad del producto");
-    //     }
-    // } catch (error) {
-    //     console.error(error.message);
-    // }
+    
 };
 
 //Función para remover los productos del carrito
@@ -211,20 +199,9 @@ const removeProductToOrder = async (id) => {
           if (ok) {
             reloadCart(server, containerCard, outputTotal);
           }
-          // console.log({ok, msg})
+        
         } catch (error) {
           console.error(error.message);
         }
-    //     const response = await fetch(`${server}/api/carrito/remover/${id}`, 
-    //     {
-    //         method: "PATCH",
-    //     });
-    //     if (response.ok) {
-    //         await reloadCart(server, containerCard, outputTotal);
-    //     } else {
-    //         console.error("Error al eliminar el producto del carrito");
-    //     }
-    // } catch (error) {
-    //     console.error(error.message);
-    // }
+
 };

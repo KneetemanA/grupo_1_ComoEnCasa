@@ -2,7 +2,8 @@
 <html lang="es">
 <%- include ("./partials/head",{title: "Carrito de compras",bootstrapActive: true})%>
 <body>
-    <%- include ("./partials/header") %>
+    <%- include ("./partials/header", { userlogueado: userlogueado, productsCart: productsCart }) %>
+    
     <main class="productCart">
         <div class="titulo-pagina">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -42,16 +43,12 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>Subtotal</td>
-                                <td>$2000</td>
-                            </tr>
-                            <tr>
                                 <td>Descuento</td>
-                                <td>$0</td>
+                                <td id="descuento"></td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td id="total">$</td>
+                                <td id="totalFinal">$</td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,11 +59,14 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </main>
+        </div>    
+    
+        <script src="/js/cart/cart.js"></script>
+    <script src="/js/cart/modalCarrito"></script>
+    <script src="/js/cart/total.js"></script>
+    
+</main>
     <%- include ("./partials/footer") %>
 
-    <script src="/js/cart/cart.js"></script>
-    <script src="/js/cart/modalCarrito"></script>
 </body>
 </html>

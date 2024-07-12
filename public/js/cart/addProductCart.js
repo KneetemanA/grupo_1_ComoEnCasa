@@ -1,17 +1,16 @@
-const { default: Swal } = require("sweetalert2")
-
-const createAlert = ({type, name, timer}) =>{
-    Swal.fire({
-        position: "top-end",
-        icon: type,
-        name,
-        showConfirmButton: false,
-        timer
-    })
+const createAlert = ({type, title, timer}) => {
+  Swal.fire({
+    position: "top-end",
+    icon: type,
+    title,
+    showConfirmButton: false,
+    timer
+  });
 }
 
-toastr.option = {
-"closeButton": true,
+
+toastr.options = {
+  "closeButton": true,
   "debug": false,
   "newestOnTop": false,
   "progressBar": false,
@@ -29,17 +28,17 @@ toastr.option = {
 }
 
 
-const addProductCart = async (id) => {
-    const server = "http//localhost:3030/"
-    try {
-        const { ok, msg } = await fetch(`${server}/api/carrito/agregar/${id}`, 
-            {
-          method: "PATCH",
-        }).then((res) => res.json());
-    
-        ok && 
-        toastr["success"]("Producto agregado al carrito con éxito")
-      } catch (error) {
-        console.error(error.message);
-      }
-}
+async function addProductCart(id) {
+  const server = "http://localhost:3030";
+  try {
+    const { ok, msg } = await fetch(`${server}/api/carrito/agregar/${id}`, {
+      method: "PATCH",
+    }).then((res) => res.json());
+
+    ok && 
+    toastr["success"]("Producto agregado al carrito con éxito")
+   
+  } catch (error) {
+    console.error(error.message);
+  }
+};

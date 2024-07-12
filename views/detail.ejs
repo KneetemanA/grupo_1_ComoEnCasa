@@ -49,8 +49,8 @@
 							</li>
 						</ul>
 
-						<a href="/carrito" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600;" onclick="addProductCart('<%= p.id %>')">Agregar al carrito</a>
-						<a href="/productos" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600; text-decoration: none; display: inline-block;">
+	<button type="button" id="agregarCarrito" onclick="addProductCart('<%= p.id %>')" class="btn btn-lg agregarCarrito" style="background-color: #FF6600; color: white; border-color: #FF6600;" >Agregar al carrito</button>
+	<a href="/productos" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600; text-decoration: none; display: inline-block;">
 							Menu
 						  </a>
 					</article>
@@ -59,6 +59,7 @@
 		</div>
 	</div>
 	<!-- /product detail -->
+	<script src="/js/addProductCart.js"></script>
 
 	<!-- footer -->
 	<%- include('./partials/footer') %>
