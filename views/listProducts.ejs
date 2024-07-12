@@ -31,7 +31,7 @@
                   </span>
 
                    </a>
-                  <button>Agregar al carrito</button>
+                  <button onclick="addProductCart('<%= p.id %>')">Agregar al carrito</button>
                 </div>
               </article>
               <% }) %>
@@ -63,7 +63,7 @@
                   </span>
 
                    </a>
-                  <button>Agregar al carrito</button>
+                  <button onclick="addProductCart('<%= p.id %>')">Agregar al carrito</button>
                 </div>
               </article>
               <% }) %>
@@ -92,7 +92,7 @@
                   </span>
 
                    </a>
-                  <button>Agregar al carrito</button>
+                  <button onclick="addProductCart('<%= p.id %>')">Agregar al carrito</button>
                 </div>
               </article>
               <% }) %>
@@ -104,6 +104,9 @@
 
       <%- include ("./partials/footer") %>
 
+
+      <script src="/js/cart/addProductCart.js"></script>
+      
         <!--Boostrap script-->
         <%- include ("./partials/scripts") %>
   </body>

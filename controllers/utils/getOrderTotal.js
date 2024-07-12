@@ -1,19 +1,34 @@
-const getTotalOrder = (orders = []) => {
-
-const total = orders.map(order => {
-  let total = 0;
-  order.products.forEach(product => {
-    const quantity = product.OrderProducts.quantity;
-    total += product.price * quantity;
-  });
-  return {
-    ...order.toJSON(),
-    total,
-  };
-});
-
-return total;
-
+const getTotalOrder = (data = []) => {
+  return data.reduce(
+    (
+      acum,
+      {
+        price,
+        OrderProducts: {
+          dataValues: { quantity },
+        },
+      }
+    ) => {
+      acum += price * quantity;
+      return acum;
+    },
+    0
+  );
 };
 
-module.exports = { getTotalOrder };
+const getTotalOrderV2 = (data = []) => {
+  let total = 0;
+  data.forEach(
+    ({
+      price,
+      OrderProducts: {
+        dataValues: { quantity },
+      },
+    }) => {
+      total += price * quantity;
+    }
+  );
+  return total;
+};
+
+module.exports = { getTotalOrder, getTotalOrderV2 };

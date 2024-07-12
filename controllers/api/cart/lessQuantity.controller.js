@@ -1,8 +1,11 @@
 const { Op } = require("sequelize");
 const db = require("../../../database/models");
-const { getOrderPending, getTotalOrder } = require("../../utils");
+const { getOrderPending } = require("../../utils");
+const { getTotalOrder } = require("../../utils/getOrderTotal");
+
 
 module.exports = async (req, res) => {
+  let total;
   try {
     const { id } = req.params;
     let [order, isCreate] = await getOrderPending(req);
@@ -34,6 +37,7 @@ module.exports = async (req, res) => {
           },
         ],
       });
+
       const total = getTotalOrder(order.products);
       order.total = total;
       await order.save();

@@ -22,6 +22,5 @@ module.exports = async (req) => {
       },
     ],
   });
-  // console.log(dataOrder)
-  return dataOrder; // [order,isCreate]
+  return dataOrder;
 };

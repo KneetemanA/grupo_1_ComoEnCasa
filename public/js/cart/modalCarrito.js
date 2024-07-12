@@ -36,12 +36,12 @@ const paintCartInView = (products = [], containerCard) => {
 };
 
 
-const reloadCart = async (server, containerCard, outputTotal) => {
+const reloadCart = async (server, modalc, carritoBoton) => {
     try {
         const { ok, data: { total, products } } = await getShoppingCart(server);
 
         if (ok) {
-            paintCartInView(products, containerCard);
+            paintCartInView(products, modalc, carritoBoton);
             outputTotal.innerHTML = `Total: ${total}`;
         }
     } catch (error) {
@@ -79,46 +79,54 @@ window.addEventListener("load", function() {
 // Funciones que necesitas definir para las acciones de los botones
 const lessQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/less/${id}`, {
-            method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al disminuir la cantidad del producto");
-        }
+        let modalc = document.querySelector("#modalCarrito");
+    let carritoBoton = document.querySelector("#modal-carrito");
+
+    const { ok, msg } = await fetch(`${server}/api/carrito/less/${id}`, {
+        method: "PATCH",
+      }).then((res) => res.json());
+  
+      if (ok) {
+        reloadCart(server, modalc, carritoBoton);
+      }
+      // console.log({ok, msg})
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
 };
 
 const moreQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/more/${id}`, {
-            method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al aumentar la cantidad del producto");
-        }
+        let modalc = document.querySelector("#modalCarrito");
+    let carritoBoton = document.querySelector("#modal-carrito");
+
+    const { ok, msg } = await fetch(`${server}/api/carrito/more/${id}`, {
+        method: "PATCH",
+      }).then((res) => res.json());
+  
+      if (ok) {
+        reloadCart(server, modalc, carritoBoton);
+      }
+      // console.log({ok, msg})
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
 };
 
 const removeProductToOrder = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/remover/${id}`, 
-        {
-            method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al eliminar el producto del carrito");
-        }
+        let modalc = document.querySelector("#modalCarrito");
+    let carritoBoton = document.querySelector("#modal-carrito");
+
+    const { ok, msg } = await fetch(`${server}/api/carrito/remover/${id}`, {
+        method: "PATCH",
+      }).then((res) => res.json());
+  
+      if (ok) {
+        reloadCart(server, modalc, carritoBoton);
+      }
+      // console.log({ok, msg})
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
 };

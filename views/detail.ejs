@@ -5,7 +5,7 @@
 <head><link rel="stylesheet" href="/css/detail.css"></head>
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %>
+	<%- include('./partials/header', { userlogueado: userlogueado, productsCart: productsCart }) %>
 	<!-- /Header -->
 
 	<!-- product detail -->
@@ -49,7 +49,7 @@
 							</li>
 						</ul>
 
-						<a href="/carrito" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600;">Agregar al carrito</a>
+						<a href="/carrito" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600;" onclick="addProductCart('<%= p.id %>')">Agregar al carrito</a>
 						<a href="/productos" class="btn btn-lg agregarCarritoDetail" style="background-color: #FF6600; color: white; border-color: #FF6600; text-decoration: none; display: inline-block;">
 							Menu
 						  </a>

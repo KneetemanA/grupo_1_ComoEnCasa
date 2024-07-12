@@ -140,48 +140,91 @@ window.addEventListener("load", async (event) => {
 
 const lessQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/less/${id}`, {
-            method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al disminuir la cantidad del producto");
-        }
+
+        const containerCard = $("#container-card");
+    const outputTotal = $("#total")
+
+    const { ok, msg } = await fetch(`${server}/api/carrito/less/${id}`, {
+        method: "PATCH",
+      }).then((res) => res.json());
+  
+      if (ok) {
+        reloadCart(server, containerCard, outputTotal);
+      }
+      // console.log({ok, msg})
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
+    //     const response = await fetch(`${server}/api/carrito/less/${id}`, {
+    //         method: "PATCH",
+    //     });
+    //     if (response.ok) {
+    //         await reloadCart(server, containerCard, outputTotal);
+    //     } else {
+    //         console.error("Error al disminuir la cantidad del producto");
+    //     }
+    // } catch (error) {
+    //     console.error(error.message);
+    // }
 };
 
 //Función para aumentar la cantidad de productos del carrito
 const moreQuantity = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/more/${id}`, {
+        const containerCard = $("#container-card");
+        const outputTotal = $("#total")
+        
+        const { ok, msg } = await fetch(`${server}/api/carrito/more/${id}`, {
             method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al aumentar la cantidad del producto");
+          }).then((res) => res.json());
+      
+          if (ok) {
+            reloadCart(server, containerCard, outputTotal);
+          }
+          // console.log({ok, msg})
+        } catch (error) {
+          console.error(error.message);
         }
-    } catch (error) {
-        console.error(error.message);
-    }
+    //     const response = await fetch(`${server}/api/carrito/more/${id}`, {
+    //         method: "PATCH",
+    //     });
+    //     if (response.ok) {
+    //         await reloadCart(server, containerCard, outputTotal);
+    //     } else {
+    //         console.error("Error al aumentar la cantidad del producto");
+    //     }
+    // } catch (error) {
+    //     console.error(error.message);
+    // }
 };
 
 //Función para remover los productos del carrito
 const removeProductToOrder = async (id) => {
     try {
-        const response = await fetch(`${server}/api/carrito/remover/${id}`, 
-        {
+        const containerCard = $("#container-card");
+        const outputTotal = $("#total")
+
+        const { ok, msg } = await fetch(`${server}/api/carrito/remover/${id}`, {
             method: "PATCH",
-        });
-        if (response.ok) {
-            await reloadCart(server, $("#containerCard"), $("#total"));
-        } else {
-            console.error("Error al eliminar el producto del carrito");
+          }).then((res) => res.json());
+      
+          if (ok) {
+            reloadCart(server, containerCard, outputTotal);
+          }
+          // console.log({ok, msg})
+        } catch (error) {
+          console.error(error.message);
         }
-    } catch (error) {
-        console.error(error.message);
-    }
+    //     const response = await fetch(`${server}/api/carrito/remover/${id}`, 
+    //     {
+    //         method: "PATCH",
+    //     });
+    //     if (response.ok) {
+    //         await reloadCart(server, containerCard, outputTotal);
+    //     } else {
+    //         console.error("Error al eliminar el producto del carrito");
+    //     }
+    // } catch (error) {
+    //     console.error(error.message);
+    // }
 };
