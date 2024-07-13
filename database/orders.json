@@ -35,9 +35,9 @@
     },
     {
         "id": 3,
-        "user_id": 1,
-        "subtotal": 7500,
-        "total": 8000,
+        "user_id": 3,
+        "subtotal": 0,
+        "total": 0,
         "state": "pending",
         "products": [
             {
