@@ -36,7 +36,10 @@ async function addProductCart(id) {
     }).then((res) => res.json());
 
     ok && 
-    toastr["success"]("Producto agregado al carrito con éxito")
+    toastr["success"]("Producto agregado al carrito con éxito");
+    setTimeout(() => {
+      location.href = "/carrito"
+    }, 2000);
    
   } catch (error) {
     console.error(error.message);

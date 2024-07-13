@@ -4,7 +4,7 @@ const getTotalOrder = (data = []) => {
       acum,
       {
         price,
-        OrderProducts: {
+        OrderProduct: {
           dataValues: { quantity },
         },
       }
@@ -21,7 +21,7 @@ const getTotalOrderV2 = (data = []) => {
   data.forEach(
     ({
       price,
-      OrderProducts: {
+      OrderProduct: {
         dataValues: { quantity },
       },
     }) => {

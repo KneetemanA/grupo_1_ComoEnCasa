@@ -44,13 +44,15 @@ const getShoppingCart = async (server) => {
 const getCartStructure = (p) => {
     const subtotal = subTotal(p.price, p.discount, p.OrderProduct);
     return `
-      <td class="td-img" id="img"><img src="${p.image}" width=100" height="80"></td>
+    <tr class="position-relative">
+      <td class="td-img" id="img"><img src="${p.image}" width=100" height="80"><span class="position-absolute top-0 start-100" onclick="removeProductToOrder('${p.id}')">x</span></td>
       <td class="td-name" id="detail">${p.detail}</td>
       <td class="td-price" id="price">$${convertMoney(p.price)}</td>
-      <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded"  onclick="lessQuantity('<%= p.id %>')">-</button>
+      <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded"  onclick="lessQuantity('${p.id}')">-</button>
       <td class="td-cantidad" id="quantity">${p.OrderProduct.quantity}</td>
-      <button class="btn bg-primary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="moreQuantity('<%= p.id %>')">+</button>
+      <button class="btn bg-primary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="moreQuantity('${p.id}')">+</button>
        <td class="td-total" id="total">${convertMoney(subtotal)}</td>
+    </tr>
       `
   };
 
@@ -90,7 +92,7 @@ const reloadCart = async (server, containerCard, outputTotal) => {
 //Capturar los selectores de la tarjeta del carrito
 window.addEventListener("load", async (event) => {
     const containerCard = $("#container-card");
-    const outputTotal = $("#total");
+    const outputTotal = $("#totalFinal");
     const btnDelete = $("#boton-vaciar");
     const btnBuy = $(".boton-comprar");
 
@@ -151,7 +153,7 @@ const lessQuantity = async (id) => {
     try {
 
     const containerCard = $("#container-card");
-    const outputTotal = $("#total")
+    const outputTotal = $("#totalFinal")
 
     const { ok, msg } = await fetch(`${server}/api/carrito/less/${id}`, {
         method: "PATCH",
@@ -171,7 +173,7 @@ const lessQuantity = async (id) => {
 const moreQuantity = async (id) => {
     try {
         const containerCard = $("#container-card");
-        const outputTotal = $("#total")
+        const outputTotal = $("#totalFinal")
         
         const { ok, msg } = await fetch(`${server}/api/carrito/more/${id}`, {
             method: "PATCH",
@@ -190,7 +192,7 @@ const moreQuantity = async (id) => {
 const removeProductToOrder = async (id) => {
     try {
         const containerCard = $("#container-card");
-        const outputTotal = $("#total")
+        const outputTotal = $("#totalFinal")
 
         const { ok, msg } = await fetch(`${server}/api/carrito/remover/${id}`, {
             method: "PATCH",
