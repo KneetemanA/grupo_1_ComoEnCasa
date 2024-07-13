@@ -29,7 +29,7 @@ toastr.options = {
 
 
 async function addProductCart(id) {
-  const server = "http://localhost:3030";
+  const server = "http://localhost:3030"
   try {
     const { ok, msg } = await fetch(`${server}/api/carrito/agregar/${id}`, {
       method: "PATCH",
