@@ -1,6 +1,6 @@
 const server_ = "http://localhost:3030";
 
-const getShoppingCart = async (server) => {
+const getShoppingCart = async (server_) => {
     try {
         return fetch(`${server_}/api/carrito`).then((res) => res.json());
    } catch (error) {

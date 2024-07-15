@@ -44,15 +44,17 @@ const getCartStructure = (p) => {
     const subtotal = subTotal(p.price, p.discount, p.OrderProduct);
     return `
       <tr class="position-relative">
-      <td class="td-img" id="img"><img src="${p.image}" width=100" height="80"><span class="position-absolute top-0 start-100 btn btn-danger" onclick="removeProductToOrder('${p.id}')">x</span></td>
+      <td class="td-img" id="img"><img src="${p.image}" width=100" height="80"></td>
       <td class="td-name" id="detail">${p.detail}</td>
       <td class="td-price" id="price">$${convertMoney(p.price)}</td>
-      <td class="td-cantidad" id="quantity" >
-      <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded"  onclick="lessQuantity('${p.id}')">-</button>
+      <td class="td-cantidad  " id="quantity" >
+     <div class="d-flex align-items-center gap-2 agregar-items rounded shadow-sm bg-light justify-content-center">  <button class="btn bg-secondary btn-sm fw-bold fs-6 boton-agregar-restar rounded"  onclick="lessQuantity('${p.id}')">-</button>
       ${p.OrderProduct.quantity}
       <button class="btn bg-primary btn-sm fw-bold fs-6 boton-agregar-restar rounded" onclick="moreQuantity('${p.id}')">+</button>
+      </div>
       </td>
       <td class="td-total" id="total" >${convertMoney(subtotal)}</td>
+      <td class="td-delete" id="delete"><button class="btn btn-danger btn-sm fs-6" onclick="removeProductToOrder('${p.id}')"><i class="fas fa-trash fs-6"></i></button></td>
     </tr>
       `
   };
@@ -104,7 +106,7 @@ window.addEventListener("load", async (event) => {
     btnDelete.addEventListener("click", async () => {
         try {
             const response = await fetch(`${server}/api/carrito/clear`, {
-                method: "DELETE",
+                method: "PATCH",
             });
             if (response.ok) {
                 reloadeCart(server, containerCard, outputTotal);
